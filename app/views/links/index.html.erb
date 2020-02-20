@@ -1,19 +1,20 @@
-<% @links.each_with_index do |link, index| %>
-<% if index % 4 == 0 %>
-  <div class="pop-col">
-<% end %> 
-    <h4>
-      <%= link_to link.title, link.url %>
-    </h4>
-    <div class="btn-group" role="group"  aria-label="Links">
-      <%= link_to "Learn", link.url, class: "btn btn-secondary btn-sm" %>
-      <%= link_to "Read", link.url, class: "btn btn-secondary btn-sm" %>
-    </div>
-<% if index % 4 == 3 %>
-  </div>
-<% end %> 
-    
-
-
-<% end %>
+<div class="pop-bar">
+  <% @links.each_with_index do |link, index| %>
+    <% if index % 4 == 0 %>
+      <div class="pop-col articles">
+        <div class="pop-padding">
+    <% end %> 
+        <h4>
+          <%= link_to link.title, link.url %>
+        </h4>
+        <div class="btn-group" role="group"  aria-label="Links">
+          <%= link_to "Learn", link.url, class: "btn btn-secondary btn-sm" %>
+          <%= link_to "Read", link.url, class: "btn btn-secondary btn-sm" %>
+        </div>
+    <% if index % 4 == 3 %>
+        </div>
+      </div>
+    <% end %> 
+  <% end %>
+</div>
 

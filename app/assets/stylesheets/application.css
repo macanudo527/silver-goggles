@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ .main-container {
+ 	margin: 0 auto;
+ 	padding: 0 0.2em;
+ 	max-width: 74em;
+ }
+
+ .articles h4 {
+ 	clear: both;
+ 	border-top: 1px solid #DFDFDF;
+	padding: 0.25em 0 0.32em 0;
+	font-size: 1em;
+ }

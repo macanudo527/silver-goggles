@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NewsAssist</title>
+    <title>News Assist</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="news-assist">
+      <div class="main-container">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
