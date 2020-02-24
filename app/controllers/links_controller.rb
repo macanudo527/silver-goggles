@@ -4,7 +4,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.order(pubdate: :desc).first(12)
+    @links = Link.left_joins(:clicks).group(:id).order('SUM(click_count) DESC').first(12)
   end
 
   # GET /links/1

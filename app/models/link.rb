@@ -1,5 +1,6 @@
 class Link < ApplicationRecord
 	belongs_to :source
+  has_many :clicks
 
   def news
     Source.all.each do |source|

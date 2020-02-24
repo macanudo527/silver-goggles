@@ -5,7 +5,7 @@
         <div class="pop-padding">
     <% end %> 
         <h4>
-          <%= link_to link.title, link.url %>
+          <%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
         </h4>
         <div class="btn-group" role="group"  aria-label="Links">
           <%= link_to "Learn", link.url, class: "btn btn-secondary btn-sm" %>

@@ -37,7 +37,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.0' 
   gem 'database_cleaner'
   gem 'rails-controller-testing'
-  gem 'capybara', '~> 2.7', '>= 2.7.1'
+  gem 'capybara', '~> 3.31'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'pry', git: 'https://github.com/pry/pry.git', ref: '272b3290b5250d28ee82a5ff65aa3b29b825e37b'
