@@ -26,7 +26,9 @@ before_action :set_click, only: [:show, :edit, :update, :destroy]
   # USER is STUBBED, needs updating once Devise is installed!
   def create
   	@link = Link.find(params[:link])
-  	current_user = 0
+  	if current_user.nil?
+  		current_user = 0
+  	end
   	@click = @link.clicks.find_by(:user_id => current_user)
   	if !@click.nil?
   		@click.increment(:click_count, 1)
