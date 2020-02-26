@@ -4,6 +4,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
+	margin-top: 7em;
 }
 
 :root {
@@ -16,6 +17,10 @@
 	margin-right: auto;
 	max-width: var(--gridMaxWidth);
 	width: var(--gridWidth);
+}
+
+.edit__user .grid {
+	max-width: 32em;
 }
 
 .icon {
@@ -95,7 +100,7 @@
   width: 100%;
 }
 
-.login input[type='submit'] {
+.edit__user input[type='submit'], .login input[type='submit'] {
   background-color: #1dabb8;
   border-radius: var(--loginInputBorderRadius);
   color: #fff;
@@ -105,6 +110,8 @@
   transition: background-color 0.3s;
 }
 
+.edit__user input[type='submit']:focus, 
+.edit__user input[type='submit']:hover, 
 .login input[type='submit']:focus,
 .login input[type='submit']:hover {
   background-color: #198d98;
@@ -116,4 +123,21 @@
 
 .login label {
 	display: inline-flex;
+}
+
+.top-border input[type='password'] {
+	border-top: 0.0625em solid #e5e5e5;
+}
+
+.edit__user label {
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+    float: left;
+    font-weight: 700;
+    margin: .5em 0;
+}
+
+.edit__user ul {
+	display: inline-block;
 }
