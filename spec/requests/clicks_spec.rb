@@ -6,12 +6,22 @@ RSpec.describe "Clicks", type: :request do
     @links = Link.all
   end  
 
-  describe "Create click" do
+  context "When clicking on links" do
     it "records a click" do
       visit links_path
+      expect(@links.first.clicks.count).to eq(0)
       click_on @links.first.title
       expect(@links.first.clicks.count).to eq(1)
     end
+    it "assigns the link to the current user" do 
+    	user = create(:user)
+    	sign_in user
+    	visit links_path
+
+    	
+    end
+
+
   end
 
 end
