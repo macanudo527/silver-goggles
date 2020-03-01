@@ -17,6 +17,8 @@ RSpec.describe "Clicks", type: :request do
     	user = create(:user)
     	sign_in user
     	visit links_path
+    	click_on @links.first.title
+    	expect(user.clicks.count).to eq(1)
 
     	
     end

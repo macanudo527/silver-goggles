@@ -1,5 +1,5 @@
 class ClicksController < ApplicationController
-before_action :set_click, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!, :set_click, only: [:show, :edit, :update, :destroy] 
 
   # GET /links
   # GET /links.json
@@ -26,15 +26,13 @@ before_action :set_click, only: [:show, :edit, :update, :destroy]
   # USER is STUBBED, needs updating once Devise is installed!
   def create
   	@link = Link.find(params[:link])
-  	if current_user.nil?
-  		current_user = 0
-  	end
+
   	@click = @link.clicks.find_by(:user_id => current_user)
   	if !@click.nil?
   		@click.increment(:click_count, 1)
   	else
   		@click = @link.clicks.new
-  		@click.user_id = current_user
+  		@click.user = current_user
   	end
 
     respond_to do |format|
