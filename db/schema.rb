@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_002618) do
+ActiveRecord::Schema.define(version: 2020_03_02_042210) do
 
   create_table "clicks", force: :cascade do |t|
     t.integer "link_id"
     t.integer "user_id"
     t.integer "click_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.string "word"
+    t.string "reading"
+    t.string "definition"
+    t.boolean "priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

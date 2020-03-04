@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Word:</strong>
+  <%= @entry.word %>
+</p>
+
+<p>
+  <strong>Reading:</strong>
+  <%= @entry.reading %>
+</p>
+
+<p>
+  <strong>Def:</strong>
+  <%= @entry.def %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @entry.priority %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

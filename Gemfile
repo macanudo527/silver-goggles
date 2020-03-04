@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'feedjira'
 gem 'httparty'
 gem 'devise'
+gem 'kuromoji-ruby'
+gem 'loofah'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

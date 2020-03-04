@@ -1,0 +1,27 @@
+１００(P);百(P);陌;佰;一〇〇 [ひゃく(P);もも(百);はく(陌,佰)] /(num) (陌 and 佰 are used in legal documents) 100/hundred/(P)/EntL1488000X/
+１００％;１００パーセント;百パーセント [ひゃくパーセント] /(n,adv) 100 percent/EntL2836116/
+１０００(P);一千(P);１千;一〇〇〇 [いっせん] /(num) 1,000/one thousand/(P)/EntL1164250X/
+１０００円(P);千円 [せんえん] /(n) 1000 yen/(P)/EntL1388780X/
+１０００円券;千円券 [せんえんけん] /(n) (See 千円札) 1,000 yen bill/EntL2839889/
+１０００万;１千万;一千万;１０００００００;一〇〇〇万 [いっせんまん] /(num) 10,000,000/ten million/EntL2835274/
+１００円;百円 [ひゃくえん] /(n) 100 yen/EntL2839866/
+１００円ショップ [ひゃくえんショップ] /(n) hundred-yen store/(P)/EntL2100330X/
+１００円玉;百円玉 [ひゃくえんだま] /(n) 100 yen coin/EntL2396790/
+ばら撒く(P);ばら蒔く;散蒔く;散播く [ばらまく] /(v5k,vt) (1) (uk) to scatter/to disseminate (e.g. a rumor)/to spread (e.g. germs)/to broadcast/(2) (uk) to distribute widely (e.g. leaflets)/to hand out freely/to spend recklessly/(P)/EntL1601320X/
+ばら寿司;ばら鮨 [ばらずし] /(n) (ksb:) (See 五目寿司) type of sushi with a variety of ingredients sprinkled on the rice/EntL2258460X/
+ばら積み;ばら積;散積;散積み [ばらづみ] /(n,adj-no) bulk/EntL2829138/
+ばら積み貨物;ばら積貨物;散積貨物 [ばらづみかもつ] /(n) bulk cargo/EntL2830628/
+ばら積み貨物船;ばら積貨物船;撒積貨物船 [ばらづみかもつせん] /(n) bulk carrier/bulker/EntL2830629/
+ばりばり(P);バリバリ /(adj-na,adv,n) (1) (on-mim) tearing/ripping/scratching/(2) (on-mim) crunching/munching/(3) (on-mim) stiff/starchy/crisp/(4) (on-mim) (working) hard/actively/vigorously/energetically/(5) (on-mim) making loud noises in succession (firing bullets, vehicle revving up, etc.)/(6) (on-mim) crackling (electricity)/(P)/EntL1010340X/
+ばりッと /(adv) (1) (on-mim) sound of an object breaking loudly/ripping sound/tearing sound/(2) (See ぱりっと・1) being stylish/EntL2590170/
+ばれる(P);バレる /(v1,vi) (1) to leak out (a secret)/to be exposed (a lie, improper behaviour, etc.)/to be found out/(2) to get away (of fish)/(P)/EntL1010350/
+ばんえい競馬;輓曳競馬 [ばんえいいけいば] /(n) ban'ei/form of horse racing in which draft horses pull heavy sleds up sand ramps/EntL2836489/
+ぱ /(suf) (orig. from "per") (See パー) apiece/each/EntL2619520/
+ぱあ;パー /(n) (1) (See じゃん拳) paper (in rock, paper, scissors game)/(n,adj-na) (2) (ぱあ only) disappearing completely/coming to nought/becoming worthless/(3) (ぱあ only) foolishness/stupidity/EntL2397590X/
+ぱいぱい;パイパイ /(n) (chn) (sl) boobs/female breasts/hooters/EntL2455180/
+ぱくっと /(adv) (on-mim) (gaping) widely/EntL2839151/
+ぱくぱく;パクパク /(adv,adv-to,vs) (1) (on-mim) repeatedly opening and closing (one's mouth)/gasping/(adv,vs) (2) (on-mim) flapping (e.g. shoe sole)/gaping open and shut/(adv,adv-to,vs) (3) (on-mim) heartily (eating)/devouring/munching/gobbling/EntL1010380X/
+ぱくり;ぱっくり;パクリ;パクり /(adv-to,adv) (1) (on-mim) gaping (e.g. mouth, wound)/(2) (on-mim) snapping into/biting into/(n,vs) (3) (See パクる・2) cribbing/lifting/plagiarism/rip-off/EntL1010420X/
+ぱくり屋;パクリ屋 [ぱくりや(ぱくり屋);パクリや(パクリ屋)] /(n) confidence man/con man/company (or person) carrying out credit fraud/EntL2067760X/
+ぱぐれる;っぱぐれる /(aux-v,v1) (after the -masu stem of a verb) (See はぐれる・2) to miss (one's chance to ...)/EntL2843065/
+ぱさり /(adv-to,adv) (on-mim) (See ばさり) with a light thud/EntL2842424/

@@ -19,8 +19,6 @@ RSpec.describe "Clicks", type: :request do
     	visit links_path
     	click_on @links.first.title
     	expect(user.clicks.count).to eq(1)
-
-    	
     end
 
 
