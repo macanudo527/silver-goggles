@@ -1,0 +1,40 @@
+
+var id;
+while(document.getElementById(id='ii_'+Math.random().toString(36).substring(2,16)));
+var width = 300;
+var image = "https://cd.ladsp.com/";
+var information_icon ='<style type="text/css">'+
+'#'+id+', #'+id+' * { display: block; position: absolute; margin: 0px; padding: 0px; overflow: hidden; }'+
+'#'+id+'{ z-index: 100; width: 300px; position: relative; height: 0px; overflow: visible;}'+
+'#'+id+' a { right: 0px; width: auto; border-bottom-left-radius: 4px; overflow: visible; background-color: rgba(255, 255, 255, 0.8); color: #000; text-decoration: none; }'+
+'#'+id+' a span { position: relative; float: right; }'+
+'#'+id+' a .iconText { display: none; width: auto; line-height: 14px; margin: 1px 1px 0px 4px; font-family:\'ヒラギノ角ゴシック Pro\', \'Hiragino Kaku Gothic Pro\', \'メイリオ\', \'Meiryo UI\', Meiryo, Osaka, \'ＭＳ Ｐゴシック\', \'MS PGothic\', sans-serif; font-size:10.5px; font-weight: bold; }'+
+'#'+id+' a:hover .iconText { display: block; }'+
+'#'+id+' a .icon { margin: 0px 1px; width: 15px; height: 15px; }'+
+'.cls-1{fill:#555;height: 4.5px !important;}'+
+'.cls-2{fill:none;height: 11px !important;}'+
+'.cls-2{stroke:#555;stroke-miterlimit:10;stroke-width:1px;}'+
+'</style>'+
+'<div id="'+id+'">'+
+'<a href="http://tag.ladsp.jp/html/optout.html?pb=101&dc=1&ag=28&ad=5318&tg=351754&cl=2440939&rq=2317383196268105086&at=1583795837792" target="_blank">'+
+'<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path fill="#555" d="M7.495 1l-.292.02-.28.04-.27.08-.272.11-.25.14-.225.17-.222.19-3.947 3.94-.362.46-.25.52-.12.55v.56l.12.55.25.52.363.46 3.948 3.94.223.19.23.17.25.14.27.11.272.07.28.05.29.02.3-.02.28-.05.27-.07.27-.11.25-.14.233-.17.22-.19 3.95-3.94.36-.46.25-.52.12-.55v-.56l-.12-.55-.25-.52-.36-.46-3.95-3.94-.222-.19-.23-.17-.25-.14-.27-.11-.27-.08-.28-.04zm0 1.12l.17.01.16.03.152.04.148.06.14.08.133.09.12.11 3.947 3.94.212.26.14.29.07.31v.32l-.07.31-.14.29-.212.26L8.9 12.04l-.033.03-.06.04-.04.02-.04.01-.04.01h-.08l-.04-.01-.04-.01-.03-.02-.04-.02-.03-.02-.03-.03-.02-.02-.03-.04-.02-.03-.01-.04-.01-.03-.01-.04V7.89l-.02-.17-.07-.16-.09-.14-.13-.12-.14-.09-.172-.06-.17-.02h-.01l-.21.1-.172.1-.15.11-.11.11-.08.11-.05.11-.02.12v3.95l-.01.04-.01.03-.01.04-.02.03-.03.04-.02.02-.03.03-.03.02-.04.02-.03.02-.08.02h-.08l-.08-.02-.042-.02-.06-.04-.03-.03-3.574-3.52-.2-.26-.14-.29-.07-.31v-.32l.07-.31.14-.29.2-.26 3.95-3.94.13-.11.13-.09.14-.08.15-.06.15-.04.162-.03zm.01 1.65c-.642 0-1.153.52-1.153 1.15 0 .63.51 1.15 1.153 1.15.63 0 1.143-.52 1.143-1.15 0-.63-.512-1.15-1.143-1.15z"/></svg></span>'+
+'<span class="iconText">Logicad 広告</span>'+
+'</a>'+
+'</div>';
+document.write(information_icon);
+document.write('<a id="adLogicadA1583795837792-2317383196268105086" href="https://tag.ladsp.com/bsredirect?https%3A%2F%2Ftag.ladsp.com%2Fclk2%3Fckv%3D1%26c2%3DAU1slGLvvUL4vKa2QoXlGuVLf6ceixo3PVWA83zwB1njn5DIdOfic6qCMI0TiuS_rdJwep2LDWvGW4HcZ84zeFYc6eNffTlgVu4IHrOPJbGJTIGguyinel_Bjy2-GRDw1pSiKMmkZ1bccsQOj-8a0I5JXq8UwsaZiuiczXl3NzAOwBFaJ8SdoyPUHbtnJRK3NM5R0--7I0Dv96slPjCIh7YtBs6zCUOWszPycP2b8tUFPjGOnotZBQeGa6lehM2uboZHPANtzNEOcFKsrtgw2MvFj27REIJ7-tJYPCPrTsPJe6CDmZplAZyq-lTd3y_I_prb6M90CMGTAIyPrWWLXGS9onfY1UUx7SGha-Q8rP8HjSKATDH6kBHAEiKv7f6054hy9qH-reNwtEiPgjl1KehiIJiT2gnPfMS9zKU6UXC5cSyG38lf26J4E6RX3OlDs4EFZrOHNKv-qAL-K8NApd_YA_6u9lttKeFdImTIR5T4SaP5AGLFppV8x-myZsBi7PsXLdxOP7iSbPXOZ3SV2lsSGKaxV5INTJnZNzXahaCHmoxhuTyEue6a_OX6ajHPbBqpxt1dXZJ-FkiZ9QZzE6pxnTsVbsroUxtk_FV1eeXbyyNv4tUO3SaMb2LoJ16ZQMoUmn7xGruviWT8m7vqwJgdD5ROSuExOGkU5Sey_ciQ" target="_blank"><img src="https://cd.ladsp.com/creative/00/678/205/4077024230.jpg" border="0" width="300" height="250" /></a>');
+document.write(decodeURIComponent(''));
+
+var t = '<script type="text/javascript">';
+t = t + 'var __mm_bs_params = {';
+t = t + 'domain: "parafuso.m0mentum.net",';
+t = t + 'js: "bhi.js",';
+t = t + 'pid: "dd71a9e03f0846f98633f01361b8e26f",';
+t = t + 'tid: "3454634f864244198f02ded5311037e1",';
+t = t + 'vid: "adLogicadA1583795837792-2317383196268105086"';
+t = t + '};';
+t = t + '</script>';
+t = t + '<script type="text/javascript" src="//assets-momentum-l.akamaized.net/js/bhi.js?ord=1583795837793"></script>'
+ document.write(t);
+
+document.write('<sc'+'ript type="text/javascript" src="https://pixel.adsafeprotected.com/jload?anId=930418&advId=5318&campId=33832&pubId=15&chanId=258&placementId=827723&adsafe_par&impId=2317383196268105086"></sc'+'ript>');

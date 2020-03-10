@@ -10,6 +10,8 @@
 # Edict file should be converted to UTF8 for maximum compatiblity
 edict = File.read(Rails.root.join('lib', 'seeds', 'edict2-UTF8.txt'))
 line_num = 0
+entries = []
+columns = [:word, :reading, :definition, :priority]
 edict.each_line do |line|
 
 	# cut the newline off
@@ -66,11 +68,14 @@ edict.each_line do |line|
 	}
 
 	# Assign elements to new entry
-	Entry.find_or_create_by(word: word, reading: reading, definition: definition, priority: priority)
+	# Entry.find_or_create_by(word: word, reading: reading, definition: definition, priority: priority)
+    entries << {word: word, reading: reading, definition: definition, priority: priority}
 
-	puts "#{line_num += 1}  word #{word}, reading #{reading}, definition #{definition}, priority #{priority}"
+	# puts "#{line_num += 1}  word #{word}, reading #{reading}, definition #{definition}, priority #{priority}"
 
 end
+
+Entry.import columns, entries, validate: false
 
 puts "There are now #{Entry.count} rows in the entries table"
 

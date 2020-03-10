@@ -47,7 +47,7 @@ RSpec.configure do |config|
   Capybara.automatic_reload = false
   config.include Capybara::DSL
   config.before(:suite) do
-    Rails.application.load_seed # loading seeds
+  #  Rails.application.load_seed # loading seeds
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests

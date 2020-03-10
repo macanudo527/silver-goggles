@@ -28,6 +28,9 @@ gem 'httparty'
 gem 'devise'
 gem 'kuromoji-ruby'
 gem 'loofah'
+gem 'activerecord-import'
+gem 'rjb', '~> 1.6', '>= 1.6.1'
+gem 'webmock', '~> 3.8', '>= 3.8.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

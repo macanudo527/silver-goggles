@@ -1,0 +1,26 @@
+
+var id;
+while(document.getElementById(id='ii_'+Math.random().toString(36).substring(2,16)));
+var width = 728;
+var image = "https://cd.ladsp.com/";
+var information_icon ='<style type="text/css">'+
+'#'+id+', #'+id+' * { display: block; position: absolute; margin: 0px; padding: 0px; overflow: hidden; }'+
+'#'+id+'{ z-index: 100; width: 728px; position: relative; height: 0px; overflow: visible;}'+
+'#'+id+' a { right: 0px; width: auto; border-bottom-left-radius: 4px; overflow: visible; background-color: rgba(255, 255, 255, 0.8); color: #000; text-decoration: none; }'+
+'#'+id+' a span { position: relative; float: right; }'+
+'#'+id+' a .iconText { display: none; width: auto; line-height: 14px; margin: 1px 1px 0px 4px; font-family:\'ヒラギノ角ゴシック Pro\', \'Hiragino Kaku Gothic Pro\', \'メイリオ\', \'Meiryo UI\', Meiryo, Osaka, \'ＭＳ Ｐゴシック\', \'MS PGothic\', sans-serif; font-size:10.5px; font-weight: bold; }'+
+'#'+id+' a:hover .iconText { display: block; }'+
+'#'+id+' a .icon { margin: 0px 1px; width: 15px; height: 15px; }'+
+'.cls-1{fill:#555;height: 4.5px !important;}'+
+'.cls-2{fill:none;height: 11px !important;}'+
+'.cls-2{stroke:#555;stroke-miterlimit:10;stroke-width:1px;}'+
+'</style>'+
+'<div id="'+id+'">'+
+'<a href="http://tag.ladsp.jp/html/optout.html?pb=101&dc=1&ag=24&ad=4332&tg=358665&cl=2953285&rq=2317383214152640412&at=1583795837314" target="_blank">'+
+'<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path fill="#555" d="M7.495 1l-.292.02-.28.04-.27.08-.272.11-.25.14-.225.17-.222.19-3.947 3.94-.362.46-.25.52-.12.55v.56l.12.55.25.52.363.46 3.948 3.94.223.19.23.17.25.14.27.11.272.07.28.05.29.02.3-.02.28-.05.27-.07.27-.11.25-.14.233-.17.22-.19 3.95-3.94.36-.46.25-.52.12-.55v-.56l-.12-.55-.25-.52-.36-.46-3.95-3.94-.222-.19-.23-.17-.25-.14-.27-.11-.27-.08-.28-.04zm0 1.12l.17.01.16.03.152.04.148.06.14.08.133.09.12.11 3.947 3.94.212.26.14.29.07.31v.32l-.07.31-.14.29-.212.26L8.9 12.04l-.033.03-.06.04-.04.02-.04.01-.04.01h-.08l-.04-.01-.04-.01-.03-.02-.04-.02-.03-.02-.03-.03-.02-.02-.03-.04-.02-.03-.01-.04-.01-.03-.01-.04V7.89l-.02-.17-.07-.16-.09-.14-.13-.12-.14-.09-.172-.06-.17-.02h-.01l-.21.1-.172.1-.15.11-.11.11-.08.11-.05.11-.02.12v3.95l-.01.04-.01.03-.01.04-.02.03-.03.04-.02.02-.03.03-.03.02-.04.02-.03.02-.08.02h-.08l-.08-.02-.042-.02-.06-.04-.03-.03-3.574-3.52-.2-.26-.14-.29-.07-.31v-.32l.07-.31.14-.29.2-.26 3.95-3.94.13-.11.13-.09.14-.08.15-.06.15-.04.162-.03zm.01 1.65c-.642 0-1.153.52-1.153 1.15 0 .63.51 1.15 1.153 1.15.63 0 1.143-.52 1.143-1.15 0-.63-.512-1.15-1.143-1.15z"/></svg></span>'+
+'<span class="iconText">Logicad 広告</span>'+
+'</a>'+
+'</div>';
+document.write(information_icon);
+document.write('<a id="adLogicadA1583795837314-2317383214152640412" href="https://tag.ladsp.com/bsredirect?https%3A%2F%2Ftag.ladsp.com%2Fclk2%3Fckv%3D1%26c2%3DAe9G9_yTKnjDnjXUAjxqPDger3UYMlHKsQimwFYeVWC2COrtdvvkLcyF6izS-TX_Q6rKdYmTWk6QmiZylbWovOvydNXKNwB7ln_omvU-hBycMPjImMPLzbPd2JrvfKaqK99A1bLeoZCs3SANATwld9HJ0skHtSe-9vv7FxvIuRPT39Kb5v7gt0tESbkkRPWOM_vK-uJcEYx5GCwJXLSLUizhlzzMOmQJFIKvUtRGbYYL-SBQOruS7d21sPuu-22JSj26iQ0rFoqCyhBprjYxRKo3uNqn6JJT-BG5ufS0DFVxyza7ndDhySfhlcR0NfTQ6ilvF5DEGw4H8tsoPXsPAyiCRXhllQLUXGuRf4NYd3d3Vzpc5FivBVkKbLnZ6nTbKiBMieqHLeNpuVjqsQoURbu9QlzMf7ggVu1eo1lQzooepAPGDGUAJu9TW8hna--MWHQZZMz4H4y8ZbYvozqZNEJq--eXEXkmZco56rgILQq2skmaZA-VYU6Q3QvwXDnAeLKl32zWcB5cAtcpxSX2Z2PhZJ4FXYOwqb-UefDciv5ztyn5cFjRm-eNfKL1A1z85HvE-ieqQ2gkRx2YYQmku6QYHQrRBLA22FJyF0q0bEL9JHkKJff1cOSotU8RnSFro_Dj7EaQZdqDE6_kFoHAIaHKFJp-8Rq7r4lk_Ju76sCYpj8ZAcfC1-qAGe1kZMsCaQ" target="_blank"><img src="https://cd.ladsp.com/creative/00/729/214/5257961637.jpg" border="0" width="728" height="90" /></a>');
+document.write(decodeURIComponent(''));

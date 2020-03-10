@@ -7,7 +7,7 @@ RSpec.describe Link, type: :model do
   	let(:link) { Link.new }
 
     it "reads the rss feed into the db" do
-      expect(link).to respond_to(:news)
+      expect(Link).to respond_to(:news)
       
     end
     
