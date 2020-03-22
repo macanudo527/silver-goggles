@@ -1,0 +1,2 @@
+class WordIndex < ApplicationRecord
+end

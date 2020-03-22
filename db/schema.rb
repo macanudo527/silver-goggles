@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_001635) do
+ActiveRecord::Schema.define(version: 2020_03_22_134122) do
 
-  create_table "clicks", force: :cascade do |t|
+  create_table "clicks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "link_id"
     t.integer "user_id"
     t.integer "click_count"
@@ -20,23 +20,24 @@ ActiveRecord::Schema.define(version: 2020_03_04_001635) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "entries", force: :cascade do |t|
+  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "word"
     t.string "reading"
-    t.string "definition"
+    t.text "definition"
     t.boolean "priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "base_word"
   end
 
-  create_table "entries_links", id: false, force: :cascade do |t|
-    t.integer "entry_id", null: false
-    t.integer "link_id", null: false
-    t.index "\"user_id\"", name: "index_entries_links_on_user_id"
-    t.index ["entry_id"], name: "index_entries_links_on_entry_id"
+  create_table "entries_links", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "entry_id", null: false
+    t.bigint "link_id", null: false
+    t.index ["entry_id", "link_id"], name: "index_entries_links_on_entry_id_and_link_id"
+    t.index ["link_id", "entry_id"], name: "index_entries_links_on_link_id_and_entry_id"
   end
 
-  create_table "links", force: :cascade do |t|
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "url"
     t.text "descrip"
@@ -47,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_001635) do
     t.datetime "pubdate"
   end
 
-  create_table "sources", force: :cascade do |t|
+  create_table "sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "url"
     t.text "descrip"
@@ -55,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_001635) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
