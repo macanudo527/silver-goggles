@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- saved from url=(0152)https://tpc.googlesyndication.com/sadbundle/$csp%3Der3$/7400710261639030814/728x90.html#t=14250840089673700900&p=https%3A%2F%2Ftpc.googlesyndication.com -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./f(3).txt" type="text/javascript"></script><script src="./f(4).txt" type="text/javascript"></script><title>728X90</title><meta content="" name="description"><meta content="" name="keywords"><meta content="width=728,height=90" name="ad.size"><script src="./jquery.min.js.download"></script><style>
+*{margin:0; padding:0; font-size:0.75em;}
+*:focus{outline:none;}
+.banner{position:relative; display:block; width:728px; height:90px; overflow:hidden; background:#000000;}
+.banner > div{position:absolute; top:0; left:0; width:100%; height:100%;}
+
+.scene_01 {background:#efefef; opacity:0;}
+.scene_01 .copy{position:absolute; left:121px; top:40px; opacity:0;}
+
+.scene_02 {background:#efefef; opacity:0;}
+.scene_02 .img{position:absolute; left:521px; top:0px; opacity:1;}
+.scene_02 .notebook{position:absolute; left:462px; top:22px; opacity:0;}
+.scene_02 .copy{position:absolute; left:101px; top:22px; opacity:0;}
+.scene_02 .line{position:absolute; left:479px; top:6px; opacity:0;}
+
+.scene_03 {background:#efefef; opacity:0;}
+.scene_03 .img{position:absolute; left:521px; top:0px; opacity:1;}
+.scene_03 .sun{position:absolute; left:538px; top:10px; opacity:1;}
+.scene_03 .img_2{position:absolute; left:485px; top:0px; opacity:1;}
+.scene_03 .notebook{position:absolute; left:485px; top:3px; opacity:1;}
+.scene_03 .screen{position:absolute; left:522px; top:4px; opacity:1;}
+.scene_03 .effect{position:absolute; left:459px; top:0px; opacity:0;}
+.scene_03 .copy{position:absolute; left:122px; top:21px; opacity:0;}
+
+.scene_04 {background:#efefef; opacity:0;}
+.scene_04 .img{position:absolute; left:521px; top:0px; opacity:1;}
+.scene_04 .night{position:absolute; left:512px; top:8px; opacity:0;}
+.scene_04 .img_2{position:absolute; left:485px; top:0px; opacity:1;}
+.scene_04 .notebook{position:absolute; left:485px; top:3px; opacity:1;}
+.scene_04 .screen{position:absolute; left:522px; top:4px; opacity:1;}
+.scene_04 .effect{position:absolute; left:459px; top:0px; opacity:1;}
+.scene_04 .copy{position:absolute; left:59px; top:27px; opacity:0;}
+
+.scene_05 {background:#efefef; opacity:0;}
+.scene_05 .img{position:absolute; left:521px; top:0px; opacity:1;}
+.scene_05 .notebook{position:absolute; left:465px; top:4px; opacity:1;}
+.scene_05 .copy{position:absolute; left:29px; top:42px; opacity:0;}
+
+.scene_06 {background:#efefef; opacity:0;}
+.scene_06 .img{position:absolute; left:521px; top:0px; opacity:1;}
+.scene_06 .notebook{position:absolute; left:465px; top:4px; opacity:1;}
+.scene_06 .logo{position:absolute; left:56px; top:26px; opacity:0;}
+.scene_06 .button{position:absolute; left:262px; top:31px; opacity:0;}
+.scene_06 .effect{position:absolute; left:577px; top:42px; opacity:0;}
+</style><script>
+var t_tables = [0, 1.6, 2.0, 1.3, 2.1, 1.6, 2.0];
+function getTime(index_keyframe) {
+    if (index_keyframe < 0) return 0;
+    var time = 0;
+    for (index_table = 0; index_table <= index_keyframe; index_table++) {
+        time += t_tables[index_table] * 1000;
+    }
+    return time;
+}
+
+$(document).ready(function(){
+
+    $('.scene_01').delay(getTime(0)).animate({
+        opacity:1
+    }, function() {
+        $('.scene_01 .copy').delay(200).animate({
+            opacity:1,
+            top:20
+        });
+    });
+
+    $('.scene_02').delay(getTime(1)).animate({
+        opacity:1
+    }, function() {
+       $('.scene_02 .copy').delay(300).animate({
+           opacity:1,
+       });
+       $('.scene_02 .notebook').delay(100).animate({
+            opacity:1,
+            top:2
+       });
+       $('.scene_02 .line').delay(300).animate({
+            opacity:1
+       });
+    });
+
+    $('.scene_03').delay(getTime(2)).animate({
+        opacity:1
+    }, function() {
+        $('.scene_03 .copy').delay(100).animate({
+            opacity:1
+        });
+        $('.scene_03 .sun').delay(800).animate({
+            opacity:0.15,
+            left:574,
+            top:17
+        });
+        $('.scene_03 .effect').delay(100).animate({
+            opacity:1
+        });
+    });
+
+    $('.scene_04').delay(getTime(3)).animate({
+        opacity:1
+    }, function() {
+      $('.scene_04 .copy').delay(100).animate({
+          opacity:1
+      });
+      $('.scene_04 .night').delay(300).animate({
+          opacity:0.15+0.75,
+          left:543,
+          top:14
+      });
+    });
+
+    $('.scene_05').delay(getTime(4)).animate({
+        opacity:1
+    }, function() {
+        $('.scene_05 .copy').delay(300).animate({
+            opacity:1,
+            top:22
+        });
+    });
+    $('.scene_06').delay(getTime(5)).animate({
+        opacity:1
+    }, function() {
+        $('.scene_06 .logo').delay(200).animate({
+            opacity:1,
+            top:26
+        });
+        $('.scene_06 .button').delay(400).animate({
+            opacity:1,
+            top:31
+        });
+        $('.scene_06 .effect').delay(400).animate({
+            opacity:1,
+            top:22
+        }).fadeIn(0, function() {
+            $('.scene_06 .effect').animate({
+              top:22-6,
+              left:577-10
+            });
+            $('.scene_06 .effect img').animate({
+              height:64,
+              width:107
+            });
+        });
+    });
+});
+</script></head><body onclick="ExitApi.exit();" style="cursor:pointer">
+
+
+
+
+
+
+
+
+
+
+
+<div class="banner">
+    <div class="scene_01" style="opacity: 0.00260393;">
+        <div class="copy"><img alt="17インチの大画面でより鮮明に" src="./copy_01.png"></div>
+    </div>
+    <div class="scene_02">
+        <div class="img"><img src="./back_red.png"></div>
+        <div class="notebook"><img src="./notebook_01.png"></div>
+        <div class="copy"><img alt="大画面を片手に軽く 1350g 超軽量" src="./copy_02.png"></div>
+        <div class="line"><img src="./line.png"></div>
+    </div>
+    <div class="scene_03">
+        <div class="img"><img src="./back_red.png"></div>
+        <div class="notebook"><img src="./notebook_02.png"></div>
+        <div class="screen"><img src="./screen_01.png"></div>
+        <div class="sun"><img src="./sun.png"></div>
+        <div class="img_2"><img src="./mask.png"></div>
+        <div class="effect"><img src="./effect_01.png"></div>
+        <div class="copy"><img alt="最長19.5時間" src="./copy_03.png"></div>
+    </div>
+    <div class="scene_04">
+        <div class="img"><img src="./back_red.png"></div>
+        <div class="notebook"><img src="./notebook_02.png"></div>
+        <div class="screen"><img src="./screen_02.png"></div>
+        <div class="night"><img src="./night.png"></div>
+        <div class="img_2"><img src="./mask.png"></div>
+        <div class="effect"><img src="./effect_01.png"></div>
+        <div class="copy"><img alt="ほぼ1日中使えるバッテリー" src="./copy_04.png"></div>
+    </div>
+    <div class="scene_05">
+        <div class="img"><img src="./back_red.png"></div>
+        <div class="notebook"><img src="./notebook_03.png"></div>
+        <div class="copy"><img alt="’2020 New どこでも自由に" src="./copy_05.png"></div>
+    </div>
+    <div class="scene_06">
+        <div class="img"><img src="./back_red.png"></div>
+        <div class="notebook"><img src="./notebook_03.png"></div>
+        <div class="button"><img src="./button.png"></div>
+        <div class="logo"><img alt="LG gram" src="./logo.png"></div>
+        <div class="effect"><img alt="新登場" src="./effect_02.png"></div>
+    </div>
+</div>
+
+
+</body></html>

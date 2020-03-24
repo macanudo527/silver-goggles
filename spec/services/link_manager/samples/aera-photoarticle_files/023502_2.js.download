@@ -1,0 +1,67 @@
+(function() {
+    "use strict";
+    var placement = {
+        p: "23502",
+        url: "https://y.one.impact-ad.jp/imp?r={REFERER_ESC}&p=23502&w=640&h=360&v=inread",
+        wrapperWidth: "100%",
+        wrapperHeight: "auto",
+        interface: "inread",
+        autoCloseDuration: "3"
+    };
+    placement.id = "dacivt" + placement.p;
+
+    function createSvaTag() {
+        var svaTag, noScriptTag;
+        svaTag = document.createElement("dac-ivt-ogv");
+        svaTag.id = placement.id;
+        noScriptTag = document.createElement("noscript");
+        noScriptTag.innerText = "";
+        svaTag.appendChild(noScriptTag);
+        return svaTag;
+    }
+
+    function createScriptTag() {
+        var scriptTag;
+        scriptTag = document.createElement("script");
+        scriptTag.src = "//img.ak.impact-ad.jp/ic/pone/ivt/firstview/js/dac-video.min.js";
+        scriptTag.charset = "UTF-8";
+        return scriptTag;
+    }
+
+    function insertBeforeSva(currentDom) {
+        var svaTag, scriptTag, parentDom;
+        svaTag = createSvaTag();
+        scriptTag = createScriptTag();
+        parentDom = currentDom.parentNode;
+        parentDom.insertBefore(svaTag, currentDom);
+        parentDom.insertBefore(scriptTag, currentDom);
+    }
+
+    function addSvaToFIF() {
+        var iframe = window.frameElement;
+        iframe.style.display = "none";
+        insertBeforeSva(iframe);
+    }
+
+    function addSva() {
+        var script = document.currentScript || document.getElementsByTagName("script")[document.getElementsByTagName("script").length - 1];
+        insertBeforeSva(script);
+    }
+    if (window !== parent) {
+        if (window.$sf) {
+            window.DACIVT = window.DACIVT || [];
+            window.DACIVT.push(placement);
+            addSva();
+        } else {
+            try {
+                window.parent.DACIVT = window.parent.DACIVT || [];
+                window.parent.DACIVT.push(placement);
+                addSvaToFIF();
+            } catch (e) {}
+        }
+    } else if (window === parent) {
+        window.DACIVT = window.DACIVT || [];
+        window.DACIVT.push(placement);
+        addSva();
+    }
+}());

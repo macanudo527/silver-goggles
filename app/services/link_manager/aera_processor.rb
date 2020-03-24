@@ -5,6 +5,7 @@ module LinkManager
 		SOURCE_URL = "https://dot.asahi.com/rss/allnew.rss"
 		SOURCE_ID = Source.where(title: 'Aera dot').first.id
 		SOURCE_CSS = ["p.nTxt1", "div.FoldedTxtAreaPhotoArticle"]
+		PAGER_CSS = "li.articlePagerNext"
 
 		def call
 
@@ -29,12 +30,24 @@ module LinkManager
 					html = Nokogiri::HTML(URI.open(article.url))
 
 					article_html = ""
+					article_container = ""
 
+					# Find the css element that has the article.  Aera has two different kinds of articles.
 					SOURCE_CSS.each do |container|
 					    article_html = html.css(container)
 					    if !article_html.empty?
+					      article_container = container
 					      break
 					    end            
+					end
+
+					current_page = 2
+
+					# Page through the rest of the article collecting words.
+					while !html.css(PAGER_CSS).empty?
+						html = Nokogiri::HTML(URI.open(article.url + "?page=" + current_page.to_s))
+						article_html = article_html + html.css(article_container)
+						current_page = current_page + 1
 					end
 
 					article_text = Loofah.fragment(article_html.to_s)
@@ -51,11 +64,5 @@ module LinkManager
 				end
 			end
       	end
-
-
-
-		def parser(source)
- 
-        end
     end
 end

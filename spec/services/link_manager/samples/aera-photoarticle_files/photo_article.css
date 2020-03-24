@@ -1,0 +1,196 @@
+.photoAtclAreaPhoto{background:#ffffff;display: block;text-align: center;clear: both;margin: 20px auto;}
+
+/* 拡大写真ページ内小写真 */
+.photoAtclAreaPhotoDot{background:#ffffff;display: block;text-align: center;clear: both;margin: 0 auto;}
+.photoAtclAreaSmallPhoto{display: block;width:300px; clear: both;float:left;margin: 0 20px 20px 0;text-align: center;}
+.photoAtclAreaSmallPhotoImgWrapper{background-color:#E6E6E6;padding: 0;margin: 0;}
+.photoAtclAreaSmallPhoto img{margin:0;padding:0;vertical-align: bottom;}
+.photoAtclAreaPhoto{background:#ffffff;display: block;text-align: center;clear: both;margin: 20px auto;}
+.photoAtclAreaWrapper{margin:0 0 20px 0;display: block;overflow: hidden;}
+.photoAtclAreaRectangleAdDot{width: 300px;float:left;padding: 0 20px 0 0;}
+
+/*unused table.photoAtclPhoto*/
+table.photoAtclPhoto{border-collapse: separate;  /* セルの間隔を空ける */
+background: none repeat scroll 0% 0% #E6E6E6;margin: auto;text-align: center;clear: both;}
+h3.photoAtclTitle{display: table-row;font-size: 65%;text-align: left;font-weight: normal;}
+.photoAtclTitle>strong{display: block;padding: 20px 0 10px 0;}
+p.photoAtclCaption{display: table-row;font-size: 65%;margin: 0 0 40px 0;padding: 0;text-align: left;}
+/*unused p.photoAtclLnkZoom*/
+p.photoAtclLnkZoom{text-align: center;margin: 5px 0;font-size: 75%;}
+p.photoAtclTxt{font-size: 15px;letter-spacing: 0.01em;line-height: 1.6;margin: 20px 0;padding: 0;}
+.photoAtclAreaRectangleAd{width: 300px;float:left;padding: 20px 20px 20px 0;}
+.photoAtclBookReview{border:1px solid #B3B3B3;padding: 3px;margin-bottom: 10px;clear: both;height:300px;}
+.photoAtclBookReviewPhoto{width:300px;display: block;float:left;background: #cccccc;text-align: center;}
+.photoAtclBookReviewTitle{margin-left:30px;}
+
+/* Amazonリンク */
+.photoAtclAmazonArea{display: block;overflow:hidden;margin: 20px auto; border: 1px solid #B3B3B3;}
+.photoAtclAmazonCapArea{display:block;margin: 0;padding: 0;float: left;width:418px;margin:60px 0 0 0;overflow: hidden;}
+.photoAtclAmazonCoverImg{width: 140px; float: left;margin: 20px;}
+p.photoAtclAmazonCapAreaTitle{font-size: 16px; line-height: 1.6;}
+p.photoAtclAmazonCapAreaAuthor{font-size: 16px; line-height: 1.6;margin:5px 0 5px 0;}
+p.photoAtclAmazonCapIsbn{font-size: 12px;margin: 0;}
+p.photoAtclAmazonCapIsbn::before {
+content: "ISBN：";
+}
+.photoAtclAmazonLnkArea{}
+.photoAtclAmazonLnkBtnImg{
+	width:16px;
+	height: 16px;
+	margin: 0 5px 0 0;
+	vertical-align: middle;
+	display: inline-block;
+}
+.photoAtclAmazonLnkTxt{
+	vertical-align: middle;
+	display: inline-block;
+	font-size: 12px;line-height: 1.6;
+}
+
+/*これまでの写真の殿堂*/
+.photoAtclMvpDescription{font-size: 15px;margin:20px auto;}
+.photoAtclMvpBnAreaPhoto{display: block;text-align: center;clear: both;margin: 10px auto 30px auto;width:618px;}
+.Last{margin: 0 auto;}
+h3.photoAtclMvpBnSubTitle{font-weight: normal;font-size: 15px;margin:0;padding: 0;}
+.photoAtclMvpBnAreaPhoto > .date{font-size: 15px;font-weight: bold;}
+.photoAtclMvpBnAreaPhoto > .author{font-size: 15px;font-weight: normal;}
+.photoAtclMvpBnAreaPhoto > a.result{font-size: 15px;font-weight: bold;display: inline-block;margin-top: 10px;color: #0D3994;}
+.photoAtclMvpBnrAreaPhoto > a.result:link,.photoAtclMvpBnrAreaPhoto > a.result:active,.photoAtclMvpBnrAreaPhoto > a.result:visited{color: #0D3994;}
+.photoAtclMvpBnAreaPhoto > a.result:hover{text-decoration: underline;}
+ul.photoAtclBnAreaMvpNav{margin:30px 0 0 0;text-align: left;font-size: 15px;font-weight: bold;}
+ul.photoAtclBnAreaMvpNav li{display: inline-block;list-style-type: none;margin: 0 0 10px 0;padding: 0 3px 0 3px;border-right: solid 1px #777;height:15px;line-height: 15px;text-align: center;}
+html.ie7 .photoAtclBnAreaMvpNav li,html.ie8 .photoAtclBnAreaMvpNav li{display:inline;zoom:1;}
+.photoAtclBnAreaMvpNav a:link,.photoAtclBnAreaMvpNav a:active,.photoAtclBnAreaMvpNav a:visited{color: #0D3994;font-weight: bold;}
+.photoAtclBnAreaMvpNav a:hover{text-decoration: underline;}
+/*最終選考まで残った作品*/
+.photoAtclMvpFsAreaPhoto{display: block;text-align: center;clear: both;margin: 10px auto 30px auto;width:618px;}
+.photoAtclMvpFsAreaPhoto > h3.title{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+.photoAtclMvpFsAreaPhoto > h3.author{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+/*ワンポイントアドバイス*/
+.photoAtclMvpOaDescription{font-size: 15px;margin:20px auto;}
+.photoAtclMvpOaAreaPhoto{display: block;text-align: center;clear: both;margin: 10px auto 30px auto;width:618px;}
+.photoAtclMvpOaAreaPhoto > h3.title{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+.photoAtclMvpOaAreaPhoto > h3.author{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+/*授賞作品*/
+h3.photoAtclMvpAwReview{font-size: 15px;font-weight: bold;margin:20px 0 0;padding: 0;}
+h3.photoAtclMvpAwReviewer{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+ul.photoAtclMvpAwNav{margin: 0;padding: 0;list-style-type: none;}
+ul.photoAtclMvpAwNav >li{margin:5px 0 0 0;}
+.photoAtclMvpAwNav a:link,.photoAtclMvpAwNav a:active,.photoAtclMvpAwNav a:visited{padding:0 0 0 5px;font-size: 15px;font-weight: bold;color: #0D3994;border-left: 5px solid #0D3994;}
+.photoAtclMvpAwNav a:hover{text-decoration: underline;}
+.photoAtclMvpAwNav>.photoAtclMvpAwNavExhibit{color: #cc3333;}
+.photoAtclMvpAwNav>.photoAtclMvpAwNavExhibit a:link,.photoAtclMvpAwNav>.photoAtclMvpAwNavExhibit a:active,.photoAtclMvpAwNav>.photoAtclMvpAwNavExhibit a:visited{padding:0 0 0 5px;font-size: 15px;font-weight: bold;color: #cc3333;border-left: 5px solid #cc3333;}
+.photoAtclMvpAwNav>.photoAtclMvpAwNavExhibit a:hover{text-decoration: underline;}
+.photoAtclMvpAwDescription{font-size: 15px;margin:10px auto 30px;}
+.photoAtclMvpAwAreaPhoto{display: block;text-align: center;clear: both;margin: 10px auto 0 auto;width:618px;}
+.photoAtclMvpAwAreaPhotoRank{text-align: center;font-size: 15px;font-weight: bold;margin: 10px 0;}
+/* 不要になる↓ */
+.photoAtclMvpAwAreaPhoto > .rank{font-size: 15px;font-weight: bold;margin-bottom: 10px;}
+/* 不要になる↑ */
+.photoAtclMvpAwAreaPhoto > h3.title{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+.photoAtclMvpAwAreaPhoto > h3.author{font-size: 15px;font-weight: normal;margin:0;padding: 0;}
+/* 写真の殿堂について */
+.photoAtclMvpAboutDescription{font-size: 15px;margin:10px auto 30px;}
+.photoAtclMvpAboutDescription > .regulation{font-size: 15px;font-weight: bold;}
+.photoAtclMvpAboutFromjudge{font-size: 15px;background-color: #f2f2f2;padding: 10px;}
+.photoAtclMvpAboutFromjudge > h3.title{font-size: 15px;margin:0;padding: 0;}
+.photoAtclMvpAboutFromjudge > h3.profileTitle{font-size: 15px;margin:0;padding: 0;}
+.photoAtclMvpAboutFromjudge > .profileName{font-size: 15px;font-weight: bold;}
+.photoAtclMvpAboutFromjudge > h3.pastjudgeTitle{font-size: 15px;margin:0;padding: 0;}
+.photoAtclMvpAboutFromjudge > ul{margin: 0;padding: 0;list-style-type: none;}
+.photoAtclMvpAboutFromjudge > .photo{width:100px;float: right;margin:0 10px 0 0;}
+ul.dendouUlAreaNavBottom{list-style: none;font-size: 0px;margin: 0;padding: 35px 0 50px 0;text-align: center;font-weight: bold;}
+a.dendouLnkNav:link,a.dendouLnkNav:visited{color: #603813;}
+li.dendouLiAreaPrev{background-image: url(//cdn.images-dot.com/static/image/pc/butsuzo/ico_arrow01.png);background-size: 14px 20px;background-repeat: no-repeat;font-size:14px;line-height: 20px;display: inline-block;  
+*display: inline;  
+*zoom: 1;  
+padding: 0 46px 0 25px;}
+li.dendouLiAreaNext{background-image: url(//cdn.images-dot.com/static/image/pc/butsuzo/ico_arrow02.png);background-repeat: no-repeat;background-size: 14px 20px;background-position: right center;font-size:14px;line-height: 20px;display: inline-block;  
+*display: inline;  
+*zoom: 1;padding: 0  25px 0 0;}
+/* 写真の殿堂の出品方法 */
+h3.photoAtclMvpExhibitSubtitle{font-size: 15px;font-weight: bold;margin:20px 0 10px 0;padding: 0;}
+ul.photoAtclMvpExhibitList{margin:0 0 0 25px;}
+ul.photoAtclMvpExhibitList li{list-style-type: disc;margin: 0 0 10px 0;padding: 0;font-size: 15px;}
+.photoAtclMvpExhibitMailto a{border-radius:10px;}
+.photoAtclMvpExhibitMailto a:link,.photoAtclMvpExhibitMailto a:active,.photoAtclMvpExhibitMailto a:visited{padding:0 0 0 5px;font-size: 15px;color: #fff;margin: 20px auto 0;display: block;width:250px;text-align: center;background-color: #cc3333;line-height: 18px;padding: 5px;}
+.photoAtclMvpExhibitMailto a:hover{background-color: #ff3333;}
+.photoAtclMvpExhibitMailtoCaption{font-size: 12px;font-weight: normal;}
+
+/* ネイティブ広告*/
+.originalNativeAdAuthorTxt{
+	font-size: 12px;
+	color:#000;
+	margin: 0 0 15px 0;
+	display: block;
+}
+
+.originalNativeAdPhoto {
+    display: block;
+    clear: both;
+    margin: 30px auto 30px auto;
+}
+
+.originalNativeAdKakomiArea{
+	background-color: #eeeee0;
+	padding:15px;
+	margin: 30px auto 0;
+	display: inline-block;
+}
+
+.originalNativeAdCaption{
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.originalNativeAdKakomiAreaTit{
+	font-weight: bold;
+	line-height: 1.3;
+	margin: 0 0 10px 0;
+}
+.originalNativeAdKakomiAreaHonbun{
+	font-size: 12px;
+}
+.originalNativeAdPrTxt{
+	font-size: 24px;
+	color:#666;
+	margin:0 8px 0 0;
+	font-weight: normal;
+}
+
+a.originalNativeAdLnk,
+a.originalNativeAdLnk :link,
+a.originalNativeAdLnk :visited,
+a.originalNativeAdLnk :hover{
+	color: #0D3994;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/* 動画コンテンツ */
+
+.movieAtclAreaPhoto{
+	background:#ffffff;
+	display: block;
+	text-align: center;
+	clear: both;
+	margin: 20px auto;
+}
+
+p.movieAtclCaption{
+	font-size: 65%;
+	margin: 0 0 40px 0;
+	padding: 0;
+	text-align: left;
+}
+
+
+
+
+
+/* 170125 st nativeAdKakomiArea追加 */
+/* 160125 st photoAtclBnAreaMvpNav追加 */
+/* 151215 ay 殿堂用ページング追加 */
+/* 151116 st mvp関連のクラス 追加 */

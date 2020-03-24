@@ -1,0 +1,76 @@
+(function () {
+    'use strict';
+
+    var placement = {
+        p: 79655,
+        w: 728,
+        h: 90,
+        f: 'banner'
+    };
+
+    var element = document.getElementById('yoneads'+ placement.p);
+    if(!element) {
+        var ins = document.createElement('ins');
+        ins.id = 'yoneads' + placement.p;
+        ins.style.backgroundColor = 'transparent';
+        var currentScript = document.currentScript || document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
+        currentScript.parentNode.insertBefore(ins,currentScript);
+    } else {
+        element.style.backgroundColor = 'transparent';
+    }
+
+    var script = document.createElement('script');
+    script.src = '//img.ak.impact-ad.jp/ic/pone/ivt/firstview/js/adformat.min.js';
+
+    function addAdOutOfFIF() {
+        window.parent.DACADF = window.parent.DACADF || [];
+        placement.t = 'async';
+        window.parent.DACADF.push(placement);
+
+        var frame = window.frameElement;
+        frame.style.display = 'none';
+        var frameParent = frame.parentNode;
+        var target = document.createElement('ins');
+        target.id = 'yoneads' + placement.p;
+        target.style.backgroundColor = 'transparent';
+        frameParent.insertBefore(target, frame);
+        frameParent.insertBefore(script, frame);
+    }
+    function addAdForSF() {
+        window.DACADF = window.DACADF || [];
+        placement.t = 'j';
+        window.DACADF.push(placement);
+
+        document.writeln('<script src="' + script.src + '"><\/script>');
+    }
+    function addAd() {
+        window.DACADF = window.DACADF || [];
+        placement.t = 'async';
+        window.DACADF.push(placement);
+
+        document.writeln('<script src="' + script.src + '"><\/script>');
+    }
+
+    if (window !== parent) {
+        //iframe
+        if (window.$sf) {
+            //safeframe
+            placement.v = 'safeframe';
+            addAdForSF();
+        } else {
+            try {
+                //friendly iframe
+                placement.v = 'friendlyiframe';
+                addAdOutOfFIF();
+            } catch (e) {
+                //cross-domain iframe
+                placement.v = 'iframe';
+                addAd();
+            }
+        }
+    } else if (window === parent) {
+        //not iframe
+        placement.v = 'notiframe';
+        addAd();
+    }
+}());

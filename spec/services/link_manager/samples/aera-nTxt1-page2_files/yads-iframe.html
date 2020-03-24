@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0289)https://s.yimg.jp/images/listing/tool/yads/yads-iframe.html?s=24005_289300&ssl=1&fr_id=yads_629813-0&fr_support=1&sb_support=1&enc=UTF-8&tag_path=https%3a%2f%2fyads.yjtag.yahoo.co.jp%2ftag&page=1&u=https%3a%2f%2fdot.asahi.com%2faera%2f2020021400053.html%3fpage%3d2&async=0&mb=1&kwe=u&kwm=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+</head>
+<body style="background-color: transparent; padding: 0px; margin: 0px; text-align: center;">
+
+<div style="margin-left: auto; margin-right: auto;">
+
+<div id="yads-pr-label" style="font-family: &#39;MS PGothic&#39;,sans-serif; font-size: 12px; color: #555555; height:15px; line-height:15px; overflow:hidden; display:none;">PR</div>
+
+<script type="text/javascript">
+function escapeString(in_str, escape_amp) {
+  var escaped_str = in_str.replace(/</g, "&lt;")
+                          .replace(/>/g, "&gt;")
+                          .replace(/"/g, "&quot;")
+                          .replace(/'/g, "&#39;");
+  if (escape_amp) {
+     escaped_str = escaped_str.replace(/&/g, "&amp;");
+  }
+  return escaped_str;
+}
+
+function isSubDomain(in_check, in_trust) {
+  var t = in_trust.split('.');
+  var c = in_check.split('.');
+  if (t.length > c.length) {
+    return false;
+  }
+  for (var i = 0; i < t.length; i++) {
+    if (t[t.length - 1 - i] != c[c.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function parseQuery(in_url) {
+  var ret = {};
+  var tmp = in_url.split('?');
+  if (tmp.length != 2) {
+    return ret;
+  }
+
+  var params = tmp[1].split('&');
+  for (var i = 0; i < params.length; i++) {
+    var fldVal = params[i].split('=');
+    if (fldVal.length == 1) {
+      ret[fldVal[0]] = '';
+    } else {
+      ret[fldVal[0]] = window.decodeURIComponent(fldVal[1]);
+    }
+  }
+  return ret;
+}
+
+var gAdTagCreater = {
+  printScript : function() { 
+    var url_strings = [];
+    var url_params = parseQuery(location.href);
+    var entry = 'https://yads.yjtag.yahoo.co.jp/tag?'
+
+    for (var f in url_params) {
+      if (f != 'tag_path') {
+        if (f.match(/^[\w-]+$/)) {
+          var v = url_params[f];
+          url_strings.push(f + '=' + window.encodeURIComponent(escapeString(v, false)));
+        }
+      }
+    }
+
+    document.write('<script type="text/javascript" src="'
+                   + entry
+                   + url_strings.join('&amp;')
+                   + '"></scr' + 'ipt>' );
+  },
+  set : function() {
+    this.printScript();
+  }
+};
+
+var proto = location.protocol == 'https:' ? "https:" : "http:";
+var url = proto + '//yads.c.yimg.jp/js/yads.js';
+document.write('<script type="text/javascript" src="' + url + '"></scri' + 'pt>');
+</script><script type="text/javascript" src="./yads.js.download"></script><script src="./iicon.min.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+
+gAdTagCreater.set();
+
+</script><script type="text/javascript" src="./tag"></script><script src="./saved_resource" type="text/javascript"></script><div id="yads_dummy_parent_771786416" style="width: auto;"><style>    div[id="yads_dummy_parent_771786416"] a[data-uv-element="yads_uv_item_yads_dummy_parent_771786416"]:hover {        background-color: #efefef !important;    }    div[id="yads_dummy_parent_771786416"] a[data-uv-element="yads_uv_item_yads_dummy_parent_771786416"]:hover p[data-uv-element="yads_uv_title_yads_dummy_parent_771786416"] {        color: inherit !important;        text-decoration: underline !important;    }    div[id="yads_dummy_parent_771786416"] a[data-uv-element="yads_uv_item_yads_dummy_parent_771786416"]:hover p[data-uv-element="yads_uv_adv_yads_dummy_parent_771786416"] {        color: #888 !important;        text-decoration: none !important;    }    div[id="yads_dummy_parent_771786416"] p[data-uv-element="yads_uv_label_yads_dummy_parent_771786416"]:hover span{        color: #888 !important;        text-decoration: none !important;    }    div[id="yads_dummy_parent_771786416"] a[data-uv-element="yads_uv_item_yads_dummy_parent_771786416"]:hover p[data-uv-element="yads_uv_title_head_yads_dummy_parent_771786416"] {        color: inherit !important;        text-decoration: inherit !important;    }    div[id="yads_dummy_parent_771786416"] a[data-uv-element="yads_uv_item_yads_dummy_parent_771786416"]:hover [data-uv-element="yads_uv_desc_yads_dummy_parent_771786416"] {        color: #888 !important;        text-decoration: underline !important;    }    div[id="yads_dummy_parent_771786416"] a[data-uv-element="yads_uv_item_yads_dummy_parent_771786416"]:hover p[data-uv-element="yads_uv_button_yads_dummy_parent_771786416"] span {        color: #fff !important;        background-color: #337ab7 !important;        text-decoration: none !important;    }</style>  <div data-uv-element="yads_uv_ad_yads_dummy_parent_771786416" data-ydntxt-wrap="1" data-i="1" data-i-position="TR" data-i-url="https://feedback.promotionalads.yahoo.co.jp/fdbk?p=tUuYztQJPyhoZZ4884vC6rgUilUDkfwj3jXz0Ya6ThBamzTwaAhEFE.Ed8Rde6yfbhYmfnDc3f6J.3QhkDpJhew9w9lp88Ax6JmJp2PkCY4rQv6.cqUv4uc-&amp;a1=xD93JjQLN2ELy3.epsQqorjNtJ9YdKsivs9p9HwczoL2iCSyyyQUf.N6s2024L3.dc_ZfWNuF86OJ78rAHQg97V86mY-&amp;c=Vd6gIvcOPii1Y6PsnXixKTP2bWbwUUKt4fXoFJsVp.l1WYzapJg15d6g&amp;u=L3n1DU4LNjnwfhrYTKcDKaXn_kIm99ExVmUE.uCIOCUs6eohdwFM56mEt8.UyJit160drgIQfWgxYySFm5wo&amp;t1=lLyTdLALNQOV5dLhm_4Ua5GXIPcH7C.s8MVxWblNa5kqlC1M2iUTxgyEEoIhQrZEHhN.XWq_Puq_Pix_vpD7SqszSJ4Yup21HQiV1coLWkaSoYj3XQ.CYf7jEJVLGfK6vsXocojdsp2rzAckD.wdIVrQInQ8HHFyUSC.bvbl04uv2rzmt5GumI1UzTXlac3YHna7U8cgaugJfGhhZx4eUz8mMNCSi3xwwTCUI4yHKIb2f7WJIOyAQe2xiNA-" data-i-text="Yahoo! JAPAN広告" data-i-linktarget="_top" style="-webkit-box-sizing: border-box; background: none; background-color: #fff; border: none; border-color: #ccc; border-style: none; border-width: 0 0 1px; box-sizing: border-box; display: block; float: none; font-family: inherit; font-size: 16px; height: auto; line-height: 1.1; margin: 0; max-width: none; opacity: 1; overflow: hidden; padding: 0; position: relative; text-decoration: none; visibility: visible; width: 100%;">    <div style="-webkit-box-sizing: border-box; background: none; border: none; box-sizing: border-box; display: block; float: none; height: 90px; line-height: 1.1; margin: 0; opacity: 1; overflow: hidden; padding: 0; position: relative; text-decoration: none; visibility: visible; width: auto;"><a href="https://rd.ane.yahoo.co.jp/rd?ep=SjptR3cTLVenohrkVRxhdUd_lMH7fqu.4GOZBsN.G0CbzPuRhAUkF4Xp0SJLgDRaQKpEnoYJuVass5_k1lAY_LUP9SsomwE8vIOhVl1fv91zGcyDdrq8mdpFznAgc10jFVs4wWZHJuyXx5Gvtq9MvXTzC.wJr6KGB9e.3VXHIcejga8g7pIRbojvPhmIwWTg9GKHtABuEogvcs8lcDHQcipNvoRpjwsgyvq22AZZYNpDGaIeH_nK6R6amVPrYigKfKXU6q4IT8ju05g_dUUUuQd_gjzSMTjPeBAVJDSGTFEH4oEo2xXCZ3pR9YjyQavnHkXrjg8Vmk57opQ_rS.EG94Y_CdLhhUjeT7JCV_Ae79sQNurMr7Fj8JVffvvH6cYAeAjkNPaFxxnXPkWVgDLIPsY_xEOzcJ3GhJQOyfIV2Hp8wCcwZgrXGIZ8Xc5_hrJ4kDOn.NynbdCo8XrMx2YPWOGys57ETXLlItncAywvIOhoSvhwF3ezPMd0T5VfpvzJP2Tf83EhgkXvUWF.85JLfU6wAKyKkSvmWoVYHeu8M7IaWy1xzffUur8m.CSF.TVUS2ie56dDqzM6bqhVSkgnfOtD.tjpO8wghqeAtYOdgJSUKoc2S4pLp.8zFdRrZSIra_e9t0ZDKVoFfE0TaYPZrtpm6o9yrq_gJfEDuwb3f9.HA7Gy5qvdQsys4etgPbEReu6r4FGzlUN0z94NdSasfE3t1gLzma_HllMREKfm_JtfwXpbzhaWc6xDftOCjob.vcRbucRuCe1vMu.gpkRXQO6EzJ.hTMuusFj7EzbZxjp58emmboc&amp;v=4" data-ydn-lp="https://papare.info/rb_w_y_20191120/" data-ydn-rd="https://rd.ane.yahoo.co.jp/rd?ep=SjptR3cTLVenohrkVRxhdUd_lMH7fqu.4GOZBsN.G0CbzPuRhAUkF4Xp0SJLgDRaQKpEnoYJuVass5_k1lAY_LUP9SsomwE8vIOhVl1fv91zGcyDdrq8mdpFznAgc10jFVs4wWZHJuyXx5Gvtq9MvXTzC.wJr6KGB9e.3VXHIcejga8g7pIRbojvPhmIwWTg9GKHtABuEogvcs8lcDHQcipNvoRpjwsgyvq22AZZYNpDGaIeH_nK6R6amVPrYigKfKXU6q4IT8ju05g_dUUUuQd_gjzSMTjPeBAVJDSGTFEH4oEo2xXCZ3pR9YjyQavnHkXrjg8Vmk57opQ_rS.EG94Y_CdLhhUjeT7JCV_Ae79sQNurMr7Fj8JVffvvH6cYAeAjkNPaFxxnXPkWVgDLIPsY_xEOzcJ3GhJQOyfIV2Hp8wCcwZgrXGIZ8Xc5_hrJ4kDOn.NynbdCo8XrMx2YPWOGys57ETXLlItncAywvIOhoSvhwF3ezPMd0T5VfpvzJP2Tf83EhgkXvUWF.85JLfU6wAKyKkSvmWoVYHeu8M7IaWy1xzffUur8m.CSF.TVUS2ie56dDqzM6bqhVSkgnfOtD.tjpO8wghqeAtYOdgJSUKoc2S4pLp.8zFdRrZSIra_e9t0ZDKVoFfE0TaYPZrtpm6o9yrq_gJfEDuwb3f9.HA7Gy5qvdQsys4etgPbEReu6r4FGzlUN0z94NdSasfE3t1gLzma_HllMREKfm_JtfwXpbzhaWc6xDftOCjob.vcRbucRuCe1vMu.gpkRXQO6EzJ.hTMuusFj7EzbZxjp58emmboc&amp;v=4" data-ydn-sb="https://rd.ane.yahoo.co.jp/rd?ep=eHXWu1gTLVek.9RBU2C6XLs0RfeP43ST_MPB.0.Z3OUzKJQA5PlbpYZNuNfaDdqecznvo2ENY94mU6gprh7v1T3Fa8sznZoES4dhN7Fn5rOjhgaM9pqvtRdPvEJRdzOYpMMLhuIC97G5k80B0Vb7cGZ5byNlTDR9kjbUAONJV66L5UpxoUEnwXiqTvbSoQSPvesh1CVy.7PXvtolj9ovOjEW7RQmCw0_.RnUym41Q55n.jPi.dU04jIVIwtrB3FD02UhJ6MhZyi2doWs7jLgEidmacXXyWsbDd1E21BgYaWCSrcYiFzh4qraxXngN46T1nBzFMGxbxlTPfhCM0FU3DSQ2mzSOe9i0atoNbA88W9B7ff7kNUqE9XAMiJNsHGQmqmFeOp07ucBSHr1lNzJXS_PlBUgX0tzqDdIZQyMuBtntmAof2nTDL7F12klxKrFWSjzho3t2xP9mExtijuM9afLWKKqfe1.LkC4dLbfA7A0ewkvmxhKyo0dMESIltnGGJLbqin7LGObTWHgTXVmt6yjZmIIW.UALWH62T66GZ1VRz1qHEd.6ED6QlCs0uoHPSW8YrnHDzTbhuR.vEPAmrxg.7LoLxWynQOuy5qCP5FXKhUq34stSiNbN5lnHKN3FnR5bDVLvHY6WS3WUYFn14CtbO2_tpA31JnzE8XyO5NGKKEiKJTvXblGh4zzNQ3x01Fu7WYYAD7YKYhSQ0e7uZ.p02wAbzI.vUYR4rcB3qXTAvaNfj0pRalRNkJFVGZvl4KgnZG377ywq6TUlQ6dHyy.UXIiwN5J202dkOZ.P.CUHQ2otbw-&amp;v=4" data-ydntxt-item="1" data-uv-element="yads_uv_item_yads_dummy_parent_771786416" target="_top" style="-webkit-box-sizing: border-box; background: none; background-color: #fff; border: none; border-color: #ccc; border-style: none; border-width: 1px 0 0; box-sizing: border-box; display: block; float: none; height: 100%; line-height: 1.1; margin: 0; opacity: 1; overflow: hidden; padding: 0 0 0 0; position: inherit; text-decoration: none; visibility: visible; width: auto;">      <div data-uv-element="yads_uv_image_yads_dummy_parent_771786416" style="-webkit-box-sizing: border-box; background: none; background-color: transparent; border: none; border-color: transparent; border-style: none; border-width: 0; box-sizing: border-box; display: block; float: left; height: 80px; line-height: 1.1; margin: 5px 0 5px 5px; opacity: 1; overflow: hidden; padding: 0; position: relative; text-decoration: none; visibility: visible; width: 80px;">  <div data-uv-element="yads_uv_img_yads_dummy_parent_771786416" data-creative-element="yads_creative_yads_dummy_parent_771786416" style="width: 100%; height: 100%; background: transparent url(https://im.c.yimg.jp/res/ydnstorage-media/1001860984/6722930/314ab46001fa28bb558739f914821ed7.jpg) 50% 50% no-repeat; background-size: contain;"></div></div>            <div style="-webkit-box-sizing: border-box; background: none; border: none; box-sizing: border-box; display: block; float: none; height: auto; line-height: 1.1; margin: 0; opacity: 1; overflow: hidden; padding: 0; position: inherit; text-decoration: none; visibility: visible; width: auto;">                <p data-uv-element="yads_uv_title_yads_dummy_parent_771786416" data-ydntxt-title="1" style="-webkit-box-sizing: border-box; background: none; border: none; box-sizing: border-box; color: inherit; display: block; float: none; font-size: 27px; font-weight: bold; height: auto; line-height: 1.1; margin: 5px 0 3px 13px; opacity: 1; padding: 0; position: inherit; text-align: left; text-decoration: none; visibility: visible; width: auto;">主婦友達が激やせして別人に！その秘訣は…</p>         <p data-uv-element="yads_uv_adv_yads_dummy_parent_771786416" data-ydntxt-host="1" style="-webkit-box-sizing: border-box; background: none; border: none; box-sizing: border-box; color: #888; display: block; float: none; font-size: 14px; font-weight: normal; height: auto; line-height: 1.1; margin: 0 0 8px 13px; opacity: 1; padding: 0; position: inherit; text-align: left; text-decoration: none; visibility: visible; width: auto;">papare</p>        <p data-uv-element="yads_uv_desc_yads_dummy_parent_771786416" data-ydntxt-desc="1" style="-webkit-box-sizing: border-box; background: none; border: none; box-sizing: border-box; color: #555; display: block; float: none; font-size: 16px; font-weight: normal; height: auto; line-height: 1.1; margin: 0 0 0 13px; opacity: 1; padding: 0; position: inherit; text-align: left; text-decoration: none; visibility: visible; width: auto;">満腹感がすごい！「毎朝1分の飲むだけダイエット」が簡単すぎる…</p>          </div></a></div><div class="i-ico" style="display: inline; position: absolute; background: transparent; border: none; float: none; width: auto; height: auto; margin: 0px; opacity: 1; padding: 0px; line-height: 1; font-size: inherit; font-weight: inherit; color: inherit; visibility: inherit; text-align: left; right: 0px; left: auto; top: -0.33px; bottom: auto; z-index: auto;"><a href="https://feedback.promotionalads.yahoo.co.jp/fdbk?p=tUuYztQJPyhoZZ4884vC6rgUilUDkfwj3jXz0Ya6ThBamzTwaAhEFE.Ed8Rde6yfbhYmfnDc3f6J.3QhkDpJhew9w9lp88Ax6JmJp2PkCY4rQv6.cqUv4uc-&amp;a1=xD93JjQLN2ELy3.epsQqorjNtJ9YdKsivs9p9HwczoL2iCSyyyQUf.N6s2024L3.dc_ZfWNuF86OJ78rAHQg97V86mY-&amp;c=Vd6gIvcOPii1Y6PsnXixKTP2bWbwUUKt4fXoFJsVp.l1WYzapJg15d6g&amp;u=L3n1DU4LNjnwfhrYTKcDKaXn_kIm99ExVmUE.uCIOCUs6eohdwFM56mEt8.UyJit160drgIQfWgxYySFm5wo&amp;t1=lLyTdLALNQOV5dLhm_4Ua5GXIPcH7C.s8MVxWblNa5kqlC1M2iUTxgyEEoIhQrZEHhN.XWq_Puq_Pix_vpD7SqszSJ4Yup21HQiV1coLWkaSoYj3XQ.CYf7jEJVLGfK6vsXocojdsp2rzAckD.wdIVrQInQ8HHFyUSC.bvbl04uv2rzmt5GumI1UzTXlac3YHna7U8cgaugJfGhhZx4eUz8mMNCSi3xwwTCUI4yHKIb2f7WJIOyAQe2xiNA-" target="_top" style="display: block; position: relative; background: none; border: none; float: none; width: 17px; height: 15px; margin: 0px; opacity: 1; padding: 0px; line-height: inherit; font-size: 11px; font-weight: inherit; color: inherit; top: auto; bottom: auto; left: auto; right: auto; visibility: inherit; cursor: pointer; text-decoration: none; overflow: hidden; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0s;"><span style="display: inline; position: absolute; border: none; float: none; width: 116.742px; height: 15px; margin: 0px 0px 0px -17px; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; left: auto; right: -99.7417px; visibility: inherit; border-bottom-left-radius: 4px; background: rgb(255, 255, 255); opacity: 0.8; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0s;"></span><span style="display: block; position: absolute; background: none; border: none; float: none; width: 95.7417px; height: 15px; margin: 0px; opacity: 1; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; visibility: inherit; overflow: hidden; right: 17px; left: auto;"><svg style="display: block; position: absolute; background: none; border: none; float: none; width: 93.7417px; height: 15px; margin: 0px; opacity: 1; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; left: auto; right: -116.742px; visibility: inherit; overflow: hidden; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0s;"><text y="12px" style="position: initial; background: none; border: none; float: none; width: auto; height: auto; margin: 0px; opacity: 1; padding: 0px; line-height: 17px; font-size: inherit; font-weight: inherit; color: rgb(0, 0, 0); top: auto; bottom: auto; left: auto; right: auto; visibility: inherit; font-family: sans-serif; text-decoration: none; vertical-align: middle; white-space: nowrap; overflow-wrap: normal;">Yahoo! JAPAN広告</text></svg></span><i style="display: inline; position: absolute; background: none; border: none; float: none; width: auto; height: auto; margin: 1px 2px; opacity: 1; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; visibility: inherit; right: 0px; left: auto;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="13"><image width="13" height="13" style="display:block;position:initial;background:none;border:none;float:none;width:auto;height:auto;margin:0;opacity:1;padding:0;line-height:inherit;font-size:inherit;font-weight:inherit;color:inherit;top:auto;bottom:auto;left:auto;right:auto;visibility:inherit;" href="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2016.0.4%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.0%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FTR%2F2001%2FREC-SVG-20010904%2FDTD%2Fsvg10.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.0%22%20id%3D%22layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%0D%0A%09%20y%3D%220px%22%20width%3D%2213px%22%20height%3D%2213px%22%20viewBox%3D%220%200%2013%2013%22%20enable-background%3D%22new%200%200%2013%2013%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cpath%20fill%3D%22%23696969%22%20d%3D%22M6.5%2C13c0.685%2C0%2C1.328-0.267%2C1.811-0.75l3.94-3.938c0.999-0.999%2C0.999-2.624%2C0-3.622L8.311%2C0.75%0D%0A%09%09C7.828%2C0.267%2C7.185%2C0%2C6.5%2C0S5.172%2C0.267%2C4.688%2C0.75L0.749%2C4.689c-0.999%2C0.998-0.999%2C2.623%2C0%2C3.622l3.939%2C3.938%0D%0A%09%09C5.172%2C12.733%2C5.815%2C13%2C6.5%2C13z%20M6.498%2C6.135c-0.42%2C0-0.792%2C0.34-0.792%2C0.758v3.904c0%2C0.096-0.039%2C0.186-0.103%2C0.248%0D%0A%09%09c-0.064%2C0.064-0.153%2C0.104-0.25%2C0.104c-0.098%2C0-0.187-0.039-0.251-0.104L1.54%2C7.521c-0.562-0.563-0.562-1.478%2C0-2.04l3.94-3.939%0D%0A%09%09C5.752%2C1.27%2C6.115%2C1.119%2C6.5%2C1.119s0.747%2C0.15%2C1.02%2C0.422l3.94%2C3.939c0.562%2C0.562%2C0.562%2C1.477%2C0%2C2.04l-3.562%2C3.524%0D%0A%09%09c-0.064%2C0.064-0.153%2C0.104-0.251%2C0.104c-0.097%2C0-0.186-0.039-0.25-0.104c-0.063-0.062-0.104-0.152-0.104-0.248V6.893%0D%0A%09%09c0-0.418-0.371-0.758-0.79-0.758H6.498z%22%2F%3E%0D%0A%09%3Ccircle%20fill%3D%22%23696969%22%20cx%3D%226.5%22%20cy%3D%223.922%22%20r%3D%221.146%22%2F%3E%0D%0A%3C%2Fg%3E%0D%0A%3C%2Fsvg%3E"></image></svg></i></a></div></div></div><script id="yads_preloaded_js_948812460" type="text/javascript" src="./thumbnail.min.js.download"></script>
+
+</div>
+
+
+</body></html>
