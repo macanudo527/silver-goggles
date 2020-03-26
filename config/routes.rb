@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :entries
+
   devise_for :users
   resources :sources
-  resources :links
+  resources :links do
+  	resources :entries, controller: 'links/entries'  	
+  end
   resources :clicks
 
   root to: "links#index"

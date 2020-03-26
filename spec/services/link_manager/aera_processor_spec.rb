@@ -43,8 +43,6 @@ RSpec.describe "Links" do
         with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
         to_return(status: 200, body: aera_photo_post, headers: {}) 
 
-
-
   	LinkManager::AeraProcessor.call
   }
 

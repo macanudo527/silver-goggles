@@ -6,13 +6,13 @@ RSpec.describe "entries/index", type: :view do
       Entry.create!(
         :word => "Word",
         :reading => "Reading",
-        :def => "Def",
+        :definition => "Def",
         :priority => false
       ),
       Entry.create!(
         :word => "Word",
         :reading => "Reading",
-        :def => "Def",
+        :definition => "Def",
         :priority => false
       )
     ])

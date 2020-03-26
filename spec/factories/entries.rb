@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :entry do
-    word { "MyString" }
+    sequence(:base_word) { |n| "MyWord#{n}" }
+    sequence(:word) { |n| "MyWords#{n}" }
     reading { "MyString" }
     definition { "MyString" }
     priority { false }

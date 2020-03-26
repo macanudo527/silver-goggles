@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Reading</th>
+      <th>Definition</th>
+      <th>Priority</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.base_word %></td>
+        <td><%= entry.reading %></td>
+        <td><%= entry.definition %></td>
+        <td><%= entry.priority %></td>
+        <td><%= link_to 'Show', link_entry_path(@link.id, entry) %></td>
+        <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry) %></td>
+        <td><%= link_to 'Destroy', link_entry_path(@link.id, entry), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
