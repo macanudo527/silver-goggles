@@ -12,7 +12,7 @@
 			</thead>
 			<tbody>
 			  <% entries.each do |entry| %>
-			    <tr>
+			    <tr id="entry-<%= entry.id %>">
 			   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
 			    <% if entry.base_word == entry.reading %>
 			      <td class="word"><%= entry.base_word %></td>
@@ -21,8 +21,9 @@
 			    <% end %>
 			      <td><%= entry.definition %></td>
 			      <td><%= link_to 'Show', link_entry_path(@link.id, entry) %></td>
-			      <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry) %></td>
+			      <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true %></td>
 			    </tr>
+
 			  <% end %>
 			</tbody>
 		</table>

@@ -23,6 +23,12 @@ module Links
 
     # GET /entries/1/edit
     def edit
+      respond_to do |format|
+        format.html {}
+        format.js {}
+        format.json { head :no_content }
+      end
+
     end
 
     # POST /entries

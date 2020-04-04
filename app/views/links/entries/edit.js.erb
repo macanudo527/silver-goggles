@@ -1,0 +1,4 @@
+console.log("edit.js.erb file");
+console.log("#entry-<%= @entry.id %>")
+
+$('<tr><td><%= j (render partial: "form") %></td></tr>').insertAfter('#entry-<%= @entry.id %>')

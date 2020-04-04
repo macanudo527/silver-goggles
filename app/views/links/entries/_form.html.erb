@@ -1,10 +1,10 @@
-<%= form_with(model: entry, local: true) do |form| %>
-  <% if entry.errors.any? %>
+<%= form_for [@link, @entry], :remote => true do |form| %>
+  <% if @entry.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
 
       <ul>
-        <% entry.errors.full_messages.each do |message| %>
+        <% @entry.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :def %>
-    <%= form.text_field :def %>
+    <%= form.label :definition %>
+    <%= form.text_field :definition %>
   </div>
 
   <div class="field">

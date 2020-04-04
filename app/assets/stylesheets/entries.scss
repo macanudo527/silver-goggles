@@ -137,3 +137,9 @@ input:checked {
     overflow: auto;
   }
 }
+
+// Make the checkboxes on the edit form visible again
+.edit_entry input {
+    position: unset;
+    opacity: unset;
+}
