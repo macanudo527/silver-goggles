@@ -1,4 +1,4 @@
-<%= form_for [@link, @entry], :remote => true do |form| %>
+<%= form_for [@link, @entry], :remote => true, html: {id: :ajax_entry_form } do |form| %>
   <% if @entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
@@ -10,28 +10,34 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<ul class="entry-form">
+  <li class="field">
     <%= form.label :word %>
     <%= form.text_field :word %>
-  </div>
+  </li>
 
-  <div class="field">
+  <li class="field">
     <%= form.label :reading %>
     <%= form.text_field :reading %>
-  </div>
+  </li>
 
-  <div class="field">
+  <li class="field">
     <%= form.label :definition %>
-    <%= form.text_field :definition %>
-  </div>
+    <%= form.text_area :definition %>
+  </li>
 
-  <div class="field">
-    <%= form.label :priority %>
-    <%= form.check_box :priority %>
-  </div>
+  <li class="field field-boxes">
+    <%= form.label :priority do %>
+      <%= form.check_box :priority %>
+      <span>Priority</span>
+    <% end %>
+    <%= form.label :grammar do  %>
+      <%= form.check_box :grammar  %>
+      <span>Grammar</span>
+    <% end %>
+  </li>
 
-  <div class="actions">
+  <li class="actions">
     <%= form.submit %>
-  </div>
+  </li>
 <% end %>
