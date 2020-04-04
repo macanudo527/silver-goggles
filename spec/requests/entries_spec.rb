@@ -6,7 +6,7 @@ RSpec.describe "Entries", type: :request do
 
     it "displays all entries for link" do
       expect(link.entries.count).to eq(5)
-      post "/links/" + link.id.to_s + "/entries/"
+      get "/links/" + link.id.to_s + "/entries"
       expect(response.body).to include(link.entries.first.base_word)
  #     expect(response).to have_http_status(200)
     end

@@ -1,31 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div>
 
-<h1>Entries</h1>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th>Reading</th>
-      <th>Definition</th>
-      <th>Priority</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1>Vocabulary for this Article</h1>
 
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.base_word %></td>
-        <td><%= entry.reading %></td>
-        <td><%= entry.definition %></td>
-        <td><%= entry.priority %></td>
-        <td><%= link_to 'Show', link_entry_path(@link.id, entry) %></td>
-        <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry) %></td>
-        <td><%= link_to 'Destroy', link_entry_path(@link.id, entry), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+  <%= render partial: "entry_table", locals: {table_name: "article-words", entries: @entries, tab_name: "Difficult Words", tab_num: "1"} %> 
+
+  <%= render partial: "entry_table", locals: {table_name: "priority-words", entries: @priority_entries, tab_name: "Common Words", tab_num: "2"} %> 
+
+  <%= render partial: "entry_table", locals: {table_name: "grammar-words", entries: @grammar_entries, tab_name: "Grammar Points", tab_num: "3"} %> 
+
+  <br>
+</div>

@@ -17,6 +17,11 @@
  	margin: 0;
  }
 
+/*Fixes margin collapse with sticky menu top*/
+ h1 {
+ 	padding-top: 0.67em;
+ }
+
  #news-assist {
  	margin-top: 60px !important;
  }
@@ -49,6 +54,7 @@
  	border-bottom: 1px solid #DFDFDF;
  	width: 100%;
  	top: 0px;
+ 	background: white;
  }
 
  .header-container {

@@ -1,0 +1,30 @@
+<div class="tab">
+	<input type="radio" id="rd<%= tab_num%>" name="rd">
+	<label class="tab-label" for="rd<%= tab_num%>"><%= tab_name %></label>
+	<div class=" tab-content">
+		<table class="<%= table_name %>">
+			<thead>
+			  <tr>
+			    <th>Word</th>
+			    <th>Definition</th>
+			    <th colspan="2"></th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <% entries.each do |entry| %>
+			    <tr>
+			   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
+			    <% if entry.base_word == entry.reading %>
+			      <td class="word"><%= entry.base_word %></td>
+			    <% else %>			    
+			      <td class="word"><span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span></td>
+			    <% end %>
+			      <td><%= entry.definition %></td>
+			      <td><%= link_to 'Show', link_entry_path(@link.id, entry) %></td>
+			      <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry) %></td>
+			    </tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

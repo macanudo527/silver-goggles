@@ -6,7 +6,9 @@ module Links
     # GET /entries
     # GET /entries.json
     def index
-      @entries = @link.entries
+      @priority_entries = @link.entries.where(grammar: false, priority: true)
+      @entries = @link.entries.where(grammar: false, priority: false).where.not(base_word: @priority_entries.pluck(:base_word))
+      @grammar_entries = @link.entries.where(grammar: true)
     end
 
     # GET /entries/1

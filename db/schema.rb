@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_134122) do
+ActiveRecord::Schema.define(version: 2020_03_29_075507) do
 
   create_table "clicks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "link_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_134122) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "base_word"
+    t.boolean "grammar"
   end
 
   create_table "entries_links", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
