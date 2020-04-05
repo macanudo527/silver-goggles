@@ -21,7 +21,7 @@
 			    <% end %>
 			      <td><%= entry.definition %></td>
 			      <td><%= link_to 'Show', link_entry_path(@link.id, entry) %></td>
-			      <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true %></td>
+			      <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
 			    </tr>
 
 			  <% end %>
