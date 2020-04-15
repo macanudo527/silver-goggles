@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :study_records
+  resources :answers
+  resources :study_sets
   devise_for :users
   resources :sources
   resources :links do

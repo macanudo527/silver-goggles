@@ -1,15 +1,24 @@
-<div>
+
+
+<div id="entries-container">
 
   <p id="notice"><%= notice %></p>
+<%= form_for @study_set do |f| %>
+<%= f.hidden_field :link_id, :value => @link.id %>
+  <div class="entry-top-bar">
+    <div class="entry-col1"></div>
+    <div class="entry-col2"><h1>Vocabulary for this Article</h1></div>
+    <div class="entry-col3"><%= f.submit 'Learn & Read', :class => 'learn-read' %></div>
+  </div>
 
-  <h1>Vocabulary for this Article</h1>
+  <%= render partial: "entry_table", locals: {table_name: "article-words", entries: @entries, tab_name: "Difficult Words", tab_num: "1", checked: true} %> 
 
+  <%= render partial: "entry_table", locals: {table_name: "priority-words", entries: @priority_entries, tab_name: "Common Words", tab_num: "2", checked: false} %> 
 
-  <%= render partial: "entry_table", locals: {table_name: "article-words", entries: @entries, tab_name: "Difficult Words", tab_num: "1"} %> 
-
-  <%= render partial: "entry_table", locals: {table_name: "priority-words", entries: @priority_entries, tab_name: "Common Words", tab_num: "2"} %> 
-
-  <%= render partial: "entry_table", locals: {table_name: "grammar-words", entries: @grammar_entries, tab_name: "Grammar Points", tab_num: "3"} %> 
-
+  <%= render partial: "entry_table", locals: {table_name: "grammar-words", entries: @grammar_entries, tab_name: "Grammar Points", tab_num: "3", checked: false} %> 
+<% end %>
   <br>
 </div>
+
+<%= javascript_pack_tag 'tab-state-maintainer', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'box-checker', 'data-turbolinks-track': 'reload' %>

@@ -1,0 +1,155 @@
+// Place all the styles related to the StudySets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$transitionTime: .35s;
+$transitionEase: cubic-bezier(0.13, 1.03, 0.39, 0.98);
+$tiltAngle: 20deg;
+$box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+$border: 1px solid rgba(0,0,0,0.3);
+$border-radius: 1.1vw;
+$max-width: 40em;
+
+.standard-shadow {
+    box-shadow: $box-shadow;
+    transition: 0.3s;  
+    border: $border;
+    border-radius: $border-radius;  
+}
+.card-container {
+  display: flex;
+  position: relative;
+  max-width: $max-width;
+  margin: 10em auto 5em auto;  
+}
+.prompt-container {
+  min-height: 5em;
+  margin-bottom: 0em;
+  .prompt {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+  }
+}
+.answers {
+  flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+  .answer {
+    width: 15em;
+    margin: 1.9em;
+    padding: 1em 0.5em;
+    a {
+      text-decoration: none;
+      color: black;
+      margin: 0.5em;
+    }
+  }
+}
+.results-container {
+  text-align: center;
+  min-height: 10em;
+  .results {
+    width: 100%;
+  }
+}
+.vert-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.flash-card {
+  perspective: 100vw;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  min-height: 20em;
+  .card-inner {
+    display: inline-block;
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;        
+    text-align: center;
+    transition: transform $transitionTime $transitionEase, 
+                  box-shadow $transitionTime $transitionEase, 
+                  border-width $transitionTime $transitionEase;
+    h4 {
+      font-size: 1.5em;
+      padding: 0 4em;
+    }
+    p {
+      margin: 0.5em;
+    }
+
+    .definition {
+        font-size: 1.5em;
+        padding: 0.5em;
+    }
+  }
+  .front{
+    transform: rotateY(0deg);
+  }
+  .back{
+    transform: rotateY(180deg);
+  }
+   &:hover, &.hover{
+    .front{
+      transform: rotateY($tiltAngle);
+      box-shadow: 0px 10vw 9vw -6vw rgba(0, 0, 0, 0.5);
+   }
+    .back{
+      transform: rotateY(180deg + $tiltAngle);
+      box-shadow: 0px 10vw 9vw -6vw rgba(0, 0, 0, 0.5);
+    }     
+  }
+  &.flipped{
+    .front{transform: rotateY(180deg);}
+    .back{transform: rotateY(360deg);}
+    &:hover, &.hover{
+      .front{transform: rotateY(180deg + $tiltAngle);}
+      .back{transform: rotateY(360deg - $tiltAngle);}
+    }
+  }
+}
+
+.card-buttons, .read-button {
+  display: flex;
+  max-width: $max-width;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.flip-card-container {
+  display: flex;
+  padding: 0 2.4em;
+}
+.read-container {
+  margin: 0 auto;
+}
+.flip-card, .read-article {
+	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	background-color:#44c767;
+	border-radius:28px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:14px 60px;
+	text-decoration:none;
+  display: inline-block;
+  margin: auto;
+}
+.flip-card:hover, .answer:hover, read-article:hover {
+	background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+	background-color:#5cbf2a;
+}
+.flip-card:active, .answer:active, read-article:active {
+	position:relative;
+	top:1px;
+}

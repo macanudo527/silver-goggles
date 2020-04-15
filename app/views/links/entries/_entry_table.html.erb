@@ -1,10 +1,17 @@
 <div class="tab">
 	<input type="radio" id="rd<%= tab_num%>" name="rd">
-	<label class="tab-label" for="rd<%= tab_num%>"><%= tab_name %></label>
+	<label class="tab-label" for="rd<%= tab_num%>">	
+		<div class="toggle-switch">
+			<%= tab_name %>
+			<input type="checkbox" id="<%= table_name %>_switch" name="select_all" <%= checked ? "checked" : "" %>><label for="<%= table_name %>_switch">Toggle</label></input>	
+		</div>
+	</label>
+
 	<div class=" tab-content">
 		<table class="<%= table_name %>">
 			<thead>
 			  <tr>
+			    <th>Study</th>
 			    <th>Word</th>
 			    <th>Definition</th>
 			    <th colspan="2"></th>
@@ -13,6 +20,7 @@
 			<tbody>
 			  <% entries.each do |entry| %>
 			    <tr id="entry-<%= entry.id %>">
+			    	<td><%= check_box_tag 'study_set[entry_id][]', entry.id, checked, id: "study_set_#{entry.id}" %></td>
 			   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
 			    <% if entry.base_word == entry.reading %>
 			      <td class="word"><%= entry.base_word %></td>
