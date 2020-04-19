@@ -9,7 +9,7 @@ module Links
       @priority_entries = @link.entries.where(grammar: false, priority: true)
       @entries = @link.entries.where(grammar: false, priority: false).where.not(base_word: @priority_entries.pluck(:base_word))
       @grammar_entries = @link.entries.where(grammar: true)
-      @study_set = @link.study_sets.new()
+      @study_set = @link.study_sets.find_or_initialize_by(user: current_user)
     end
 
     # GET /entries/1
@@ -52,7 +52,7 @@ module Links
     def update
       respond_to do |format|
         if @entry.update(entry_params)
-          format.html { redirect_to link_entry_path(@link, @entry), notice: 'Entry was successfully updated.' }
+          format.html { redirect_to link_entries_path(@link), notice: 'Entry was successfully updated.' }
           format.js { redirect_to link_entries_path(@link)}
           format.json { render :show, status: :ok, location: @entry }
         else

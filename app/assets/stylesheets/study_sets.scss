@@ -117,7 +117,7 @@ $max-width: 40em;
   }
 }
 
-.card-buttons, .read-button {
+.button-box {
   display: flex;
   max-width: $max-width;
   flex-wrap: wrap;
@@ -127,10 +127,10 @@ $max-width: 40em;
   display: flex;
   padding: 0 2.4em;
 }
-.read-container {
+.sb-container {
   margin: 0 auto;
 }
-.flip-card, .read-article {
+.card-button {
 	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
 	background-color:#44c767;
 	border-radius:28px;
@@ -145,11 +145,46 @@ $max-width: 40em;
   display: inline-block;
   margin: auto;
 }
-.flip-card:hover, .answer:hover, read-article:hover {
+
+.answer {
+  position: relative;
+}
+
+.card-button:hover, .answer:hover {
 	background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
 	background-color:#5cbf2a;
 }
-.flip-card:active, .answer:active, read-article:active {
+.card-button:active, .answer:active {
 	position:relative;
 	top:1px;
+}
+
+div.correct:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background: none;
+    width: 5em;
+    height: 5em;
+    mix-blend-mode: multiply;
+    border-radius: 50%;
+    border: 1em solid green;
+}
+
+div.incorrect:before {
+    content: "X";
+    line-height: 1em;
+    font-size: 10em;
+    font-weight: bolder;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background: none;
+    width: 1em;
+    height: 1em;
+    mix-blend-mode: multiply;
+    color: red;
 }

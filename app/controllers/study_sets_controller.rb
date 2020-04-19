@@ -12,6 +12,7 @@ class StudySetsController < ApplicationController
   # GET /study_sets/1
   # GET /study_sets/1.json
   def show
+    @article_link = @study_set.link.url
     respond_to do |format|
       format.html
       format.json { render json: @study_set.entries }
@@ -47,8 +48,9 @@ class StudySetsController < ApplicationController
   # PATCH/PUT /study_sets/1
   # PATCH/PUT /study_sets/1.json
   def update
+    @study_set.entry_ids = params[:study_set][:entry_id]
     respond_to do |format|
-      if @study_set.update(study_set_params)
+      if !@study_set.errors.present?
         format.html { redirect_to @study_set, notice: 'Study set was successfully updated.' }
         format.json { render :show, status: :ok, location: @study_set }
       else

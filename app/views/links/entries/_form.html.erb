@@ -1,4 +1,5 @@
 <%= form_for [@link, @entry], :remote => true, html: {id: :ajax_entry_form } do |form| %>
+<input type=hidden name="authenticity_token" value="<%= form_authenticity_token %>">
   <% if @entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>

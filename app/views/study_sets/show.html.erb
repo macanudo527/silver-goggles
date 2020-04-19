@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <div id="card" class="flash-card card-container" style="display: none;">
   <div class="front card-inner standard-shadow">
     <div class="vert-center">
-      <h4><b id="japanese-word">新型コロナウイルス</b></h4>
-      <p id="japanese-reading">しんがたころなういるす</p>
+      <h4><b id="japanese-word"></b></h4>
+      <p id="japanese-reading"></p>
     </div>
   </div>  
    <div class="back card-inner standard-shadow">
      <div class="vert-center definition">
-    <p id="english-def">this (indicating an item near the speaker, the action of the speaker, or the current topic); this person (usu. indicating someone in one's in-group)kkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkk kkkkkkkkkk</p>
+    <p id="english-def"></p>
     </div>
   </div>  
 </div>
@@ -17,31 +15,37 @@
 <div class="prompt-container card-container" style="display: none;">
   <div class="prompt standard-shadow">
     <div class="vert-center">
-      <h4 id="prompt">新型コロナウイルス</h4>
+      <h4 id="prompt"></h4>
     </div>
   </div>
 
 </div>
 <div class="answers card-container" style="display: none;">
   <div id="answer0" class="answer standard-shadow">
-    <a href="#">Answer 1 -this (indicating an item near the speaker, the action of the speaker, or the current topic); this person (usu. indicating someone in one's in-group)kkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkk kkkkkkkkkk</a>
+    <a href="#"></a>
   </div>
   <div id="answer1" class="answer standard-shadow">
-    <a href="#">Answer 2</a>
+    <a href="#"></a>
   </div>
   <div id="answer2" class="answer standard-shadow">
-    <a href="#">Answer 3</a>
+    <a href="#"></a>
   </div>
   <div id="answer3" class="answer standard-shadow">
-    <a href="#">Answer 4</a>
+    <a href="#"></a>
   </div>
 </div>
-<div class="card-buttons" style="display: none;">
+<div id="showable-box" class="button-box" style="display: none;">
   <div id="flip-card-button" class="flip-card-container">
-    <a href="javascript:void(0);" class="flip-card">Flip Card</a>
+    <a href="javascript:void(0);" class="card-button">Flip Card</a>
   </div>
   <div id="next-card-button" class="flip-card-container">
-    <a href="javascript:void(0);" class="flip-card">Next Card</a>
+    <a href="javascript:void(0);" class="card-button">Next Card</a>
+  </div>
+</div>
+
+<div id="nextq-box" class="button-box" style="display: none;">
+  <div id="next-question" class="sb-container">
+    <a href="javascript:void(0);" class="card-button">Next Question</a>
   </div>
 </div>
 
@@ -49,14 +53,14 @@
   <div class="results standard-shadow">
     <div class="vert-center">
       <h2>Finished learning!</h2>
-      <b>Accuracy:</b> <span id="accuracy">9/10</span>
+      <b>Accuracy:</b> <span id="accuracy"></span>
     </div>
   </div>  
 </div>
 
-<div class="read-button" style="display: none;">
+<div id="read-box" class="button-box" style="display: none;">
   <div id="read-button" class="read-container">
-    <a href="#" class="read-article">Read Article</a>
+    <a href="<%= @article_link %>" class="card-button">Read Article</a>
   </div>
 </div>
 <%= javascript_pack_tag 'quiz-controller', 'data-turbolinks-track': 'reload' %>

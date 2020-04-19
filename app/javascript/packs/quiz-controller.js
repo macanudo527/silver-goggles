@@ -26,7 +26,11 @@ function flipIt() {
 function change_card(card, show) {
   if (show) {
     $("#japanese-word").html(card.base_word);
-    $("#japanese-reading").html(card.reading);
+    if (card.reading != card.base_word) {
+      $("#japanese-reading").html(card.reading);
+    } else {
+      $("#japanese-reading").html("");
+    }
     $("#english-def").html(card.definition); 
 
     //Reset card to front to show the Japanese word first
@@ -35,14 +39,14 @@ function change_card(card, show) {
     };
 
     //Then reveal the card
-    $(".card-buttons, .flash-card").show();
+    $("#showable-box, .flash-card").show();
 
     //Hide unnecessary elements
     $(".prompt-container, .answers").hide();
 
     quizable.push(card);
   } else {
-    $(".card-buttons, .flash-card").hide();
+    $("#showable-box, .flash-card").hide();
     $(".prompt-container, .answers").show();
     $("#prompt").html(card.base_word);
 
@@ -82,18 +86,31 @@ $("#next-card-button").click(function(){
 });
 
 $("#answer0, #answer1, #answer2, #answer3").click(function(){
+  $("#nextq-box").show();
+  $(`#answer${correct_answer}`).addClass("correct");
 
   if ($(event.target).is(`#answer${correct_answer}`)) {
     // save answer to server
     accuracy = 1;
+
+
   } else {
     //save answer to server
     quizable.push(quizzed);
     accuracy = 0;
+    $(event.target).addClass("incorrect");
+
   };
   if (!(quizzed.id in first_answers)) {
     first_answers[quizzed.id] = accuracy;
   };  
+});
+
+
+$("#nextq-box").click(function(){
+  $("#answer0, #answer1, #answer2, #answer3").removeClass("correct");
+  $("#answer0, #answer1, #answer2, #answer3").removeClass("incorrect");
+  $("#nextq-box").hide();
   if (quizable.length > 2) {
     quizzed = quizable.shift();
     change_card(quizzed, false);
@@ -103,7 +120,7 @@ $("#answer0, #answer1, #answer2, #answer3").click(function(){
     quizzed = quizable.shift();
     change_card(quizzed, false);
   } else {
-    //Send on to the article
+    // Present results
     total_accuracy = 0;
     for (var key in first_answers) {
       if (first_answers.hasOwnProperty(key)) {
@@ -112,12 +129,10 @@ $("#answer0, #answer1, #answer2, #answer3").click(function(){
     };
     $(".prompt-container, .answers").hide();
     $(".results-container").show();
-    $(".read-button").show();
+    $("#read-box").show();
     percentage = ((total_accuracy / total_questions) * 100).toFixed(2);
     $("#accuracy").text(`${total_accuracy}/${total_questions} (${percentage}%)`);
   };
 });
 
-$("#read-button").click(function(){
-  // forward to the article
-});
+
