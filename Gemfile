@@ -31,7 +31,8 @@ gem 'kuromoji-ruby'
 gem 'loofah'
 gem 'activerecord-import'
 gem 'rjb', '~> 1.6', '>= 1.6.1'
-gem 'webmock', '~> 3.8', '>= 3.8.2'
+gem "validate_url"
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -39,7 +40,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails', '~> 4.0' 
   gem 'database_cleaner'
@@ -49,6 +50,8 @@ group :development, :test do
   gem 'webdrivers'
   gem 'pry', git: 'https://github.com/pry/pry.git', ref: '272b3290b5250d28ee82a5ff65aa3b29b825e37b'
   gem 'launchy'
+  gem 'webmock', '~> 3.8', '>= 3.8.2'
+  gem 'shoulda-matchers'
 end
 
 group :development do

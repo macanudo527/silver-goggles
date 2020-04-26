@@ -1,3 +1,4 @@
+require 'open-uri'
 module LinkManager
 
 	class AeraProcessor < ApplicationService
@@ -27,7 +28,7 @@ module LinkManager
 				if link.new_record?
 
 					# grab the whole html file
-					html = Nokogiri::HTML(URI.open(article.url))
+					html = Nokogiri::HTML(open(article.url))
 
 					article_html = ""
 					article_container = ""
@@ -45,7 +46,7 @@ module LinkManager
 
 					# Page through the rest of the article collecting words.
 					while !html.css(PAGER_CSS).empty?
-						html = Nokogiri::HTML(URI.open(article.url + "?page=" + current_page.to_s))
+						html = Nokogiri::HTML(open(article.url + "?page=" + current_page.to_s))
 						article_html = article_html + html.css(article_container)
 						current_page = current_page + 1
 					end

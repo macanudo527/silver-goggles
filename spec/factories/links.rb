@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :link do
     sequence(:title) { |n| "MyString#{n}" }
-    sequence(:url) { |n| "MyString#{n}" }
+    sequence(:url) { |n| "http://#{n}" }
     descrip { "MyText" }
     image { "MyText" }
     pubdate { Time.now }

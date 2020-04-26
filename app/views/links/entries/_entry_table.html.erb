@@ -20,7 +20,7 @@
 			<tbody>
 			  <% entries.each do |entry| %>
 			    <tr id="entry-<%= entry.id %>">
-			    	<td><%= check_box_tag 'study_set[entry_id][]', entry.id, (@study_set.id.nil? ? true : (@study_set.entries.exists?(entry.id) ? true : false)), id: "study_set_#{entry.id}" %></td>
+			    	<td><%= check_box_tag 'study_set[entry_id][]', entry.id, (@study_set.id.nil? ? checked : (@study_set.entries.exists?(entry.id) ? true : false)), id: "study_set_#{entry.id}" %></td>
 			   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
 			    <% if entry.base_word == entry.reading %>
 			      <td class="word"><%= entry.base_word %></td>
