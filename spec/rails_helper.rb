@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
 Capybara.default_driver = :selenium
+Capybara.javascript_driver = :selenium
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -37,6 +38,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -66,7 +68,10 @@ RSpec.configure do |config|
 
 
   Capybara.register_driver :selenium do |app|
-       Capybara::Selenium::Driver.new(app, browser: :chrome)
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs:{browser: 'ALL'})
+    browser_options = ::Selenium::WebDriver::Chrome::Options.new()
+    # browser_options.args << '--some_option' # add whatever browser args and other options you need (--headless, etc)
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options, desired_capabilities: caps)
   end
   Capybara.automatic_reload = false
   config.include Capybara::DSL

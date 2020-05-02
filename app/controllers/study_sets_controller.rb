@@ -13,9 +13,12 @@ class StudySetsController < ApplicationController
   # GET /study_sets/1.json
   def show
     @article_link = @study_set.link.url
+
+    # This should be replaced with words the user knows in the future.
+    @extra_answers = Entry.order(Arel.sql('RAND()')).take(5)
     respond_to do |format|
       format.html
-      format.json { render json: @study_set.entries }
+      format.json { render json: { :part_of_set => @study_set.entries,  :extra_answers => @extra_answers } }
     end
   end
 

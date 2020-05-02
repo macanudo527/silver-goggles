@@ -9,11 +9,15 @@ var first_answers = [];
 var answers = [];
 
 function initCards(data) {
-  showable = data;
+  showable = data.part_of_set;
   total_questions = showable.length;
 
   //Possible answers
   answers = showable.map(item => item.definition);
+
+  //Pad answers to make sure there are enough and if there is
+  //a small number of answers it is a little more challenging
+  answers = answers.concat(data.extra_answers.map(item => item.definition));
 
   //Initial setup of card
   change_card(showable.shift(), true);
@@ -47,7 +51,9 @@ function change_card(card, show) {
     quizable.push(card);
   } else {
     $("#showable-box, .flash-card").hide();
+
     $(".prompt-container, .answers").show();
+
     $("#prompt").html(card.base_word);
 
     // Randomly assign the correct answer to one of the four choices
@@ -57,10 +63,12 @@ function change_card(card, show) {
     // Pick three other answers to assign to the other multiple choices, making sure they do not equal the correct answer.
     while(incorrect_answers.length < 3){
       var r = Math.floor(Math.random() * answers.length);
-      if((incorrect_answers.indexOf(r) === -1) && (answers[r] != card.definition)) incorrect_answers.push(r);
+      if((incorrect_answers.indexOf(r) === -1) && (answers[r] != card.definition)) incorrect_answers.push(r);   
+  //    incorrect_answers.push(1);
+ //     incorrect_answers.push(2);   
     }
-    $(`#answer${correct_answer}`).html(card.definition);
 
+    $(`#answer${correct_answer}`).html(card.definition);
     // Assign incorrect answers to the choices
     for(i = 0; i < 4; i++) {
       if (i != correct_answer) {
@@ -79,9 +87,12 @@ $("#next-card-button").click(function(){
   if ((shown_cards < 2) && (showable.length != 0)) {
     change_card(showable.shift(), true);
   } else {
+
     shown_cards = 0;
     quizzed = quizable.shift();
+
     change_card(quizzed, false);
+
   };
 });
 

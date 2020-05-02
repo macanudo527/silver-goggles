@@ -3,7 +3,7 @@ FactoryBot.define do
     sequence(:base_word) { |n| "MyWord#{n}" }
     sequence(:word) { |n| "MyWords#{n}" }
     reading { "MyReading" }
-    definition { "MyDefinition" }
+    sequence(:definition) { |n| "MyDefinition#{n}" }
     priority { false }
     grammar { false }
     factory :priority_entry do
