@@ -33,8 +33,9 @@ RSpec.describe "User clicks learn on a link" do
   	shown_words = []
   	shown_words << current_word
   	old_word = current_word
-  	expect(find("#japanese-word").text).not_to eq(old_word)
-  	expect(page).to have_selector("#next-card-button")
+  	current_word = find("#japanese-word").text
+  	shown_words << current_word
+  	expect(current_word).not_to eq(old_word)
   	
   	find("#next-card-button").click
    	
@@ -51,18 +52,19 @@ RSpec.describe "User clicks learn on a link" do
   	click_answer()
 
   	expect(page).to have_content("3/4")
-
-  end
-end
-
-def click_answer(correct = true)
-	prompted = find("#prompt").text
-   	correct_answer = @link.entries.find { |answer| answer["base_word"] == prompted }.definition
-
-   	# Button is not an html button but a div, so need to use different way to click
-   	page.find_all(:xpath, "//div[contains(concat(' ',normalize-space(@class), ' '), ' answer ')]
-   		[normalize-space()#{correct ? '=' : '!=' }'#{correct_answer}']").first.click
-
-   	find("#next-question").click 
+  	expect(page).to have_selector(:css, "a[href='#{@link.url}']")
+  	
+  	  end
+  	end
+  	
+  	def click_answer(correct = true)
+  		prompted = find("#prompt").text
+  	   	correct_answer = @link.entries.find { |answer| answer["base_word"] == prompted }.definition
+  	
+  	   	# Button is not an html button but a div, so need to use different way to click
+  	   	page.find_all(:xpath, "//div[contains(concat(' ',normalize-space(@class), ' '), ' answer ')]
+  	   		[normalize-space()#{correct ? '=' : '!=' }'#{correct_answer}']").first.click
+  	
+  	   	find("#next-question").click 
 end
 
