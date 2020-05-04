@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, path: 'admins', 
-    controllers: { sessions: "admins/sessions", 
-    registrations: "admins/registrations" }
   resources :study_records
   resources :answers
   resources :study_sets
