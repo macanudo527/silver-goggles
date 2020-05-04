@@ -2,6 +2,7 @@ module Links
   class EntriesController < ApplicationController
     before_action :set_entry, only: [:show, :edit, :update, :destroy]
     before_action :set_link
+    load_and_authorize_resource
 
     # GET /entries
     # GET /entries.json

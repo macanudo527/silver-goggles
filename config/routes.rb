@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :study_records
   resources :answers
   resources :study_sets
   devise_for :users, path: 'users', 
-    controllers: { sessions: "users/sessions",
+    controllers: { sessions: "users/sessions", 
+    passwords: 'users/passwords',
     registrations: "users/registrations" }
   resources :sources
   resources :links do

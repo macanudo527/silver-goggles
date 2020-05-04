@@ -14,7 +14,9 @@
 			    <th>Study</th>
 			    <th>Word</th>
 			    <th>Definition</th>
-			    <th colspan="2"></th>
+			    <% if can? :edit, Entry %>
+			    	<th></th>
+			    <% end %>
 			  </tr>
 			</thead>
 			<tbody>
@@ -28,8 +30,9 @@
 			      <td class="word"><span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span></td>
 			    <% end %>
 			      <td><%= entry.definition %></td>
-			      <td><%= link_to 'Show', link_entry_path(@link.id, entry) %></td>
-			      <td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
+			      <% if can? :edit, Entry %>
+			      	<td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
+			      <% end %>
 			    </tr>
 
 			  <% end %>
