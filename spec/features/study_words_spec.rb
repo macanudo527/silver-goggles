@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "User clicks learn on a link" do
-  scenario do
-  	# Setup user and a link with entries, as well as additional entries to pad the answers with
-  	user = create(:user)
-  	@link = create(:link_with_entries)
-  	create_list(:entry, 10)
+  let(:user) { create(:user) }
+  let(:editor) { create(:editor) }
+  let!(:link) { create(:link_with_entries) }
+
+  scenario "Regular user takes the quiz" do
 
   	sign_in user
   	visit root_path
@@ -19,8 +19,8 @@ RSpec.describe "User clicks learn on a link" do
   	click_on "Learn & Read"
 
   	# Check word shown on card is one of the words being tested over
-  	studied_words = @link.entries.pluck(:base_word)
-  	studied_definitions = @link.entries.pluck(:definition)
+  	studied_words = link.entries.pluck(:base_word)
+  	studied_definitions = link.entries.pluck(:definition)
   	
   	current_word = find("#japanese-word").text
   	current_definition = find("#english-def").text
@@ -38,33 +38,49 @@ RSpec.describe "User clicks learn on a link" do
   	expect(current_word).not_to eq(old_word)
   	
   	find("#next-card-button").click
-   	
-	prompted = find("#prompt").text
+   	prompted = find("#prompt").text
    	expect(shown_words).to include(prompted)
  	
- 	click_answer()
+ 	  click_answer(link.entries)
   	find("#next-card-button").click
   	find("#next-card-button").click  
 
-  	click_answer()
-  	click_answer()
-  	click_answer(false)
-  	click_answer()
+  	click_answer(link.entries)
+  	click_answer(link.entries)
+  	click_answer(link.entries, false)
+  	click_answer(link.entries)
 
   	expect(page).to have_content("3/4")
-  	expect(page).to have_selector(:css, "a[href='#{@link.url}']")
+  	expect(page).to have_selector(:css, "a[href='#{link.url}']") 	
+  end
+  scenario "Editor edits an entry" do
+    sign_in editor
+    visit root_path
+    click_on "Learn"
+
+    # Get the id of the first entry under common words
+    word_id = page.first(:xpath, "//*[text()='#{link.entries[0].base_word}']/ancestor::*[self::tr][1]")[:id]
+
+    # Click the edit button for the first entry
+    page.first(:xpath, "//*[text()='#{link.entries[0].base_word}']/ancestor::*[self::tr]/td[4]/a").click
+
+    find('#entry_priority').check
+    click_on "Update Entry"
+
+    # Make sure the entry has been moved under the priority words tab
+    expect(page).to have_selector(:css, "table.priority-words tr##{word_id}")
+
+  end
+end
   	
-  	  end
-  	end
-  	
-  	def click_answer(correct = true)
-  		prompted = find("#prompt").text
-  	   	correct_answer = @link.entries.find { |answer| answer["base_word"] == prompted }.definition
-  	
-  	   	# Button is not an html button but a div, so need to use different way to click
-  	   	page.find_all(:xpath, "//div[contains(concat(' ',normalize-space(@class), ' '), ' answer ')]
-  	   		[normalize-space()#{correct ? '=' : '!=' }'#{correct_answer}']").first.click
-  	
-  	   	find("#next-question").click 
+def click_answer(entries, correct = true)
+	prompted = find("#prompt").text
+   	correct_answer = entries.find { |answer| answer["base_word"] == prompted }.definition
+
+   	# Button is not an html button but a div, so need to use different way to click
+   	page.find_all(:xpath, "//div[contains(concat(' ',normalize-space(@class), ' '), ' answer ')]
+   		[normalize-space()#{correct ? '=' : '!=' }'#{correct_answer}']").first.click
+
+   	find("#next-question").click 
 end
 

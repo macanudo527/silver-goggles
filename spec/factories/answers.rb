@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :answer do
-    user { nil }
-    entry { nil }
+    user
+    entry
     correct { false }
   end
 end

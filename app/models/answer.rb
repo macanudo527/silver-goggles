@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :entry
-  validates_presence_of :correct
+  validates_inclusion_of :correct, in: [true, false]
 end

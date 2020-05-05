@@ -14,7 +14,10 @@ class Ability
         
     end
     if user.editor_role?
-         can :edit, Entry
+        can :manage, Entry
+    end
+    if user.user_role?
+        can :read, Entry
     end
     #
     # The first argument to `can` is the action you are giving the user

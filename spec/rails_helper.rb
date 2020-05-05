@@ -78,6 +78,9 @@ RSpec.configure do |config|
   config.before(:suite) do
   #  Rails.application.load_seed # loading seeds
   end
+  config.before(:all, type: :feature) do
+    Capybara.server = :puma, { Silent: false }
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -99,6 +102,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

@@ -8,3 +8,5 @@ Rails.application.initialize!
 if ENV['SPRING_ENV'] == 'test' && ENV['RAILS_ENV'] == 'test'
   require File.expand_path('../../spec/spec_helper', __FILE__)
 end
+
+
