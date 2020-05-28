@@ -15,7 +15,7 @@ function initCards(data) {
   //Possible answers
   answers = showable.map(item => item.definition);
 
-  //Pad answers to make sure there are enough and if there is
+  //Pad answers to make sure there are enough and if there are
   //a small number of answers it is a little more challenging
   answers = answers.concat(data.extra_answers.map(item => item.definition));
 
@@ -63,9 +63,7 @@ function change_card(card, show) {
     // Pick three other answers to assign to the other multiple choices, making sure they do not equal the correct answer.
     while(incorrect_answers.length < 3){
       var r = Math.floor(Math.random() * answers.length);
-      if((incorrect_answers.indexOf(r) === -1) && (answers[r] != card.definition)) incorrect_answers.push(r);   
-  //    incorrect_answers.push(1);
- //     incorrect_answers.push(2);   
+      if((incorrect_answers.indexOf(r) === -1) && (answers[r] != card.definition)) incorrect_answers.push(r);    
     }
 
     $(`#answer${correct_answer}`).html(card.definition);
@@ -101,12 +99,9 @@ $("#answer0, #answer1, #answer2, #answer3").click(function(){
   $(`#answer${correct_answer}`).addClass("correct");
 
   if ($(event.target).is(`#answer${correct_answer}`)) {
-    // save answer to server
     accuracy = 1;
 
-
   } else {
-    //save answer to server
     quizable.push(quizzed);
     accuracy = 0;
     $(event.target).addClass("incorrect");
@@ -114,6 +109,13 @@ $("#answer0, #answer1, #answer2, #answer3").click(function(){
   };
   if (!(quizzed.id in first_answers)) {
     first_answers[quizzed.id] = accuracy;
+    $.ajax({ url: '/answers.json', type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: { answer: {entry_id: quizzed.id, correct: accuracy } },
+      success: function(data, status, jqXHR) {// success callback
+       alert('status: ' + status + ', data: ' + data );
+      }
+    });    
   };  
 });
 

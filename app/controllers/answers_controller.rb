@@ -1,16 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
-
-  # GET /answers
-  # GET /answers.json
-  def index
-    @answers = Answer.all
-  end
-
-  # GET /answers/1
-  # GET /answers/1.json
-  def show
-  end
+  before_action :authenticate_user!
 
   # GET /answers/new
   def new
@@ -25,11 +15,12 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
+    @answer.user = current_user
 
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: @answer }
+        format.json { render json: {answer: "success"}, status: :created }
       else
         format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
