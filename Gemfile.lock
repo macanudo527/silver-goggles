@@ -197,7 +197,7 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     public_suffix (4.0.4)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-pjax (1.1.0)
@@ -372,7 +372,7 @@ DEPENDENCIES
   loofah
   mysql2
   pry!
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.2)
   rails-controller-testing
   rails_admin (~> 2.0)
