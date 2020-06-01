@@ -16,9 +16,15 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     @answer.user = current_user
+    @study_record = StudyRecord.find_or_create_by(user: current_user, entry: @answer.entry)
+    if @answer.correct
+      @study_record.mastery_up
+    else
+      @study_record.missed
+    end
 
     respond_to do |format|
-      if @answer.save
+      if @answer.save && @study_record.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
         format.json { render json: {answer: "success"}, status: :created }
       else

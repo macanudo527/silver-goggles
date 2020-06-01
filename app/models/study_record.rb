@@ -7,4 +7,29 @@ class StudyRecord < ApplicationRecord
 		self.mastery ||= 0
 	end
 
+	def mastery_up
+		self.mastery += 1
+		case self.mastery
+			when 1
+				self.due = Time.now + 1.days
+			when 2
+				self.due = Time.now + 1.weeks
+			when 3
+				self.due = Time.now + 16.days
+			when 4
+				self.due = Time.now + 35.days
+			when 5
+				self.due = Time.now + 74.days
+			when 6
+				self.due = Time.now + 152.days
+			when 7..Float::INFINITY
+				self.due = Time.now + 1.years
+		end
+	end
+
+	def missed
+		self.mastery = 0
+		self.due = Time.now + 6.hours
+	end
+
 end

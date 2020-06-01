@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :clicks
   has_many :links, through: :clicks
   has_many :study_sets
+  has_many :study_records
 end

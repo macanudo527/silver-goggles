@@ -8,8 +8,8 @@
           <%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
         </h4>
         <div class="btn-group" role="group"  aria-label="Links">
-          <%= link_to "Learn", link_entries_path(link.id), class: "btn btn-secondary btn-sm" %>
-          <%= link_to "Read", link.url, class: "btn btn-secondary btn-sm" %>
+          <%= link_to "Learn", clicks_path(:link => link.id, :learn => true), :method => :post, class: "btn btn-secondary btn-sm" %>
+          <%= link_to "Read", clicks_path(:link => link.id), :method => :post, class: "btn btn-secondary btn-sm" %>
         </div>
     <% if index % 4 == 3 %>
         </div>

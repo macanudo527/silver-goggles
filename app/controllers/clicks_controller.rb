@@ -23,9 +23,9 @@ before_action :authenticate_user!, :set_click, only: [:show, :edit, :update, :de
 
   # POST /links
   # POST /links.json
-  # USER is STUBBED, needs updating once Devise is installed!
   def create
   	@link = Link.find(params[:link])
+    @learn = params[:learn]
 
   	@click = @link.clicks.find_by(:user_id => current_user)
   	if !@click.nil?
@@ -35,10 +35,17 @@ before_action :authenticate_user!, :set_click, only: [:show, :edit, :update, :de
   		@click.user = current_user
   	end
 
+    pry
+
     respond_to do |format|
       if @click.save
-        format.html { redirect_to @click.link.url, notice: 'Click was successfully created.' }
-        format.json { render :show, status: :created, location: @click }
+        if @learn
+          format.html { redirect_to link_entries_path(@link.id), notice: 'Click was successfully created.' }
+          format.json { render :show, status: :created, location: @click }         
+        else
+          format.html { redirect_to @click.link.url, notice: 'Click was successfully created.' }
+          format.json { render :show, status: :created, location: @click }
+        end
       else
         format.html { render :new }
         format.json { render json: @click.errors, status: :unprocessable_entity }
@@ -78,7 +85,7 @@ before_action :authenticate_user!, :set_click, only: [:show, :edit, :update, :de
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def click_params
-      params.require(:click).permit(:link_id)
+      params.require(:click).permit(:link_id, :learn)
     end
 
     def link_params

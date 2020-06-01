@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users, only: [:show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :study_records
   resources :answers
