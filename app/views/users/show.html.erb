@@ -1,22 +1,27 @@
 
-<div class="profile-sidebar">
-	<div class="user-email">
-		<%= current_user.email %>
-	</div>
-	<div class="user-stats">
-		<%= @total_words %>
-		<%= @links.count %>
-	</div>
-
-</div>
-<div class="profile-links">
-	 <% @links.each_with_index do |link, index| %>
-		<h4>
-		  <%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
-		</h4>
-		<div class="btn-group" role="group"  aria-label="Links">
-		  <%= link_to "Learn", link_entries_path(link.id), class: "btn btn-secondary btn-sm" %>
-		  <%= link_to "Read", link.url, class: "btn btn-secondary btn-sm" %>
+<div class="userdash-container">
+	<div class="profile-sidebar">
+		<div class="user-email">
+			<%= current_user.email %>
 		</div>
-	<% end %>
+		<div class="user-stats">
+			<p>Words learned</p>
+			<p class="stat-numbers"><%= @total_words %></p>
+			<p>Articles read</p>
+			<p class="stat-numbers"><%= @links.count %></p>
+			
+		</div>
+
+	</div>
+	<div class="profile-links">
+		 <% @links.each_with_index do |link, index| %>
+			<h4>
+			  <%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
+			</h4>
+			<div class="btn-group" role="group"  aria-label="Links">
+			  <%= pluralize(link.study_records.where("due < ?", Time.now).count, 'word') %> due
+			  <%= link_to "Add / Remove Words", link_entries_path(link.id), class: "btn btn-secondary btn-sm" %>
+			</div>
+		<% end %>
+	</div>
 </div>

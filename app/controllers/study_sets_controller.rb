@@ -18,7 +18,7 @@ class StudySetsController < ApplicationController
     @extra_answers = Entry.order(Arel.sql('RAND()')).take(5)
     respond_to do |format|
       format.html
-      format.json { render json: { :part_of_set => @study_set.entries,  :extra_answers => @extra_answers } }
+      format.json { render json: { :part_of_set => @study_set.study_records.where("due < ?", Time.now).entries,  :extra_answers => @extra_answers } }
     end
   end
 
@@ -36,6 +36,9 @@ class StudySetsController < ApplicationController
   def create
     @study_set = StudySet.new(user_id: current_user.id, link_id: params[:study_set][:link_id])
     @study_set.entries << Entry.find(params[:study_set][:entry_id])
+    @study_set.entries.each do |entry|
+      StudyRecord.create!(user: current_user, entry: entry)
+    end
 
     respond_to do |format|
       if @study_set.save
