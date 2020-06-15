@@ -9,18 +9,36 @@ var first_answers = [];
 var answers = [];
 
 function initCards(data) {
-  showable = data.part_of_set;
-  total_questions = showable.length;
+
+  // Don't show cards that have already been shown once unless the user has completely missed them.
+  showable = data.part_of_set.filter(function(entry) {
+    return entry.mastery == 0;
+  });
+
+  //move the unshown cards automatically to the quizable cards
+  quizable = data.part_of_set.filter(function(entry) {
+    return entry.mastery != 0;
+  })
+
+  total_questions = data.part_of_set.length;
+
 
   //Possible answers
-  answers = showable.map(item => item.definition);
+  answers = data.part_of_set.map(item => item.definition);
 
   //Pad answers to make sure there are enough and if there are
   //a small number of answers it is a little more challenging
   answers = answers.concat(data.extra_answers.map(item => item.definition));
 
   //Initial setup of card
-  change_card(showable.shift(), true);
+  //If no zero mastery cards skip to just quizzing.
+  if (showable.length > 0) {
+    change_card(showable.shift(), true);
+  } else {
+    quizzed = quizable.shift();
+
+    change_card(quizzed, false);    
+  }
 }
 
 function flipIt() {
@@ -113,7 +131,7 @@ $("#answer0, #answer1, #answer2, #answer3").click(function(){
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: { answer: {entry_id: quizzed.id, correct: accuracy } },
       success: function(data, status, jqXHR) {// success callback
-       alert('status: ' + status + ', data: ' + data );
+     //  alert('status: ' + status + ', data: ' + data );
       }
     });    
   };  
@@ -147,5 +165,9 @@ $("#nextq-box").click(function(){
     $("#accuracy").text(`${total_accuracy}/${total_questions} (${percentage}%)`);
   };
 });
+
+function zeroMastery(entry) {
+  return entry.mastery = 0;
+}
 
 

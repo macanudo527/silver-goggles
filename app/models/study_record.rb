@@ -1,7 +1,9 @@
 class StudyRecord < ApplicationRecord
   belongs_to :user
   belongs_to :entry
+ # has_many :study_sets, through: :entries
   validates :mastery, numericality: { greater_than_or_equal_to: 0 }
+  validates_uniqueness_of :entry_id, scope: :user_id
 
   	def init
 		self.mastery ||= 0

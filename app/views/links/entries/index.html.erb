@@ -6,9 +6,13 @@
 <%= form_for @study_set do |f| %>
 <%= f.hidden_field :link_id, :value => @link.id %>
   <div class="entry-top-bar">
-    <div class="entry-col1"></div>
+    <div class="entry-col1">
+      <% if params[:edit] %>
+        <%= f.submit 'Save & Return', :class => 'learn-read', :name => 'save-return' %>
+      <% end %>
+    </div>
     <div class="entry-col2"><h1>Vocabulary for this Article</h1></div>
-    <div class="entry-col3"><%= f.submit 'Learn & Read', :class => 'learn-read' %></div>
+    <div class="entry-col3"><%= f.submit 'Learn & Read', :class => 'learn-read', :name => 'learn-read' %></div>
   </div>
 
   <%= render partial: "entry_table", locals: {table_name: "article-words", entries: @entries, tab_name: "Difficult Words", tab_num: "1", checked: true} %> 

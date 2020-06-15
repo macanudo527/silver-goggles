@@ -35,8 +35,6 @@ before_action :authenticate_user!, :set_click, only: [:show, :edit, :update, :de
   		@click.user = current_user
   	end
 
-    pry
-
     respond_to do |format|
       if @click.save
         if @learn

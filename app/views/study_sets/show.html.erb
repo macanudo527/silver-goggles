@@ -59,8 +59,13 @@
 </div>
 
 <div id="read-box" class="button-box" style="display: none;">
-  <div id="read-button" class="sb-container">
-    <a href="<%= @article_link %>" class="card-button">Read Article</a>
+  <div id="back-button" class="sb-container">
+    <a href="<%= user_path(current_user) %>" class="card-button">Back to Dashboard</a>
   </div>
+  <% if !@article_link.nil? %>
+    <div id="read-button" class="sb-container">
+      <a href="<%= @article_link %>" class="card-button">Read Article</a>
+    </div>
+  <% end %>
 </div>
 <%= javascript_pack_tag 'quiz-controller', 'data-turbolinks-track': 'reload' %>
