@@ -26,4 +26,36 @@
 
 .profile-links {
 	flex: 1 0 auto;
+	width: 50%;
+	h4 { 
+		border-top: 1px solid #DFDFDF;
+		padding: 0.25em 0;
+		margin: 0;
+	}
+}
+
+.profile-link {
+	display: flex;
+}
+
+.link-icon img {
+	max-width: 5em;
+	padding: 0.5em;
+}
+
+.link-header {
+	width: 90%;
+	display: inline-block;
+}
+
+.link-text {
+	width: 100%;
+}
+
+.link-menu {
+	float: right;
+}
+
+#review-all {
+	margin: 1em auto;
 }

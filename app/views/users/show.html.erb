@@ -14,19 +14,37 @@
 
 	</div>
 	<div class="profile-links">
-		 <div class="btn-group">
-		 	<%= link_to "Review all #{pluralize(StudyRecord.where("due < ?", Time.now).count, 'word') }", study_sets_path %>
+		 <div class="button-box">
+		 	<div class="sb-container" id="review-all">
+		 		<%= link_to "Review all #{pluralize(StudyRecord.where("due < ?", Time.now).count, 'word') }", study_sets_path, class: "card-button" %>
+			</div>
 		 </div>
 		 <% @links.each_with_index do |link, index| %>
-			<h4>
-			  <%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
-			</h4>
-			<div class="btn-group" role="group"  aria-label="Links">
-			  <% study_set = link.study_sets.find_by(user_id: current_user.id) %>
-			  <%= pluralize(study_set.study_records.where("due < ?", Time.now).count, 'word') %> due
-			  <%= link_to "Add / Remove Words", link_entries_path(link.id, :edit => true), class: "btn btn-secondary btn-sm" %>
-			  <%= link_to "Review Now", study_set_path(study_set) %>
+		 <div class="profile-link">
+		 	<div class="link-icon">
+		 		<%= image_tag link.source.image %>
+		 	</div>
+		 	<div class="link-text">
+				<div class="link-header">
+					<h4>
+				  		<%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
+					</h4>
+				</div>
+				<div class="link-menu">
+					<span>&#8942;</span>
+				</div>
+				<div class="btn-group" role="group"  aria-label="Links">
+				  <% study_set = link.study_sets.find_by(user_id: current_user.id) %>
+				  <% if !study_set.nil? %>
+				  	<%= pluralize(study_set.study_records.where("due < ?", Time.now).count, 'word') %> due
+				  <% end %>
+				  <%= link_to "Add / Remove Words", link_entries_path(link.id, :edit => true), class: "btn btn-secondary btn-sm" %>
+				  <% if !study_set.nil? %>
+				  	<%= link_to "Review Now", study_set_path(study_set) %>
+				  <% end %>
+				</div>
 			</div>
+		</div>
 		<% end %>
 	</div>
 </div>
