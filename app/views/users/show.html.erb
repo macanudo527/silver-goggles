@@ -30,9 +30,20 @@
 				  		<%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
 					</h4>
 				</div>
-				<div class="link-menu">
-					<span>&#8942;</span>
+				<div class="dropbtn link-menu" id="link-dropdown">
+					<span>&#8942;</span>				
+					<div class="link-dropdown" id="myDropdown">
+						<ul>
+							<li>
+								<a href="#"><%= image_tag "list", class: "link-menu-icon" %>Edit list</a>
+							</li>
+							<li>
+								<a href="#"><%= image_tag "trashcan", class: "link-menu-icon" %>Delete list</a>
+							</li>
+						</ul>
+					</div>
 				</div>
+
 				<div class="btn-group" role="group"  aria-label="Links">
 				  <% study_set = link.study_sets.find_by(user_id: current_user.id) %>
 				  <% if !study_set.nil? %>
@@ -48,3 +59,4 @@
 		<% end %>
 	</div>
 </div>
+<%= javascript_pack_tag 'link-dropdown', 'data-turbolinks-track': 'reload' %>
