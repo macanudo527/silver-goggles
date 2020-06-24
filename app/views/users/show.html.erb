@@ -35,24 +35,27 @@
 					<div class="link-dropdown" id="myDropdown">
 						<ul>
 							<li>
-								<a href="#"><%= image_tag "list", class: "link-menu-icon" %>Edit list</a>
+								<a href="<%= link_entries_path(link.id, :edit => true) %>"><%= image_tag "list", class: "link-menu-icon" %>Edit list</a>
 							</li>
 							<li>
-								<a href="#"><%= image_tag "trashcan", class: "link-menu-icon" %>Delete list</a>
+								<%= link_to link, method: "delete" do %>
+									<%= image_tag "trashcan", class: "link-menu-icon" %>Delete list
+								<% end %>
 							</li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="btn-group" role="group"  aria-label="Links">
-				  <% study_set = link.study_sets.find_by(user_id: current_user.id) %>
-				  <% if !study_set.nil? %>
-				  	<%= pluralize(study_set.study_records.where("due < ?", Time.now).count, 'word') %> due
-				  <% end %>
-				  <%= link_to "Add / Remove Words", link_entries_path(link.id, :edit => true), class: "btn btn-secondary btn-sm" %>
-				  <% if !study_set.nil? %>
-				  	<%= link_to "Review Now", study_set_path(study_set) %>
-				  <% end %>
+				  	<% study_set = link.study_sets.find_by(user_id: current_user.id) %>
+				  	<div class="link-word-count">
+					  <% if !study_set.nil? %>
+					  	<%= pluralize(study_set.study_records.where("due < ?", Time.now).count, 'word') %> due
+					  <% end %>
+					</div>
+				  	<% if !study_set.nil? %>
+				  		<%= link_to "Review Now", study_set_path(study_set), class: "card-button" %>
+				  	<% end %>
 				</div>
 			</div>
 		</div>

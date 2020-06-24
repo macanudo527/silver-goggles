@@ -36,6 +36,18 @@
 .profile-link {
 	border-top: 1px solid #DFDFDF;
 	display: flex;
+	.card-button {
+		padding: 7px 30px;
+		display: inline-block;	
+	}
+	.btn-group {
+		text-align: right;
+		.link-word-count {
+			padding-right: 1em;
+			display: inline-block;
+			font-size: 16px;
+		}
+	}
 }
 
 .link-icon img {
@@ -46,6 +58,11 @@
 .link-header {
 	width: 90%;
 	display: inline-block;
+	h4 {
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 24px;
+	}
 }
 
 .link-text {
