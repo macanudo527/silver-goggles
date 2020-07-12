@@ -73,6 +73,7 @@ function change_card(card, show) {
     $(".prompt-container, .answers").show();
 
     $("#prompt").html(card.base_word);
+    $("#prompt-reading").html(card.reading);
 
     // Randomly assign the correct answer to one of the four choices
     correct_answer = Math.floor(Math.random() * 4);

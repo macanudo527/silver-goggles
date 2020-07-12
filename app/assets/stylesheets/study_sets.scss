@@ -29,14 +29,16 @@ $max-width: 40em;
     height: 100%;
     width: 100%;
     display: inline-block;
-    position: absolute;
     text-align: center;
+    min-height: 12em;
   }
 }
 .answers {
   flex-wrap: wrap;
   margin: 0 auto;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   .answer {
     width: 15em;
     margin: 1.9em;

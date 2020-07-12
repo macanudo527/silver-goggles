@@ -7,9 +7,11 @@ module Links
     # GET /entries
     # GET /entries.json
     def index
-      @priority_entries = @link.entries.where(grammar: false, priority: true)
-      @entries = @link.entries.where(grammar: false, priority: false).where.not(base_word: @priority_entries.pluck(:base_word))
-      @grammar_entries = @link.entries.where(grammar: true)
+      known_entries = current_user.entries.select(:base_word).pluck(:base_word)
+      @priority_entries = @link.entries.where(grammar: false, priority: true).where.not(base_word: known_entries)
+      filtered_entries = known_entries + @priority_entries.pluck(:base_word)
+      @entries = @link.entries.where(grammar: false, priority: false).where.not(base_word: filtered_entries)
+      @grammar_entries = @link.entries.where(grammar: true).where.not(base_word: known_entries)
       @study_set = @link.study_sets.find_or_initialize_by(user: current_user)
     end
 

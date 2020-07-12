@@ -8,8 +8,12 @@
           <%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
         </h4>
         <div class="btn-group" role="group"  aria-label="Links">
-          <%= link_to "Learn", clicks_path(:link => link.id, :learn => true), :method => :post, class: "btn btn-secondary btn-sm" %>
-          <%= link_to "Read", clicks_path(:link => link.id), :method => :post, class: "btn btn-secondary btn-sm" %>
+          <%= link_to clicks_path(:link => link.id, :learn => true), :method => :post, class: "linkButton learnButton" do %>
+            <%= inline_svg_tag("Learn") %>Learn
+          <% end %>
+          <%= link_to clicks_path(:link => link.id), :method => :post, class: "linkButton readButton" do %>
+            <%= inline_svg_tag("Read", class: 'white-fill') %>Read
+          <% end %>
         </div>
     <% if index % 4 == 3 %>
         </div>

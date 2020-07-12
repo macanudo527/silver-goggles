@@ -6,6 +6,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  
+  Rails.logger = Logger.new(STDOUT)
+  config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
+
   config.cache_classes = false
 
   # Do not eager load code on boot. This avoids loading your whole application

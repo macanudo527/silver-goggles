@@ -47,8 +47,12 @@ class StudySetsController < ApplicationController
 
     respond_to do |format|
       if @study_set.save
-        format.html { redirect_to @study_set, notice: 'Study set was successfully created.' }
-        format.json { render json: @study_set.entries }
+        if params.has_key? 'save-return'
+          format.html { redirect_to current_user, notice: 'Study set was successfully created.'  }
+        else
+          format.html { redirect_to @study_set, notice: 'Study set was successfully created.' }
+          format.json { render json: @study_set.entries }
+        end
       else
         format.html { render :new }
         format.json { render json: @study_set.errors, status: :unprocessable_entity }

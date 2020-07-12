@@ -34,6 +34,21 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:each) do |example|
+    if self.class.metadata[:js]
+      begin
+        FrontendServer.start unless FrontendServer.started?
+      rescue CapybaraSpa::Server::Error => ex
+        # When an exception is raised it is being swallowed
+        # so print it out and forcefully fail so the developer
+        # see its.
+        STDERR.puts ex.message, ex.backtrace.join("\n")
+        exit!
+      end
+    end
+  end
+
+  
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods

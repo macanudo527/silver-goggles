@@ -9,7 +9,7 @@ RSpec.describe "User can see a list of articles they read" do
 
   scenario "with 5 words due" do
 
-  	# Choose words to study
+  	# Stubbing choosing words to study
   	study_set.entries << link.entries
 
   	sign_in user
