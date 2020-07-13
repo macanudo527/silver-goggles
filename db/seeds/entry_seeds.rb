@@ -78,10 +78,31 @@ edict.each_line do |line|
 	# Assign elements to new entry
     entries << {base_word: base_word, word: word, reading: reading, definition: definition, priority: priority, grammar: grammar}
 
-	# puts "#{line_num += 1}  word #{word}, reading #{reading}, definition #{definition}, priority #{priority}"
-
 end
 
 Entry.import columns, entries, validate: false
+
+# Add primary definitions to all words
+# In general the more common definitions are first, by reversing it they are assigned the primary role if there are multiple priority entries
+duplicates = Entry.where(base_word: Entry.select(:base_word).group(:base_word).having("count(*) > 1")).reverse
+primary_entries = {}
+duplicates.each do |entry|
+	if primary_entries[entry.base_word] == nil
+		primary_entries[entry.base_word] = entry.id
+
+	# if the entry is priority it is assigned as the primary no matter what.
+	elsif primary_entries[entry.base_word] != nil && entry.priority
+		primary_entries[entry.base_word] = entry.id
+	end
+end
+
+# assign the primary to the secondary entries and save
+duplicates.each do |entry|
+	if entry.id != primary_entries[entry.base_word]
+		entry.primary_id = primary_entries[entry.base_word]
+	end
+	entry.save
+end
+
 
 puts "There are now #{Entry.count} rows in the entries table"
