@@ -57,6 +57,7 @@ group :development, :test do
   gem 'launchy'
   gem 'webmock', '~> 3.8', '>= 3.8.2'
   gem 'shoulda-matchers'
+  gem 'letter_opener'
 end
 
 group :development do
