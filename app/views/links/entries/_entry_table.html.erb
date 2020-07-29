@@ -12,8 +12,9 @@
 			<thead>
 			  <tr>
 			    <th>Study</th>
-			    <th>Word</th>
+			    <th colspan="2">Word</th>
 			    <th>Definition</th>
+			    <th></th>
 			    <% if can? :edit, Entry %>
 			    	<th></th>
 			    <% end %>
@@ -24,17 +25,43 @@
 			    <tr id="entry-<%= entry.id %>">
 			    	<td><%= check_box_tag 'study_set[entry_id][]', entry.id, (@study_set.id.nil? ? checked : (@study_set.entries.exists?(entry.id) ? true : false)), id: "study_set_#{entry.id}" %></td>
 			   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
-			    <% if entry.base_word == entry.reading %>
-			      <td class="word"><%= entry.base_word %></td>
-			    <% else %>			    
-			      <td class="word"><span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span></td>
-			    <% end %>
-			      <td><%= entry.definition %></td>
+			    <td colspan="2" class="word">
+				    <% if entry.base_word == entry.reading %>
+				      <%= entry.base_word %>
+				    <% else %>			    
+				      <span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span>
+				    <% end %>
+				</td>
+			      <td><%= entry.definition %><%= entry.secondaries.count > 0 ? raw(" <span class='alt-tab' id='tab-#{entry.id}'>(Alternative definitions)</span>") : "" %></td>
 			      <% if can? :edit, Entry %>
 			      	<td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
 			      <% end %>
 			    </tr>
+			    <% if entry.secondaries.count > 0 %>
+		<!--	    </tbody>
+			    <tbody class="tab-alt-content" id="nav-<%= entry.id %>"> -->
+			    	<% entry.secondaries.each do |entry| %>
 
+			    		<tr class="tab-alt-content nav-<%= entry.primary_id %>" id="entry-<%= entry.id %>">
+							<td></td>
+							<td><%= check_box_tag 'study_set[entry_id][]', entry.id, (@study_set.entries.exists?(entry.id) ? true : false), id: "study_set_#{entry.id}" %></td>
+							<td>				    
+								<% if entry.base_word == entry.reading %>
+				      				<%= entry.base_word %>
+				    			<% else %>			    
+				      				<span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span>
+				    			<% end %>
+				    		</td>
+							<td><%= entry.definition %></td>
+							<% if can? :edit, Entry %>
+			      				<td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
+			      			<% end %>
+						</tr>
+					
+			    	<% end %>
+			<!--		</tbody>
+					<tbody> -->
+				<% end %>
 			  <% end %>
 			</tbody>
 		</table>

@@ -1,5 +1,20 @@
-console.log("edit.js.erb file");
 console.log("#entry-<%= @entry.id %>")
 
-$('#ajax_entry_form').remove();
-$('<tr><td colspan="4"><%= j (render partial: "form") %></td></tr>').insertAfter('#entry-<%= @entry.id %>');
+if ($('#edit_entry_form_row').length) {
+	$('#edit_entry_form_row td').wrapInner('<div style="display: block;" />').parent().find('td > div').slideUp(400, function() {
+		$(this).parent().parent().remove();
+		insertForm();
+	});
+} else {
+	insertForm();
+}
+
+function insertForm() {
+	$('<tr id="edit_entry_form_row"><td colspan="4"><%= j (render partial: "form") %></td></tr>').insertAfter('#entry-<%= @entry.id %>');
+	$('#edit_entry_form_row td').wrapInner('<div style="display: none;" />').parent().find('tr > div').slideDown(700, function() {
+		var $set = $(this);
+		$set.replaceWith($set.contents());
+	});	
+};
+
+

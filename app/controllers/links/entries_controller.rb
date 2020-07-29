@@ -7,12 +7,17 @@ module Links
     # GET /entries
     # GET /entries.json
     def index
-      known_entries = current_user.entries.select(:base_word).pluck(:base_word)
-      @priority_entries = @link.entries.where(grammar: false, priority: true).where.not(base_word: known_entries)
+
+      # First grab the study_set so that we make sure not to filter out words that are in this study set
+      @study_set = @link.study_sets.find_or_initialize_by(user: current_user)      
+
+      # Filter out known words from other study sets.
+      known_entries = current_user.entries.select(:base_word).where.not(base_word: @study_set.entries.pluck(:base_word)).pluck(:base_word)
+      @priority_entries = @link.entries.where(grammar: false, priority: true, primary_id: nil).where.not(base_word: known_entries)
       filtered_entries = known_entries + @priority_entries.pluck(:base_word)
-      @entries = @link.entries.where(grammar: false, priority: false).where.not(base_word: filtered_entries)
-      @grammar_entries = @link.entries.where(grammar: true).where.not(base_word: known_entries)
-      @study_set = @link.study_sets.find_or_initialize_by(user: current_user)
+      @entries = @link.entries.where(grammar: false, priority: false, primary_id: nil).where.not(base_word: filtered_entries)
+      @grammar_entries = @link.entries.where(grammar: true, primary_id: nil).where.not(base_word: known_entries)
+
     end
 
     # GET /entries/1
