@@ -32,7 +32,7 @@
 				      <span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span>
 				    <% end %>
 				</td>
-			      <td><%= entry.definition %><%= entry.secondaries.count > 0 ? raw(" <span class='alt-tab' id='tab-#{entry.id}'>(Alternative definitions)</span>") : "" %></td>
+			      <td><%= entry.definition %><%= entry.secondaries.count > 0 ? raw(" (<span class='alt-tab' id='tab-#{entry.id}'>Alternative definitions</span>)") : "" %></td>
 			      <% if can? :edit, Entry %>
 			      	<td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
 			      <% end %>

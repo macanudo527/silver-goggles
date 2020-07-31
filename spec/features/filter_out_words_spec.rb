@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User does not see entries already attached to another article" do
+RSpec.describe "entry selection before learning" do
   let(:user) { create(:user) }
   let!(:link) { create(:link_with_entries) }
   let!(:source) { create(:source) }
@@ -10,7 +10,7 @@ RSpec.describe "User does not see entries already attached to another article" d
   let!(:click) { link.clicks.create(user: user) }
   let(:study_set) { StudySet.create(user: user, link: link) }
 
-  scenario "with 5 words due" do
+  scenario "with entries already attached to another article" do
 
   	# Stubbing Choosing words to study
   	study_set.entries << link.entries << priority_entry  << grammar_entry
@@ -26,15 +26,38 @@ RSpec.describe "User does not see entries already attached to another article" d
     # remove original link from home page
     link.update(created_at: (Time.now - 8.days))
 
-  	sign_in user
-  	visit root_path
-    click_on "Learn"
+  	learn_first_article
 
+    # user shouldn't see the duplicate entries
     expect(page).not_to have_content(dupe_entry.base_word)
     expect(page).not_to have_content(priority_entry.base_word)
     expect(page).not_to have_content(grammar_entry.base_word)
-
-
   end
+
+  scenario "when entries have secondary meanings" do 
+
+    # Stubbing choosing words to study
+    secondary_meaning_of_first = create(:entry)
+    secondary_meaning_of_first.primary_id = link.entries.first.id
+
+    link.entries << secondary_meaning_of_first
+
+    learn_first_article
+
+    # User shouldn't intially see the secondary meaning of the word
+    expect(page).not_to have_content(secondary_meaning_of_first.base_word)
+
+    find(".alt-tab").click
+    expect(page).to have_content(secondary_meaning_of_first.base_word)
+    expect(page).to have_unchecked_field("study_set_#{secondary_meaning_of_first.id}")
+  end
+
+  def learn_first_article
+    sign_in user
+    visit root_path
+    click_on "Learn" 
+  end
+
+
 
 end
