@@ -11,7 +11,7 @@ default: &default
   adapter: mysql2
   database: news_assist
   username: root
-  password:
+  password: password
   host: 127.0.0.1
   encoding: utf8
 
