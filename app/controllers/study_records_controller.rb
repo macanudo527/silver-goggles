@@ -37,6 +37,16 @@ class StudyRecordsController < ApplicationController
     end
   end
 
+  def master 
+    @entry = params[:entry]
+    @study_record = StudyRecord.find_or_initialize_by(user: current_user, entry: @entry)
+    @study_record.update!(deleted: true)
+    respond_to do |format|
+        format.html { redirect_to link_entries_path(@link) }
+        format.js { }
+      end
+  end
+
   # PATCH/PUT /study_records/1
   # PATCH/PUT /study_records/1.json
   def update

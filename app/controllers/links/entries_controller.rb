@@ -13,6 +13,8 @@ module Links
 
       # Filter out known words from other study sets.
       known_entries = current_user.entries.select(:base_word).where.not(base_word: @study_set.entries.pluck(:base_word)).pluck(:base_word)
+      known_entries = known_entries + current_user.entries.deleted.pluck(:base_word)
+    #  pry
       @priority_entries = @link.entries.where(grammar: false, priority: true, primary_id: nil).where.not(base_word: known_entries)
       filtered_entries = known_entries + @priority_entries.pluck(:base_word)
       @entries = @link.entries.where(grammar: false, priority: false, primary_id: nil).where.not(base_word: filtered_entries)
@@ -57,7 +59,7 @@ module Links
 
     # PATCH/PUT /entries/1
     # PATCH/PUT /entries/1.json
-    def update
+    def update   
       respond_to do |format|
         if @entry.update(entry_params)
           format.html { redirect_to link_entries_path(@link), notice: 'Entry was successfully updated.' }
@@ -67,16 +69,6 @@ module Links
           format.html { render :edit }
           format.json { render json: @entry.errors, status: :unprocessable_entity }
         end
-      end
-    end
-
-    # DELETE /entries/1
-    # DELETE /entries/1.json
-    def destroy
-      @entry.destroy
-      respond_to do |format|
-        format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
-        format.json { head :no_content }
       end
     end
 
@@ -92,7 +84,7 @@ module Links
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def entry_params
-        params.require(:entry).permit(:word, :reading, :definition, :priority, :base_word, :grammar)
+        params.require(:entry).permit(:word, :reading, :definition, :priority, :base_word, :grammar, :deleted)
       end
   end
 end

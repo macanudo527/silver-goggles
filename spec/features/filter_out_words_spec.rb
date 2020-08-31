@@ -34,6 +34,19 @@ RSpec.describe "entry selection before learning" do
     expect(page).not_to have_content(grammar_entry.base_word)
   end
 
+  scenario "when user deletes entry from link" do 
+    # Stubbing Choosing words to study
+    study_set.entries << link.entries << priority_entry  << grammar_entry
+
+    learn_first_article
+
+    accept_alert do
+        find("tr#entry-#{link.entries.first.id} a.delete_entry_link").click
+    end
+
+    expect(page).not_to have_selector(:css, "tr#entry-#{link.entries.first.id}") 
+  end
+
   scenario "when entries have secondary meanings" do 
 
     # Stubbing choosing words to study

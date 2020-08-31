@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_021124) do
+ActiveRecord::Schema.define(version: 2020_08_08_022648) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_021124) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "due"
+    t.boolean "deleted", default: false
     t.index ["entry_id"], name: "index_study_records_on_entry_id"
     t.index ["user_id", "entry_id"], name: "index_study_records_on_user_id_and_entry_id", unique: true
     t.index ["user_id"], name: "index_study_records_on_user_id"

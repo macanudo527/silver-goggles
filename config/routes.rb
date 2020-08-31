@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     registrations: "users/registrations" }
   resources :users, only: [:show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :study_records
+  resources :study_records do
+    collection do
+      post :master
+    end
+  end
   resources :answers
   resources :study_sets
   resources :sources
