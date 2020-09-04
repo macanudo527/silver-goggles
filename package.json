@@ -8,7 +8,10 @@
     "@rails/webpacker": "4.2.2",
     "jquery": "^3.5.0",
     "minimist": "^1.2.5",
-    "turbolinks": "^5.2.0"
+    "serialize-javascript": "^4.0.0",
+    "sweetalert2": "^9.17.1",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.44.1"
   },
   "version": "0.1.0",
   "devDependencies": {

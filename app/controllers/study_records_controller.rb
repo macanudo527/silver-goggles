@@ -38,12 +38,12 @@ class StudyRecordsController < ApplicationController
   end
 
   def master 
-    @entry = params[:entry]
-    @study_record = StudyRecord.find_or_initialize_by(user: current_user, entry: @entry)
+    @entry_id = params[:study_record][:entry_id]
+    @study_record = StudyRecord.find_or_initialize_by(user: current_user, entry_id: @entry_id)
     @study_record.update!(deleted: true)
     respond_to do |format|
         format.html { redirect_to link_entries_path(@link) }
-        format.js { }
+        format.json { render json: @entry_id, status: :ok }
       end
   end
 
