@@ -34,9 +34,9 @@
 				    <% end %>
 				</td>
 			      <td><%= entry.definition %><%= entry.secondaries.count > 0 ? raw(" (<span class='alt-tab' id='tab-#{entry.id}'>Alternative definitions</span>)") : "" %></td>
-			      <td data-entry-id="<%= entry.id %>" class="master_entry_link">Master</td>
+			      <td><a data-entry-id="<%= entry.id %>" class="master_entry_link" tabindex="0">Master</a></td>
 			      <% if can? :edit, Entry %>
-			      	<td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %><%= link_to 'Delete', master_study_records_path(entry: entry.id), data: {:confirm => 'Are you sure?' }, :method => :post, remote: true, class: "delete_entry_link" %></td>
+			      	<td><%= link_to 'Edit', edit_link_entry_path(@link.id, entry), remote: true, class: "edit_entry_link" %></td>
 			      <% end %>
 			    </tr>
 			    <% if entry.secondaries.count > 0 %>

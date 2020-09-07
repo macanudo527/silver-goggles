@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-$("td.master_entry_link").on('click', function(){
+$("a.master_entry_link").on('click', function(){
 	Swal.fire({
 		title: 'Master this Word',
 		html: 
@@ -12,19 +12,20 @@ $("td.master_entry_link").on('click', function(){
 		showCancelButton: true,
 		confirmButtonText: 'Master it'
 	}).then((result) => {
-		$.ajax({ url: '/study_records/master.json', type: 'POST',
-      		beforeSend: function(xhr) {
-      			if (xhr && xhr.overrideMimeType) {
-      				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-      				xhr.overrideMimeType('application/json;charset=utf-8');}
-      			},
-      		data: { study_record: {entry_id: $(this).attr('data-entry-id') } },
-      		dataType: 'json',
-      		success: function(data, status, jqXHR) {// success callback
-     			$(`#entry-${data}`).remove();
-      		}
-    	}); 
-		if (result.value) {
+		if (result.isConfirmed) {
+			$.ajax({ url: '/study_records/master.json', type: 'POST',
+		  		beforeSend: function(xhr) {
+		  			if (xhr && xhr.overrideMimeType) {
+		  				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+		  				xhr.overrideMimeType('application/json;charset=utf-8');}
+		  			},
+		  		data: { study_record: {entry_id: $(this).attr('data-entry-id') } },
+		  		dataType: 'json',
+		  		success: function(data, status, jqXHR) {// success callback
+		 			$(`#entry-${data}`).remove();
+		  		}
+			}); 
+		
 			console.log(result.value);
 		}
 	})
