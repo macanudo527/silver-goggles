@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "entry selection before learning" do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
   let!(:link) { create(:link_with_entries) }
   let!(:source) { create(:source) }
   let(:priority_entry) { create(:priority_entry) }
@@ -40,9 +40,10 @@ RSpec.describe "entry selection before learning" do
 
     learn_first_article
 
-    accept_alert do
-        find("tr#entry-#{link.entries.first.id} a.delete_entry_link").click
-    end
+
+    find("tr#entry-#{link.entries.first.id} a.master_entry_link").click
+    
+    click_on "Master it"
 
     expect(page).not_to have_selector(:css, "tr#entry-#{link.entries.first.id}") 
   end
