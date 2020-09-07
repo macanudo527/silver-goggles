@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_022648) do
+ActiveRecord::Schema.define(version: 2020_09_07_044015) do
+
+  create_table "allowed_setting_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "setting_id", null: false
+    t.string "item_value"
+    t.string "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["setting_id"], name: "index_allowed_setting_values_on_setting_id"
+  end
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -68,6 +77,16 @@ ActiveRecord::Schema.define(version: 2020_08_08_022648) do
     t.datetime "pubdate"
   end
 
+  create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "description"
+    t.boolean "constrained"
+    t.string "data_type"
+    t.string "min_value"
+    t.string "max_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "url"
@@ -97,6 +116,18 @@ ActiveRecord::Schema.define(version: 2020_08_08_022648) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "setting_id", null: false
+    t.bigint "allowed_setting_value_id", null: false
+    t.string "unconstrained_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["allowed_setting_value_id"], name: "index_user_settings_on_allowed_setting_value_id"
+    t.index ["setting_id"], name: "index_user_settings_on_setting_id"
+    t.index ["user_id"], name: "index_user_settings_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -116,8 +147,12 @@ ActiveRecord::Schema.define(version: 2020_08_08_022648) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "allowed_setting_values", "settings"
   add_foreign_key "answers", "entries"
   add_foreign_key "answers", "users"
   add_foreign_key "study_records", "entries"
   add_foreign_key "study_records", "users"
+  add_foreign_key "user_settings", "allowed_setting_values"
+  add_foreign_key "user_settings", "settings"
+  add_foreign_key "user_settings", "users"
 end
