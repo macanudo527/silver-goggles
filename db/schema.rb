@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_044015) do
+ActiveRecord::Schema.define(version: 2020_09_09_235057) do
 
   create_table "allowed_setting_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "setting_id", null: false
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_044015) do
   create_table "user_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "setting_id", null: false
-    t.bigint "allowed_setting_value_id", null: false
+    t.bigint "allowed_setting_value_id"
     t.string "unconstrained_value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
