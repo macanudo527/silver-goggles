@@ -27,7 +27,7 @@ $("a.master_entry_link").on('click', function(){
 			}); 
 			
 			if (result.value) {
-				$.ajax({ url: '/user_settings', type: 'POST',
+				$.ajax({ url: '/user_settings.json', type: 'POST',
 					beforeSend: function(xhr) {
 						if (xhr && xhr.overrideMimeType) {
 							xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
