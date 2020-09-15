@@ -36,6 +36,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem "activesupport", ">= 6.0.3.1"
 gem "actionpack", ">= 6.0.3.2"
+gem "actionview", ">= 6.0.3.3"
 gem "activestorage", ">= 6.0.3.1"
 gem "inline_svg"
 
