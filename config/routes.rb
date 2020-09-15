@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   	resources :entries, controller: 'links/entries'  	
   end
   resources :clicks
+  resources :user_settings
 
   root to: "links#index"
 

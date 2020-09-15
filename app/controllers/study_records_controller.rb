@@ -44,6 +44,7 @@ class StudyRecordsController < ApplicationController
     respond_to do |format|
         format.html { redirect_to link_entries_path(@link) }
         format.json { render json: @entry_id, status: :ok }
+        format.js { }
       end
   end
 

@@ -43,9 +43,20 @@ RSpec.describe "entry selection before learning" do
 
     find("tr#entry-#{link.entries.first.id} a.master_entry_link").click
     
+    # Checking don't show the warning
+    first("input#swal2-checkbox").check
+
+    expect(page).to have_content("Master it")
+
     click_on "Master it"
 
     expect(page).not_to have_selector(:css, "tr#entry-#{link.entries.first.id}") 
+
+    first("a.master_entry_link").click
+
+    #Does the warning display after we check it?
+    expect(page).not_to have_content("Master it")    
+
   end
 
   scenario "when entries have secondary meanings" do 

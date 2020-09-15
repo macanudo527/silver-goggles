@@ -19,15 +19,33 @@ $("a.master_entry_link").on('click', function(){
 		  				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
 		  				xhr.overrideMimeType('application/json;charset=utf-8');}
 		  			},
-		  		data: { study_record: {entry_id: $(this).attr('data-entry-id') } },
+		  		data: { study_record: {entry_id: $(this).attr('data-entryid') } },
 		  		dataType: 'json',
 		  		success: function(data, status, jqXHR) {// success callback
 		 			$(`#entry-${data}`).remove();
 		  		}
 			}); 
-		
-			console.log(result.value);
+			
+			if (result.value) {
+				$.ajax({ url: '/user_settings', type: 'POST',
+					beforeSend: function(xhr) {
+						if (xhr && xhr.overrideMimeType) {
+							xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+							xhr.overrideMimeType('application/json;charset=utf-8');}
+						},
+						data: { user_setting: {setting_id: 1, unconstrained_value: "false" } },
+						dataType: 'json',
+			  		success: function(data, status, jqXHR) {// success callback
+			  			
+			  		}
+		  		}); 
+
+		  		//Prevent the master warning from showing without refreshing page
+		  		$("a.master_entry_link").off('click');			
+			}
+
 		}
 	})
 	$(this).off( event );
+	return false;
 });

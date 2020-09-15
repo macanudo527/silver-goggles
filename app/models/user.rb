@@ -16,9 +16,14 @@ class User < ApplicationRecord
 
   after_create :default_settings
 
+  def is_master_warning_showable 
+    self.user_settings.find_by(setting_id: 1).unconstrained_value == "true"
+  end
+
   private
     def default_settings
       @user = User.last
-      @user.user_settings.create!(setting_id: 1, unconstrained_value: false, allowed_setting_value: nil)
+      # by default show warnings when user masters a word
+      @user.user_settings.create!(setting_id: 1, unconstrained_value: "true", allowed_setting_value: nil)
     end
 end
