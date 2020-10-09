@@ -14,6 +14,10 @@ class User < ApplicationRecord
   	end
   end
 
+  include Gravtastic
+  gravtastic :secure => true,
+    :default => "mm"
+
   after_create :default_settings
 
   def is_master_warning_showable 

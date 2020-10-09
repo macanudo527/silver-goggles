@@ -1,64 +1,36 @@
 
-<div class="userdash-container">
-	<div class="profile-sidebar">
+<div class="profile-sidebar">
+	<div class="sidebar-head">
+		<div class="gravatar-avatar">
+			<%= image_tag current_user.gravatar_url(:size => 200), :class => "grav-img" %>
+		</div>
 		<div class="user-email">
 			<%= current_user.email %>
 		</div>
 		<div class="user-stats">
-			<p>Words learned</p>
-			<p class="stat-numbers"><%= @total_words %></p>
-			<p>Articles read</p>
-			<p class="stat-numbers"><%= @links.count %></p>
-			
-		</div>
-
-	</div>
-	<div class="profile-links">
-		 <div class="button-box">
-		 	<div class="sb-container" id="review-all">
-		 		<%= link_to "Review all #{pluralize(StudyRecord.where("due < ?", Time.now).count, 'word') }", study_sets_path, class: "card-button" %>
+			<div class="stat-col">
+				<p class="stat-numbers"><%= @total_words %></p>
+				<p>Words learned</p>
 			</div>
-		 </div>
-		 <% @links.each_with_index do |link, index| %>
-		 <div class="profile-link">
-		 	<div class="link-icon">
-		 		<%= image_tag link.source.image %>
-		 	</div>
-		 	<div class="link-text">
-				<div class="link-header">
-					<h4>
-				  		<%= link_to link.title, clicks_path(:link => link.id), :method => :post %>
-					</h4>
-				</div>
-				<div class="dropbtn link-menu" id="link-dropdown">
-					<span>&#8942;</span>				
-					<div class="link-dropdown" id="myDropdown">
-						<ul>
-							<li>
-								<a href="<%= link_entries_path(link.id, :edit => true) %>"><%= image_tag "list", class: "link-menu-icon" %>Edit list</a>
-							</li>
-							<li>
-								<%= link_to link, method: "delete" do %>
-									<%= image_tag "trashcan", class: "link-menu-icon" %>Delete list
-								<% end %>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="btn-group" role="group"  aria-label="Links">
-				  	<% study_set = link.study_sets.find_by(user_id: current_user.id) %>
-				  	<div class="link-word-count">
-					  <% if !study_set.nil? %>
-					  	<%= pluralize(study_set.study_records.where("due < ?", Time.now).count, 'word') %> due
-					  <% end %>
-					</div>
-				  	<% if !study_set.nil? %>
-				  		<%= link_to "Review Now", study_set_path(study_set), class: "card-button" %>
-				  	<% end %>
-				</div>
-			</div>
+			<div class="stat-col">
+				<p class="stat-numbers"><%= @links.count %></p>
+				<p>Articles read</p>
+			</div>		
 		</div>
-		<% end %>
 	</div>
+	<div class="dashboard-tab">
+			<%= active_link_to "My Articles", user_path(current_user), active: :exact %>
+	</div>
+	<div class="dashboard-tab">
+			<%= active_link_to "Mastered Words", user_path(current_user, tab: "deleted-words"), active: { tab: "deleted-words" } %>
+	</div>
+
 </div>
+<% if params[:tab] == "deleted-words" %>
+	<%= render partial: "deleted-words" %>
+<% else %>
+	<%= render partial: "dashboard-links" %>
+<% end %> 
+
+
+<%= javascript_pack_tag 'alt-tab-shower', 'data-turbolinks-track': 'reload' %>

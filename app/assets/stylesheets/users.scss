@@ -5,15 +5,48 @@
 	display: flex;
 }
 
+html { 
+	overflow-y: scroll;
+ }
+
 .profile-sidebar {
 	width: 200px;
-	margin: 1em;
+	position: fixed;
+	z-index: 1;
+	top: 60px;
+	left: 0;
+	overflow-x: hidden;
+	padding-top: 10px;
+	border-right: 1px solid #DFDFDF;
+	height: 100%;
+	a {
+		padding: 6px 8px 6px 16px;
+	    text-decoration: none;
+	    font-size: 22px;
+	    color: #818181;
+	    display: block;
+	    text-align: center;
+	    &.active {
+	    	color: red;
+	    	background-color: #EEE;
+	    }
+	    &:hover {
+	    	background-color: #EEE;
+	    }
+	}
+	.sidebar-head {
+		margin: 1em;
+	}
 	.user-email {
 		font-weight: 800;
 		margin-bottom: 1em;
-		font-size: 1.3em;
+		font-size: 1em;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		text-align:	center;
+	}
+	.user-stats {
+		height: 3em;
 	}
 	p { 
 		margin: 0px;
@@ -24,14 +57,29 @@
 	}
 }
 
-.profile-links {
+.profile-links, .deleted-words {
 	flex: 1 0 auto;
 	width: 50%;
+	margin-right: 20px;
 	h4 { 
 		padding: 0.25em 0;
 		margin: 0;
 	}
 }
+.profile-links {
+	margin-left: 200px;
+}
+.deleted-words {
+	margin-left: 210px;
+	table tr td {
+		font-size: 14px;
+	}
+}
+
+.master-col {
+	min-width: 6em;
+}
+
 
 .profile-link {
 	border-top: 1px solid #DFDFDF;
@@ -48,6 +96,18 @@
 			font-size: 16px;
 		}
 	}
+}
+
+img.grav-img {
+	border-radius: 50%;
+	max-width: 100%;
+	height: auto;
+}
+
+.stat-col {
+	text-align: center;
+	width: 50%;
+	float: right;
 }
 
 .link-icon img {

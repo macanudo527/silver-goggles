@@ -28,17 +28,28 @@ gem 'feedjira'
 gem 'httparty'
 gem 'devise'
 gem 'kuromoji-ruby'
+
+# used to manipulate the xml rss
 gem 'loofah'
 gem 'activerecord-import'
+
+# java support needed for kuromoji
 gem 'rjb', '~> 1.6', '>= 1.6.1'
 gem 'validate_url'
 gem 'rails_admin', '~> 2.0'
+
+# enables editor and other roles
 gem 'cancancan'
 gem "activesupport", ">= 6.0.3.1"
 gem "actionpack", ">= 6.0.3.2"
 gem "actionview", ">= 6.0.3.3"
 gem "activestorage", ">= 6.0.3.1"
 gem "inline_svg"
+
+# enables gravatar support
+gem "gravtastic"
+
+gem "active_link_to"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

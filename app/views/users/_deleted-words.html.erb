@@ -1,0 +1,48 @@
+<div class="deleted-words">
+	<table>
+		<thead>
+		  <tr>
+		    <th colspan="2">Word</th>
+		    <th>Definition</th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <% current_user.entries.deleted.each do |entry| %>
+		    <tr id="entry-<%= entry.id %>">
+		   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
+		    <td colspan="2" class="word">
+			    <% if entry.base_word == entry.reading %>
+			      <%= entry.base_word %>
+			    <% else %>			    
+			      <span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span>
+			    <% end %>
+			</td>
+		      <td><%= entry.definition %><%= entry.secondaries.count > 0 ? raw(" (<span class='alt-tab' id='tab-#{entry.id}'>Alternative definitions</span>)") : "" %></td>
+		      <td class="master-col"><%= link_to 'Un-Master', master_study_records_path(study_record: {entry_id: entry.id}), 
+		      	method: :post, class: "master_entry_link", tabindex: '0', 
+		      	data: { entryid: entry.id} , remote: true %></td>
+		    </tr>
+		    <% if entry.secondaries.count > 0 %>
+		    	<% entry.secondaries.each do |entry| %>
+
+		    		<tr class="tab-alt-content nav-<%= entry.primary_id %>" id="entry-<%= entry.id %>">
+						<td></td>
+						<td>				    
+							<% if entry.base_word == entry.reading %>
+			      				<%= entry.base_word %>
+			    			<% else %>			    
+			      				<span class="tooltip"><%= entry.base_word %><span class="tooltiptext"><%= entry.reading %></span></span>
+			    			<% end %>
+			    		</td>
+						<td><%= entry.definition %></td>
+						<td class="master-col"><a data-entry-id="<%= entry.id %>" class="master_entry_link" tabindex="0">Un-Master</a></td>
+					</tr>
+				
+		    	<% end %>
+			<% end %>
+		  <% end %>
+		</tbody>
+	</table>
+</div>
