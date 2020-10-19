@@ -9,8 +9,8 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  <% current_user.entries.deleted.each do |entry| %>
-		    <tr id="entry-<%= entry.id %>">
+		  <% @deleted_words.each do |entry| %>
+		    <tr class="main-entry" id="entry-<%= entry.id %>">
 		   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
 		    <td colspan="2" class="word">
 			    <% if entry.base_word == entry.reading %>
@@ -45,4 +45,5 @@
 		  <% end %>
 		</tbody>
 	</table>
+	<%== pagy_nav(@pagy) %>
 </div>

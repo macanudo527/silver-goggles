@@ -1,0 +1,1 @@
+import '../src/javascripts/pagy.js.erb'

@@ -59,20 +59,20 @@ html {
 
 .profile-links, .deleted-words {
 	flex: 1 0 auto;
-	width: 50%;
-	margin-right: 20px;
+	width: 50%;	
+	margin-left: 200px;
 	h4 { 
 		padding: 0.25em 0;
 		margin: 0;
 	}
 }
-.profile-links {
-	margin-left: 200px;
-}
+
 .deleted-words {
-	margin-left: 210px;
-	table tr td {
-		font-size: 14px;
+	table {
+		border-spacing: 0;
+		tr td {
+			font-size: 14px;			
+		}
 	}
 }
 

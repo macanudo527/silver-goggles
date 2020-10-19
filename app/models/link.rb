@@ -8,4 +8,6 @@ class Link < ApplicationRecord
 
   	validates_presence_of :title
   	validates :url, url: { schemes: ['https', 'http'] }
+
+  	scope :ordered_by_newest, -> { order(created_at: :desc) }
 end

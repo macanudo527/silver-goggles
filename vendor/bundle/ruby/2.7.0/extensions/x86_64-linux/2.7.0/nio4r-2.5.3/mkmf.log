@@ -49,12 +49,11 @@ have_type: checking for port_event_t in poll.h... -------------------- no
 
 "gcc -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/x86_64-linux -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/backward -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0 -I. -I/home/jon_snow/.rbenv/versions/2.7.0/include    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC   -c conftest.c"
 conftest.c:6:9: error: unknown type name ‘port_event_t’
- typedef port_event_t conftest_type;
-         ^~~~~~~~~~~~
+    6 | typedef port_event_t conftest_type;
+      |         ^~~~~~~~~~~~
 cc1: warning: unrecognized command line option ‘-Wno-self-assign’
 cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
-cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -84,8 +83,8 @@ have_header: checking for sys/event.h... -------------------- no
 
 "gcc -E -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/x86_64-linux -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/backward -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0 -I. -I/home/jon_snow/.rbenv/versions/2.7.0/include    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 conftest.c:3:10: fatal error: sys/event.h: No such file or directory
- #include <sys/event.h>
-          ^~~~~~~~~~~~~
+    3 | #include <sys/event.h>
+      |          ^~~~~~~~~~~~~
 compilation terminated.
 checked program was:
 /* begin */
@@ -100,8 +99,8 @@ have_type: checking for port_event_t in port.h... -------------------- no
 
 "gcc -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/x86_64-linux -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/backward -I/home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0 -I. -I/home/jon_snow/.rbenv/versions/2.7.0/include    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC   -c conftest.c"
 conftest.c:3:10: fatal error: port.h: No such file or directory
- #include <port.h>
-          ^~~~~~~~
+    3 | #include <port.h>
+      |          ^~~~~~~~
 compilation terminated.
 checked program was:
 /* begin */

@@ -1,5 +1,5 @@
 current directory: /home/jon_snow/workspace/news_assist/vendor/bundle/ruby/2.7.0/gems/rjb-1.6.2/ext
-/home/jon_snow/.rbenv/versions/2.7.0/bin/ruby -I /home/jon_snow/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20200915-25913-pj202b.rb extconf.rb
+/home/jon_snow/.rbenv/versions/2.7.0/bin/ruby -I /home/jon_snow/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20201012-153075-1i3dcqn.rb extconf.rb
 checking for javah... yes
 checking for jni.h... yes
 checking for locale_charset() in iconv.h... no
@@ -17,131 +17,141 @@ make "DESTDIR="
 compiling load.c
 load.c: In function ‘load_bridge’:
 load.c:326:21: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-     nmethod[0].name = "call";
-                     ^
+  326 |     nmethod[0].name = "call";
+      |                     ^
 load.c:327:26: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-     nmethod[0].signature = "(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;";
-                          ^
+  327 |     nmethod[0].signature = "(Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;";
+      |                          ^
 load.c: In function ‘rjb_create_jvm’:
 load.c:349:9: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-       { "-Xrs", NULL },
-         ^~~~~~
+  349 |       { "-Xrs", NULL },
+      |         ^~~~~~
 load.c:356:9: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-       { "DUMMY", NULL },   /* for classpath count */
-         ^~~~~~~
+  356 |       { "DUMMY", NULL },   /* for classpath count */
+      |         ^~~~~~~
 load.c: At top level:
 cc1: warning: unrecognized command line option ‘-Wno-self-assign’
 cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
-cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
 compiling riconv.c
 riconv.c: In function ‘encode_to_cesu8’:
 riconv.c:221:25: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-     size_t len = strlen(p);
-                         ^
-In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/defines.h:145:0,
+  221 |     size_t len = strlen(p);
+      |                         ^
+      |                         |
+      |                         const unsigned char *
+In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/defines.h:145,
                  from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/ruby.h:29,
                  from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33,
                  from riconv.c:18:
-/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘const unsigned char *’
- extern size_t strlen (const char *__s)
-               ^~~~~~
+/usr/include/string.h:385:35: note: expected ‘const char *’ but argument is of type ‘const unsigned char *’
+  385 | extern size_t strlen (const char *__s)
+      |                       ~~~~~~~~~~~~^~~
 riconv.c: In function ‘encode_to_utf8’:
 riconv.c:256:25: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-     size_t len = strlen(p);
-                         ^
-In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/defines.h:145:0,
+  256 |     size_t len = strlen(p);
+      |                         ^
+      |                         |
+      |                         const unsigned char *
+In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/defines.h:145,
                  from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/ruby.h:29,
                  from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33,
                  from riconv.c:18:
-/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘const unsigned char *’
- extern size_t strlen (const char *__s)
-               ^~~~~~
+/usr/include/string.h:385:35: note: expected ‘const char *’ but argument is of type ‘const unsigned char *’
+  385 | extern size_t strlen (const char *__s)
+      |                       ~~~~~~~~~~~~^~~
 riconv.c:259:15: warning: unused variable ‘i’ [-Wunused-variable]
-     int sval, i;
-               ^
-In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33:0,
+  259 |     int sval, i;
+      |               ^
+In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33,
                  from riconv.c:18:
 riconv.c: In function ‘exticonv_local_to_utf8’:
 /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/ruby.h:603:27: warning: pointer targets in passing argument 1 of ‘contains_surrogate_pair’ differ in signedness [-Wpointer-sign]
- #define StringValuePtr(v) rb_string_value_ptr(&(v))
-                           ^
+  603 | #define StringValuePtr(v) rb_string_value_ptr(&(v))
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           char *
 riconv.c:330:33: note: in expansion of macro ‘StringValuePtr’
-     if (contains_surrogate_pair(StringValuePtr(local_string)))
-                                 ^~~~~~~~~~~~~~
-riconv.c:178:12: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
- static int contains_surrogate_pair(const unsigned char* p)
-            ^~~~~~~~~~~~~~~~~~~~~~~
-In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33:0,
+  330 |     if (contains_surrogate_pair(StringValuePtr(local_string)))
+      |                                 ^~~~~~~~~~~~~~
+riconv.c:178:57: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
+  178 | static int contains_surrogate_pair(const unsigned char* p)
+      |                                    ~~~~~~~~~~~~~~~~~~~~~^
+In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33,
                  from riconv.c:18:
 /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/ruby.h:603:27: warning: pointer targets in passing argument 1 of ‘encode_to_cesu8’ differ in signedness [-Wpointer-sign]
- #define StringValuePtr(v) rb_string_value_ptr(&(v))
-                           ^
+  603 | #define StringValuePtr(v) rb_string_value_ptr(&(v))
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           char *
 riconv.c:332:40: note: in expansion of macro ‘StringValuePtr’
-         local_string = encode_to_cesu8(StringValuePtr(local_string));
-                                        ^~~~~~~~~~~~~~
-riconv.c:219:14: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
- static VALUE encode_to_cesu8(const unsigned char* p)
-              ^~~~~~~~~~~~~~~
-In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33:0,
+  332 |         local_string = encode_to_cesu8(StringValuePtr(local_string));
+      |                                        ^~~~~~~~~~~~~~
+riconv.c:219:51: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
+  219 | static VALUE encode_to_cesu8(const unsigned char* p)
+      |                              ~~~~~~~~~~~~~~~~~~~~~^
+In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33,
                  from riconv.c:18:
 riconv.c: In function ‘exticonv_utf8_to_local’:
 /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/ruby.h:603:27: warning: pointer targets in passing argument 1 of ‘contains_auxchar’ differ in signedness [-Wpointer-sign]
- #define StringValuePtr(v) rb_string_value_ptr(&(v))
-                           ^
+  603 | #define StringValuePtr(v) rb_string_value_ptr(&(v))
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           char *
 riconv.c:355:26: note: in expansion of macro ‘StringValuePtr’
-     if (contains_auxchar(StringValuePtr(utf8_string)))
-                          ^~~~~~~~~~~~~~
-riconv.c:195:12: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
- static int contains_auxchar(const unsigned char* p)
-            ^~~~~~~~~~~~~~~~
-In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33:0,
+  355 |     if (contains_auxchar(StringValuePtr(utf8_string)))
+      |                          ^~~~~~~~~~~~~~
+riconv.c:195:50: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
+  195 | static int contains_auxchar(const unsigned char* p)
+      |                             ~~~~~~~~~~~~~~~~~~~~~^
+In file included from /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby.h:33,
                  from riconv.c:18:
 /home/jon_snow/.rbenv/versions/2.7.0/include/ruby-2.7.0/ruby/ruby.h:603:27: warning: pointer targets in passing argument 1 of ‘encode_to_utf8’ differ in signedness [-Wpointer-sign]
- #define StringValuePtr(v) rb_string_value_ptr(&(v))
-                           ^
+  603 | #define StringValuePtr(v) rb_string_value_ptr(&(v))
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           |
+      |                           char *
 riconv.c:357:38: note: in expansion of macro ‘StringValuePtr’
-         utf8_string = encode_to_utf8(StringValuePtr(utf8_string));
-                                      ^~~~~~~~~~~~~~
-riconv.c:254:14: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
- static VALUE encode_to_utf8(const unsigned char* p)
-              ^~~~~~~~~~~~~~
+  357 |         utf8_string = encode_to_utf8(StringValuePtr(utf8_string));
+      |                                      ^~~~~~~~~~~~~~
+riconv.c:254:50: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
+  254 | static VALUE encode_to_utf8(const unsigned char* p)
+      |                             ~~~~~~~~~~~~~~~~~~~~~^
 At top level:
 riconv.c:43:26: warning: ‘CS_UTF8’ defined but not used [-Wunused-const-variable=]
- static const char* const CS_UTF8 = "UTF-8";
-                          ^~~~~~~
+   43 | static const char* const CS_UTF8 = "UTF-8";
+      |                          ^~~~~~~
 riconv.c:42:26: warning: ‘CS_SJIS’ defined but not used [-Wunused-const-variable=]
- static const char* const CS_SJIS = "SHIFT_JIS";
-                          ^~~~~~~
+   42 | static const char* const CS_SJIS = "SHIFT_JIS";
+      |                          ^~~~~~~
 riconv.c:41:26: warning: ‘CS_CP932’ defined but not used [-Wunused-const-variable=]
- static const char* const CS_CP932 = "CP932";
-                          ^~~~~~~~
+   41 | static const char* const CS_CP932 = "CP932";
+      |                          ^~~~~~~~
 riconv.c:40:26: warning: ‘CS_EUCJP’ defined but not used [-Wunused-const-variable=]
- static const char* const CS_EUCJP = "EUC-JP";
-                          ^~~~~~~~
+   40 | static const char* const CS_EUCJP = "EUC-JP";
+      |                          ^~~~~~~~
 riconv.c:36:26: warning: ‘LOCALE_UTF8_TABLE’ defined but not used [-Wunused-const-variable=]
- static const char* const LOCALE_UTF8_TABLE[] = { "ja_JP.UTF-8", "ja_JP.utf8" };
-                          ^~~~~~~~~~~~~~~~~
+   36 | static const char* const LOCALE_UTF8_TABLE[] = { "ja_JP.UTF-8", "ja_JP.utf8" };
+      |                          ^~~~~~~~~~~~~~~~~
 riconv.c:35:26: warning: ‘LOCALE_SJIS_TABLE’ defined but not used [-Wunused-const-variable=]
- static const char* const LOCALE_SJIS_TABLE[] = { "japanese.sjis", "ja_JP.SJIS" };
-                          ^~~~~~~~~~~~~~~~~
+   35 | static const char* const LOCALE_SJIS_TABLE[] = { "japanese.sjis", "ja_JP.SJIS" };
+      |                          ^~~~~~~~~~~~~~~~~
 riconv.c:34:26: warning: ‘LOCALE_EUC_TABLE’ defined but not used [-Wunused-const-variable=]
- static const char* const LOCALE_EUC_TABLE[] = { "japanese", "ja_JP.eucJP", "japanese.euc", "ja_JP", "ja_JP.ujis" };
-                          ^~~~~~~~~~~~~~~~
+   34 | static const char* const LOCALE_EUC_TABLE[] = { "japanese", "ja_JP.eucJP", "japanese.euc", "ja_JP", "ja_JP.ujis" };
+      |                          ^~~~~~~~~~~~~~~~
 riconv.c:28:26: warning: ‘NL_SJIS_TABLE’ defined but not used [-Wunused-const-variable=]
- static const char* const NL_SJIS_TABLE[] = { "SHIFT_JIS", "SHIFT_JISX0213", "WINDOWS-31J" };
-                          ^~~~~~~~~~~~~
+   28 | static const char* const NL_SJIS_TABLE[] = { "SHIFT_JIS", "SHIFT_JISX0213", "WINDOWS-31J" };
+      |                          ^~~~~~~~~~~~~
 riconv.c:27:26: warning: ‘NL_EUC_TABLE’ defined but not used [-Wunused-const-variable=]
- static const char* const NL_EUC_TABLE[] = { "EUC-JISX0213", "EUC-JP", "EUC-JP-MS" };
-                          ^~~~~~~~~~~~
+   27 | static const char* const NL_EUC_TABLE[] = { "EUC-JISX0213", "EUC-JP", "EUC-JP-MS" };
+      |                          ^~~~~~~~~~~~
 cc1: warning: unrecognized command line option ‘-Wno-self-assign’
 cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
-cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
 compiling rjb.c
 compiling rjbexception.c
 linking shared-object rjbcore.so
 
 current directory: /home/jon_snow/workspace/news_assist/vendor/bundle/ruby/2.7.0/gems/rjb-1.6.2/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 rjbcore.so ./.gem.20200915-25913-hqevop
+/usr/bin/install -c -m 0755 rjbcore.so ./.gem.20201012-153075-rxrh06
