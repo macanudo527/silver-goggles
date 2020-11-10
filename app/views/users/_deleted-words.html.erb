@@ -4,13 +4,22 @@
 		  <tr>
 		    <th colspan="2">Word</th>
 		    <th>Definition</th>
-		    <th></th>
-		    <th></th>
+		    <th>		    	
+		    	<div class="sort-dropdown">
+		    		<button class="dropbtn">Sort &#9660;</button>
+		    		<div id="deleteOrder" class="dropdown-content">
+		    			<%= active_link_to "Latest", user_path(current_user, tab: "deleted-words", sort: "study_records.updated_at DESC"), active: { tab: "deleted-words" } %>
+		    			<%= active_link_to "Oldest", user_path(current_user, tab: "deleted-words", sort: "study_records.updated_at ASC"), active: { tab: "deleted-words" } %>
+		    			<a href="#">あ→ん</a>
+		    			<a href="#">ん→あ</a>
+		    		</div>
+		    	</div>
+		    </th>
 		  </tr>
 		</thead>
 		<tbody>
-		  <% @deleted_words.each do |entry| %>
-		    <tr class="main-entry" id="entry-<%= entry.id %>">
+		  <% @deleted_words.each_with_index do |entry, idx| %>
+		    <tr class="main-entry <%= "striped" if (idx % 2) == 0 %>" id="entry-<%= entry.id %>">
 		   	<!-- If the reading is different from the base word, the base word probably has kanji and needs a tooltip that displays it. -->
 		    <td colspan="2" class="word">
 			    <% if entry.base_word == entry.reading %>

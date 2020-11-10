@@ -9,7 +9,7 @@ RSpec.describe "User clicks learn on a link" do
 
   	sign_in user
   	visit root_path
-  	click_on "Learn"
+  	first('.learnButton').click
 
   	# Check whether the app saves the state of the checkboxes
   	checked_id = first("input[type='checkbox']").uncheck[:id]
@@ -56,13 +56,13 @@ RSpec.describe "User clicks learn on a link" do
   scenario "Editor edits an entry" do
     sign_in editor
     visit root_path
-    click_on "Learn"
+    first('.learnButton').click
 
     # Get the id of the first entry under common words
     word_id = page.first(:xpath, "//*[text()='#{link.entries[0].base_word}']/ancestor::*[self::tr][1]")[:id]
 
     # Click the edit button for the first entry
-    page.first(:xpath, "//*[text()='#{link.entries[0].base_word}']/ancestor::*[self::tr]/td[4]/a").click
+    page.first(:xpath, "//*[text()='#{link.entries[0].base_word}']/ancestor::*[self::tr]/td[5]/a").click
 
     find('#entry_priority').check
     click_on "Update Entry"

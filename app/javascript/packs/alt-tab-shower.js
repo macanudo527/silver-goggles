@@ -1,6 +1,4 @@
 // hide all the alternative tabs initially
-$('.tab-alt-content').hide();
-
 $('.alt-tab').click(function(){	
 	var $altTableSection = ".nav-".concat(event.srcElement.id.substring(4));
 	if (!$($altTableSection).is(':visible')) {

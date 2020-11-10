@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :study_records
   has_many :user_settings
   has_many :entries, through: :study_records do 
-  	def deleted
-      where("study_records.deleted = ?", true)
+  	def deleted(order = "study_records.updated_at DESC")
+      where("study_records.deleted = ?", true).order(order)
   	end
   end
 

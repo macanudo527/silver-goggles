@@ -1,6 +1,96 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.dropbtn {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	cursor: pointer;
+	&:focus {
+		outline: none;
+	}
+}
+.sort-dropdown {
+	position: relative;
+	display: inline-block;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	right: -30px;
+	min-width: 100px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	a {
+		color: black;
+		padding: 6px 8px;
+		text-decoration: none;
+		display: block;
+		&:hover {
+			background-color: #ddd;
+		}
+	}
+}
+
+
+.striped {
+	background-color: #EEE;
+}
+
+.tab-alt-content {
+	display: none;
+}
+
+.pagy-nav {
+	font-size: 0px;
+	padding: 14px 0;
+	span {
+		font-size: 16px;
+		padding: 8px 16px;
+		margin:	0 8px;
+		border-radius: 5px;
+		&:hover:not(.disabled) {
+			background-color: #DDD;
+		}
+		&.active {
+			color: white;
+			background-color: red;
+			&:hover {
+				background-color: red;
+			}			
+		}
+
+		a:not(.disabled) {
+			text-decoration: none;
+			color: black;
+			&:visited {
+				color: black;
+			}
+			&:hover {
+				background-color: inherit;
+			}
+		}
+		&.prev, &.next {
+			color: white;
+			background-color: #111;
+			&:hover:not(.disabled) {
+				background-color: #222;
+			}
+			a:visited {
+				color: white;
+			}
+			a:hover:not(.disabled) {
+				background-color: #222;
+			}
+		}
+		&.disabled {
+			background-color: #DDD;
+		}
+	}
+
+}
+
 .userdash-container {
 	display: flex;
 }
