@@ -4,7 +4,7 @@ module LinkManager
 
 	class KyodoProcessor < ApplicationService
 
-		SOURCE_URL = "https://this.kiji.is/-/feed/posts/rss"
+		SOURCE_URL = "view-source:https://mainichi.jp/rss/etc/mainichi-flash.rss"
 		SOURCE_ID = Source.where(title: 'Kyodo').first.id
 		SOURCE_CSS = ["div.main__articleBody"]
 		PAGER_CSS = "li.articlePagerNext"
