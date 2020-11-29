@@ -9,6 +9,6 @@
 # The edict file with the first lines of symbols removed.  The last few newlines have also been removed.
 # Edict file should be converted to UTF8 for maximum compatiblity
 
-# require_relative('seeds/entry_seeds')
-# require_relative('seeds/source_seeds')
+require_relative('seeds/entry_seeds')
+require_relative('seeds/source_seeds')
 require_relative('seeds/setting_seeds')

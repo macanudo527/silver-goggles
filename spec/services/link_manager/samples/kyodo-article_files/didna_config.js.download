@@ -1,0 +1,510 @@
+var didna = window.didna || {};
+didna.cmd = didna.cmd || [];
+
+if(typeof googletag === 'undefined'){
+  var googletag = googletag || {cmd: []};
+}
+googletag.cmd.push(function(){
+    //googletag.pubads().setRequestNonPersonalizedAds(0);
+    googletag.pubads().setForceSafeFrame(false);
+    googletag.pubads().setCentering(false);
+});
+const customBucket = {
+  'buckets': [
+    {
+      'precision': 0,
+      'max': 4.50,
+      'increment': 0.01
+    },
+    {
+      'precision': 0,
+      'max': 20.00,
+      'increment': 0.5
+    }
+  ]
+};
+function getMediaLayout() {
+  const regEx = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/i;
+  const width = window.innerWidth;
+  if (width < 768) {
+    return "mobile";
+  } else if (width < 993) {
+    return "tablet";
+  } else {
+    let devc = navigator.userAgent.match(regEx);
+    if (devc == null) {
+      return "desktop";
+    } else {
+      return "mobile";
+    }
+  }
+}
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+function checkUsOut() {
+  window.open("http://didna.io/?utm_source=didna&utm_medium=logo&utm_campaign=sticky", "_blank");
+}
+function removeSticky() {
+  didna.cmd.push(function () {
+    didna.removeAdUnits("bottom_adhesion_2");
+  });
+  var elem = document.getElementById("divSticky-01-Container");
+  elem.parentNode.removeChild(elem);
+}
+var stickyDemo = getUrlParameter('didna');
+function genSticky(){
+  var gptStickyAdSlots = [];
+    var stickyDiv = document.createElement("div");
+    if (stickyDemo == "sticky"){
+      stickyDiv.innerHTML = '<div class="adFooterDFPMobile" id="divSticky-01-Container" style="visibility: visible;"><div id="divSticky-01" class="adFooterDFPMobileAd"><div class="didna-adh-ad-close-outer" onclick="removeSticky()"><div class="didna-adh-ad-close-tab"><div class="didna-adh-close-x"></div></div></div><div id="bottom_adhesion_2"></div></div></div>';
+      var stickyLocation = document.getElementsByTagName("body")[0];
+      var styleStickyContainer = ".adFooterDFPMobile,.adHeaderDFPMobile{position:fixed!important;text-align:center!important;bottom:0!important;padding:5px 5px 0 5px!important;z-index:999999!important;display:block!important;left:50%!important;margin-left:-369px;border:none!important;background-color:#dfdfdf!important;-moz-border-radius:5px 5px 0 0!important;border-radius:5px 5px 0 0!important;box-shadow:0 1px 10px -1px #464646!important}.didna-adh-ad-close-outer{position:absolute;top:10px;margin-left:-32px;width:30px;height:30px;box-sizing:border-box!important}.didna-adh-ad-close-tab{border:4px solid #dfdfdf;margin-left:auto!important;background:#fff!important;font:normal 12px/150% Arial,Helvetica,sans-serif!important;color:#565656!important;text-decoration:none!important;width:30px;height:30px;-moz-border-radius:4px;border-radius:4px;-webkit-box-pack:center!important;-ms-flex-pack:center!important;justify-content:center!important;display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-align:center!important;-ms-flex-align:center!important;align-items:center!important}.didna-adh-ad-close-tab:hover{cursor:pointer!important;background-color:#fff!important}.didna-adh-close-x{width:16px!important;height:16px!important;position:relative!important;margin:0!important;box-sizing:border-box!important}.didna-adh-close-x:after,.didna-adh-close-x:before{position:absolute!important;left:8px!important;content:' ';height:15px!important;width:2px!important;background-color:#c1c1c1!important}.didna-adh-close-x:before{transform:rotate(45deg)!important}.didna-adh-close-x:after{transform:rotate(-45deg)!important}.didna-adh-ad-close-tab span{display:inline-flex!important;margin-right:5px;padding-right:5px;border-right:1px solid #c2c2c2!important;color:#0e76bc!important}.didna-adh-ad-close-tab:hover .didna-adh-close-x{border-color:#939393 transparent transparent #939393}.adFooterDFPMobileAd,.adHeaderDFPMobileAd{display:inline-block}@media only screen and (max-width:755px){.adFooterDFPMobile,.adHeaderDFPMobile{padding:5px 5px 0 5px!important;margin-left:-165px!important;box-shadow:0 1px 7px -1px #464646!important}}@media screen and (max-width:374px){.didna-adh-ad-close-tab{border:3px solid #dfdfdf}.didna-adh-ad-close-outer{width:20px;height:20px;top:-23px;left:7px;margin-left:0}.didna-adh-ad-close-tab{width:20px;height:20px}}";
+    } else {
+      stickyDiv.innerHTML = '<div class="adFooterDFPMobile" id="divSticky-01-Container" style="visibility: visible;"><div id="divSticky-01" class="adFooterDFPMobileAd"><div id="bottom_adhesion_2"></div></div><div class="didna-adh-ad-close-outer" onclick="removeSticky()"><div class="didna-adh-ad-close-tab"><div class="didna-adh-close-x"></div></div></div></div>';
+      var stickyLocation = document.getElementsByTagName("body")[0];
+      var styleStickyContainer = ".adFooterDFPMobile,.adHeaderDFPMobile{position:fixed!important;text-align:center!important;bottom:0!important;padding:2px 0 0 0!important;z-index:999999!important;display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-pack:center!important;-ms-flex-pack:center!important;justify-content:center!important;width:100%;border:none!important;background:rgba(237,237,237,.7)!important}.didna-adh-ad-close-outer{position:absolute;top:10px;right:10px;width:30px;height:30px;box-sizing:border-box!important}.didna-adh-ad-close-tab{border:1px solid #c1c1c1;margin-left:auto!important;background:#fff!important;font:normal 12px/150% Arial,Helvetica,sans-serif!important;color:#565656!important;text-decoration:none!important;width:30px;height:30px;-moz-border-radius:4px;border-radius:4px;-webkit-box-pack:center!important;-ms-flex-pack:center!important;justify-content:center!important;display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-align:center!important;-ms-flex-align:center!important;align-items:center!important}.didna-adh-ad-close-tab:hover{cursor:pointer!important;background-color:#fff!important}.didna-adh-close-x{width:16px!important;height:16px!important;position:relative!important;margin:0!important;box-sizing:border-box!important}.didna-adh-close-x:after,.didna-adh-close-x:before{position:absolute!important;left:8px!important;content:' ';height:15px!important;width:2px!important;background-color:#c1c1c1!important}.didna-adh-close-x:before{transform:rotate(45deg)!important}.didna-adh-close-x:after{transform:rotate(-45deg)!important}.didna-adh-ad-close-tab span{display:inline-flex!important;margin-right:5px;padding-right:5px;border-right:1px solid #c2c2c2!important;color:#0e76bc!important}.didna-adh-ad-close-tab:hover .didna-adh-close-x{border-color:#939393 transparent transparent #939393}.adFooterDFPMobileAd,.adHeaderDFPMobileAd{display:inline-block}@media screen and (max-width:812px){.adFooterDFPMobileAd{width:320px;height:50px}.didna-adh-ad-close-outer{width:20px;height:20px;top:15px;right:4px}.didna-adh-ad-close-tab{width:20px;height:20px}}@media screen and (max-width:374px){.didna-adh-ad-close-outer{top:-24px;right:10px}.didna-adh-ad-close-tab{border:3px solid #ededed}}";
+    }
+    var styleStickyAd = "";
+    function appendStyle(styles) {
+      var css = document.createElement("style");
+      css.type = "text/css";
+      if (css.styleSheet) css.styleSheet.cssText = styles;
+      else css.appendChild(document.createTextNode(styles));
+      document.getElementsByTagName("head")[0].appendChild(css);
+    }
+    appendStyle(styleStickyContainer);
+    appendStyle(styleStickyAd);
+    stickyLocation.appendChild(stickyDiv);
+  
+  didna.cmd.push(function(){
+    var mapping_adhesion = googletag.sizeMapping()
+            //.addSize([1000, 0], [[970, 90], [728, 90]])
+                  .addSize([756,0],[[728,90]])
+                  .addSize([320,0],[[320,50]])
+                  .addSize([300,0],[[300,50]])
+                  .build();
+    didna.createAdUnits([{adUnitPath: "/126379976/bottom_adhesion_1", id: "bottom_adhesion_2", size: [[728, 90]], sizeMap: mapping_adhesion}]);
+  });
+  if (getMediaLayout() == 'mobile') {
+    setTimeout(function(){
+      setTimeout(function(){
+        pbjs.que.push(function(){
+          var au = pbjs.adUnits.filter(function(adUnit){
+            if(adUnit.code == "bottom_adhesion_2"){
+              return adUnit;
+            }
+          });
+          if(au.length !== 0){
+            au[0].bids.push({'bidder': 'trion', params: {'pubId':'30253', 'sectionId':'10353'}});
+          }
+        });
+      }, 1000);
+    }, 1000);
+  }
+}
+
+var searchParams = new URLSearchParams(window.location.search);
+var disableSticky = searchParams.has('c');
+
+if (getMediaLayout() == "desktop") {
+  var microadSpot = '0424f1ac630be70cae5b5f5f91fd6e4d';
+} else {
+  var microadSpot = 'fe14b17f04ab4e82531e733ecd4eb81c';
+}
+
+var bidPageUrl = window.location.href.replace(/\/$/, "");
+var ibvSelector = (Math.floor(Math.random() * 3 + 1) == 1) ? true : false;
+//var ivrSelector = Math.floor(Math.random() * 10 + 1)*1000+14000;
+var ivrSelector;
+if (getMediaLayout() == 'mobile') {
+  ivrSelector = Math.floor(Math.random() * 5 + 1) * 1000 + 15000;
+} else {
+  ivrSelector = Math.floor(Math.random() * 12 + 1) * 1000 + 17000;
+}
+var DIDNA_CONFIG = {
+  'manualMode': true,
+  'enableRulesEngine': false,
+  'activeTab': true,
+  'lazyload': 1,
+  'lazyloadConfig': {
+    'checkIfAtf': false,
+    'desktop': {
+      'rootMargin': '60% 0px'
+    },
+    'mobile': {
+      'rootMargin': '30% 0px'
+    }
+  },
+  'setupConfig': {
+      'centering': false,
+      'outOfViewRefresh': false
+    },
+  'logging': true,
+  'debug': false,
+  'headerBidding': 1,
+  'ibv': false,
+  'ibvConfig': {
+    'ibvWaitCount': 2,
+    'url': 'https://pubads.g.doubleclick.net/gampad/ads?iu=/170737076/IBV/nordot_ibv&description_url=https%3A%2F%2F'+window.location.hostname+'&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=xml_vast4&sz=640x480&max_ad_duration=30000&unviewed_position_start=1'
+  },
+  'scanners': {
+    'confiant': {
+      'prebid': 1,
+      'gpt': 0
+    },
+    'devcon': {
+      'page': 0
+    }
+  },
+  'factoryConfig': {
+    'all': {
+      'inViewRefresh': ivrSelector
+    }
+  },
+  'exclusions': {
+    'sizes': ['300x300']
+   },
+  'startUpConfig': {
+    'desktopTimeout': 0,
+    'mobileTimeout': 0
+   },
+  'prebidConfig': {
+    'inject': false,
+    //'version': 'https://storage.googleapis.com/didna_hb/prebid/international_didna_prebid3.12.0.js.gz',
+    'version': 'https://storage.googleapis.com/didna_hb/prebid/international_didna_prebid3.22.0.js.gz',
+    'options': {
+        'publisherDomain': 'https://this.kiji.is',
+        'pageUrl': bidPageUrl,
+        'useBidCache': false,
+      	'priceGranularity': customBucket,
+        //'priceGranularity': 'medium',
+        'bidderTimeout': 3000,
+      'currency': {
+          'adServerCurrency': 'JPY',
+          'granularityMultiplier': 110,
+          'rates': { 'USD': { 'JPY': 110 }}
+      }
+    }
+  },
+  'placements': {
+    'all': {
+        'sizeless': {
+          'appnexus': {'placementId': 18005673, 'reserve': 0.29},
+          //'33across': {'siteId': 'b0E5WWtxmr6QisaKlId8sQ', 'productId': 'siab'},
+          //'brightcom': {'publisherId': 20131, 'bidFloor': 0.29},
+          'rubicon': {'accountId': '20100', 'siteId': '301058', 'zoneId': '1513252', 'floor': 0.29}
+          //'microad': {'spot': microadSpot}
+        },
+        '468x60': {
+          'openx': {'unit': '541019006', 'customFloor': 0.29},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d6b9bc00f9'}
+        },
+        '728x90': {
+          'openx': {'unit': '541019006', 'customFloor': 0.29},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152657', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d7077300fa'}
+        },
+        '970x90': {
+          'openx': {'unit': '541019006', 'customFloor': 0.29},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152658', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d45d4400f1'}
+        },
+        '970x250': {
+          'openx': {'unit': '541019006', 'customFloor': 0.29},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d4b8c500f2'}
+        },
+        '300x50': {
+          'openx': {'unit': '541019008', 'customFloor': 0.29}
+        },
+        '320x50': {
+          'aol': {'placement': '5245684', 'network': '11609.1', 'bidFloor': '0.29'},
+          'openx': {'unit': '541019008', 'customFloor': 0.29},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152655', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d642b700f7'}
+        },
+        '320x100': {
+          'openx': {'unit': '541019008', 'customFloor': 0.29},
+          'microad': {'spot': microadSpot},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d67b0f00f8'}
+        },
+        '200x200': {
+          'openx': {'unit': '541019007', 'customFloor': 0.29}
+        },
+        '250x250': {
+          'openx': {'unit': '541019007', 'customFloor': 0.29}
+        },
+        '300x250': {
+          'aol': {'placement': '5215087', 'network': '11609.1', 'bidFloor': '0.29'},
+          'openx': {'unit': '541019007', 'customFloor': 0.29},
+          'microad': {'spot': microadSpot},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152653', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d5067700f3'}
+        },
+        '336x280': {
+          'aol': {'placement': '5245687', 'network': '11609.1', 'bidFloor': '0.29'},
+          'openx': {'unit': '541019007', 'customFloor': 0.29},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152656', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d5637f00f4'}
+        },
+        '120x240': {
+          'openx': {'unit': '541019009', 'customFloor': 0.29}
+        },
+        '120x600': {
+          'openx': {'unit': '541019009', 'customFloor': 0.29},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152651', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d6092b00f6'}
+        },
+        '160x600': {
+          'aol': {'placement': '5245685', 'network': '11609.1', 'bidFloor': '0.29'},
+          'openx': {'unit': '541019009', 'customFloor': 0.29},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152652', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d5ccaa00f5'}
+        },
+        '300x600': {
+          'aol': {'placement': '5245686', 'network': '11609.1', 'bidFloor': '0.29'},
+          'openx': {'unit': '541019009', 'customFloor': 0.29},
+          'microad': {'spot': microadSpot},
+          'pubmatic': {'publisherId': '159745', 'adSlot': '3152654', 'kadfloor': '0.29'},
+          'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d7444000fb'}
+        },
+        '300x1050': {
+          'openx': {'unit': '541019009', 'customFloor': 0.29}
+        }
+      }
+    }
+};
+// start experiment
+function mergeConfig(obj1, obj2){
+  for(var key in obj2){
+    if(typeof obj2[key] === 'object'){
+      if(!(key in obj1)){
+        obj1[key] = obj2[key];
+      }else{
+        obj1[key] = mergeConfig(obj1[key], obj2[key]);
+      }
+    }else{
+      obj1[key] = obj2[key];
+    }
+  }
+  return obj1;
+}
+
+var didnaLottery, didnaPrize, expValue, INT_DIDNA_CONFIG;
+didnaLottery = false; //disabled
+//didnaLottery = (Math.floor(Math.random() * 5 + 1) == 1) ? true : false;  //50%
+
+if (didnaLottery){
+  console.log('diDNA: Experiment Enabled');
+  didnaPrize = Math.floor(Math.random() * 5 + 1);
+
+  switch (didnaPrize) {
+        case 1:
+          //console.log('prize: 1');
+          expValue = '1';
+          INT_DIDNA_CONFIG = {
+                'factoryConfig': {
+                    'all': {
+                        'targeting': {
+                            'expID': expValue
+                        },
+                        'inViewRefresh': 21000
+                    }
+                }
+            };
+        break;
+        case 2:
+          //console.log('prize: 2');
+          expValue = '2';
+          INT_DIDNA_CONFIG = {
+                'factoryConfig': {
+                    'all': {
+                        'targeting': {
+                            'expID': expValue
+                        },
+                        'inViewRefresh': 31000
+                    }
+                }
+            };
+        break;
+        case 3:
+          //console.log('prize: 3');
+          expValue = '3';
+          INT_DIDNA_CONFIG = {
+                'factoryConfig': {
+                    'all': {
+                        'targeting': {
+                            'expID': expValue
+                        },
+                        'inViewRefresh': 51000
+                    }
+                }
+            };
+        break;
+        case 4:
+          //console.log('prize: 4');
+          expValue = '4';
+          INT_DIDNA_CONFIG = {
+                'factoryConfig': {
+                    'all': {
+                        'targeting': {
+                            'expID': expValue
+                        },
+                        'inViewRefresh': 81000
+                    }
+                }
+            };
+        break;
+        case 4:
+          //console.log('prize: 5');
+          expValue = '5';
+          INT_DIDNA_CONFIG = {
+                'factoryConfig': {
+                    'all': {
+                        'targeting': {
+                            'expID': expValue
+                        },
+                        'inViewRefresh': 15000
+                    }
+                }
+            };
+        break;
+        default:
+       };
+
+       if(window.DIDNA_CONFIG){
+      window.DIDNA_CONFIG = mergeConfig(window.DIDNA_CONFIG, INT_DIDNA_CONFIG);
+    }else{
+      var DIDNA_CONFIG = INT_DIDNA_CONFIG;
+    }
+
+} else {
+    //console.log('not a winner, try again');
+}
+// end experiment
+(function(){
+  let duEL = document.createElement("script");
+  duEL.type = "text/javascript";
+  duEL.async = true;
+  duEL.src = "https://js-sec.indexww.com/ht/p/186905-129106728116453.js";
+  let duTargetEl = document.getElementsByTagName("head")[0];
+  duTargetEl.appendChild(duEL);
+})();
+(function() {
+  function injectScript(src){
+    const deSrc = window.atob(src);
+    const b = new Blob([deSrc], {'type': 'text/javascript'});
+    const url = URL.createObjectURL(b);
+
+    let srcTag = document.createElement("script");
+    srcTag.type = "text/javascript";
+    srcTag.async = true;
+    srcTag.src = url;
+    let head = document.getElementsByTagName("head")[0];
+    head.appendChild(srcTag);
+    URL.revokeObjectURL(url);
+  }
+
+  let loadScripts = {
+    "util": "https://storage.googleapis.com/didna-prod/didna_util_v31016.min.js.gz",
+    "prebid": "https://storage.googleapis.com/didna-prod/international_didna_prebid3.22.0.js.gz"
+  };
+
+  const storedUtil = localStorage.getItem("diDNA_util");
+  const storedPrebid = localStorage.getItem("diDNA_prebid");
+
+  if(storedUtil){
+    injectScript(storedUtil);
+    delete loadScripts['util'];
+  }
+
+  if(storedPrebid){
+    injectScript(storedPrebid);
+    delete loadScripts['prebid'];
+  }
+  if(Object.keys(loadScripts).length !== 0 && loadScripts.constructor === Object){
+    if(window.Worker){
+      const wf = new Blob(['function getLibrary(url){return new Promise((resolve, reject) => {let xhr = new XMLHttpRequest();xhr.open("GET", url, true);xhr.onload = () => {resolve(xhr.responseText)};xhr.onerror = reject;xhr.send();});}onmessage = function(e){let msg = e.data.split("?");const url = msg[0];const name = msg.pop();getLibrary(url).then(library => {postMessage({"name": name, "lib": self.btoa(library)});});};'], {"type": "text/javascript"});
+      const worker_url = URL.createObjectURL(wf);
+      const worker = new Worker(worker_url);
+      URL.revokeObjectURL(worker_url);
+      worker.onmessage = function(e){
+        try{
+          localStorage.setItem(`diDNA_${e.data.name}`, e.data.lib);
+        }catch(e){
+          console.log(e);
+        }
+        injectScript(e.data.lib);
+      };
+      for(let name in loadScripts){
+        worker.postMessage(`${loadScripts[name]}?${name}`);
+      }
+      setTimeout(function(){
+        worker.terminate();
+      }, 3000);
+    }else{
+      DIDNA_CONFIG.prebidConfig.inject = true;
+      var duEL = document.createElement("script");
+      duEL.type = "text/javascript";
+      duEL.async = true;
+      //duEL.src = "https://storage.googleapis.com/didna-files/utility/didna_util.min.js.gz";
+      duEL.src = 'https://storage.googleapis.com/didna-files/utility/didna_util_v3109.min.js.gz';
+      var duTargetEl = document.getElementsByTagName("head")[0];
+      duTargetEl.appendChild(duEL);
+    }
+  }
+})();
+//hindsight in article - start
+//if(enableTest){
+(function(){
+  var duEL = document.createElement("script");
+  duEL.type = "text/javascript";
+  duEL.async = true;
+  duEL.src = "https://static.solutionshindsight.net/hindsightipads/hindsightipads.min.js";
+  var duTargetEl = document.getElementsByTagName("head")[0];
+  duTargetEl.appendChild(duEL);
+})();
+//}
+//hindsight in article - end
+function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
+var policyRetry = 0;
+if (disableSticky == false){
+  var bodyTimer = setInterval(function(){
+    if(document.readyState === 'complete'){
+      clearInterval(bodyTimer);
+        var stickyFlow;
+        if (getMediaLayout() == "desktop") {
+          stickyFlow = (Math.floor(Math.random() * 8 + 1) == 1) ? false : true;
+        } else {
+          stickyFlow = true;
+        }
+        if (stickyFlow){
+          //genSticky();
+            function validatePolicy() {
+              if (getCookie('policy_accepted')) {
+                  //console.log('policy true')
+                  genSticky();
+              } else {
+                  console.log('policy false');
+                  if (getCookie('policy_accepted') == null && policyRetry < 20) {
+                      //console.log('policy is null')
+                      policyRetry = policyRetry + 1;
+                      setTimeout(function(){ 
+                          //console.log('policy is null, retry count = ' + policyRetry)
+                          validatePolicy();
+                      }, 3000);
+                  }
+              }
+          }
+          validatePolicy();
+        }
+    }
+  }, 100);
+}

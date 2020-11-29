@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0295)https://s.yimg.jp/images/listing/tool/yads/yads-iframe.html?start_prod_num=0&s=63836_10961&fr_id=yads_2984539-0&sb_support=1&enc=UTF-8&u=https%3a%2f%2fmainichi.jp%2fama-baseball%2farticles%2f20201129%2fk00%2f00m%2f050%2f119000c&async=0&mb=1&kwe=u&kwm=1&pv_id=57c1a817-5c91-47bb-a4df-a1b042a86842 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<script type="text/javascript" async="" src="./sync"></script></head>
+<body style="background-color: transparent; padding: 0px; margin: 0px; text-align: center;">
+
+<div style="margin-left: auto; margin-right: auto;">
+
+<script type="text/javascript">
+function escapeString(in_str, escape_amp) {
+  var escaped_str = in_str.replace(/</g, "&lt;")
+                          .replace(/>/g, "&gt;")
+                          .replace(/"/g, "&quot;")
+                          .replace(/'/g, "&#39;");
+  if (escape_amp) {
+     escaped_str = escaped_str.replace(/&/g, "&amp;");
+  }
+  return escaped_str;
+}
+
+function isSubDomain(in_check, in_trust) {
+  var t = in_trust.split('.');
+  var c = in_check.split('.');
+  if (t.length > c.length) {
+    return false;
+  }
+  for (var i = 0; i < t.length; i++) {
+    if (t[t.length - 1 - i] != c[c.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function parseQuery(in_url) {
+  var ret = {};
+  var tmp = in_url.split('?');
+  if (tmp.length != 2) {
+    return ret;
+  }
+
+  var params = tmp[1].split('&');
+  for (var i = 0; i < params.length; i++) {
+    var fldVal = params[i].split('=');
+    if (fldVal.length == 1) {
+      ret[fldVal[0]] = '';
+    } else {
+      ret[fldVal[0]] = window.decodeURIComponent(fldVal[1]);
+    }
+  }
+  return ret;
+}
+
+var gAdTagCreater = {
+  printScript : function() {
+    var url_strings = [];
+    var url_params = parseQuery(location.href);
+    var entry = 'https://yads.yjtag.yahoo.co.jp/tag?'
+
+    for (var f in url_params) {
+      var v = url_params[f];
+      if (f === 'start_prod_num') {
+        document.write('<script type="text/javascript">'
+                       + 'YJ_YADS.start_prod_num = ' + v + ';'
+                       + '</scr' + 'ipt>' );
+      } else if (f.match(/^[\w-]+$/)) {
+        url_strings.push(f + '=' + window.encodeURIComponent(escapeString(v, false)));
+      }
+    }
+
+    document.write('<script type="text/javascript" src="'
+                   + entry
+                   + url_strings.join('&amp;')
+                   + '"></scr' + 'ipt>' );
+  },
+  set : function() {
+    this.printScript();
+  }
+};
+
+var proto = location.protocol == 'https:' ? "https:" : "http:";
+var url = proto + '//yads.c.yimg.jp/js/yads.js';
+document.write('<script type="text/javascript" src="' + url + '"></scri' + 'pt>');
+</script><script type="text/javascript" src="./yads.js(1).download"></script><script src="./iicon.min.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+
+gAdTagCreater.set();
+
+</script><script type="text/javascript">YJ_YADS.start_prod_num = 0;</script><script type="text/javascript" src="./tag(1)"></script><script onerror="gAdController.passback()" type="text/javascript" src="./ttj"></script><script language="javascript" src="./ttj(1)"></script><!-- Creative 40898157 served by Member 3663 via AppNexus. --><script src="./saved_resource(7)" type="text/javascript"></script><div id="yads_dummy_parent_906473131">
+<div style="border:none; color:#333; height:250px; line-height:1.0; overflow:hidden; position:relative; width:300px; margin:0 auto;">
+  <a href="https://rd.ane.yahoo.co.jp/rd?ep=A21Aw18AAInl03LAml6ZLKoMiNZGWgR3SVWm-NkqW8gN2NjP1KtQcD__Es_hWjDAZC30K3dSEE2xwMw2twAY3EMqM_eb0GF5T1EhEZXGvukPL5FvCaQPlRjZLotDOF4z4WdEpQsy1ewrJNSy2iYGjSSuIgflS-OYYqrbYEiZEclQkgbJ2zln4f4ANRiwqSId1GW_ZeFwJUQzEiEvyhkAD2O5-SGimt1sJvEGTJ1x2KYGbBCzOoUiIUC1hHdHMl5EzNgGhQWG8k76z_cCADmIr4_Rn2fl4bRYyq9HvImGcdiBtMCyZuOzbSdxYgaf15WhAMsLOrOQV5rlmjvbbtNCl7UsNenTVO7LnEhbYo5ZgQEFNrdAmMzZ6AQidBeFie-tgkZVzBSEi90MpAOFY80FkXFPkSG1onRlSfxcLZsd5NHPyB40GARgnFrIR2ksVLKVZxyqUhy_BkqA1KBVy1Szsfw0D528vd6paewdf4X1v5NhZSigBXk8rirODP1m06V5_ZhtJBTV_vTNh_czSIMPWvhdeYSfoxXVqhCDl5yUoU7FLY-1roei28pGBcxMFc-vXniOZ-vtuy1Phbmr5xfkkaJPIBzKsGDASrzepvyINfILWo9SpCw9YuJethaOMTFhNrNDju9AwAMmJilSQq7JyWqN5mnffbLlUjRkDlLc2mAh8eSlQruDoKX2twvmVFi0Fa-kPt1R4xCi3ATyV_zkHY0MEeTvDhsV8dYsqxm-ezlPcVsZ9fVY1guvE4E3GVY8BO530FJED2-RiYE1bv_b_yH9wEVVN0B3SRzJ-NS6L2AyFLItfImbr1Z_xa0iWcqOfeUyFndnOM2CL4igbf7p7LUBcIVLqCYPgcvWuJ3wQ9lyFFNjSSEnX7Ue0tAksGKuUYrO6BrlX0L7B-A5m-DR6xCudiRzN3AxCQVaTDqKfY3jwqlZ55dmmlj5d8RLGLSHO31sbd3DBFtH4jSBaFG9EksKfKarf_ff2Yt7S3WEmWWdYHKvOaQe_QITOrNjKIZdFfTlFQp776rGy5qhQTBMkLPy67BlyW3ZK4pJlXbgTaiXTAbISI_495qOmbAaorId&amp;v=5" target="_top" class="yjAdLink" data-ydntxt-item="1" style="display:block; height:250px; width:300px;">
+    <img src="./6b85fe6ca5c0ef674ee3df005e3d63d1.jpg" border="0" width="300" height="250" class="yjAdImage">
+  </a>
+  <div data-i="1" data-i-url="https://feedback.promotionalads.yahoo.co.jp/fdbk2?m=A21Aw18AAAQy6r-ln7ocGXxhBHkEPYT6tSG5xPDpM2YPhM5Mhm5Rh_YhjFgwIvg3PD0NAY68CVadXx6wZP8bwd-rxjIOfYmWidQW0dU0Q3bEI7TK6lle6PSFZ56vjcOSVJvNljJMcMx7Ay5tWNe2EFwcLumz_05LkWdWduCbCKks18PD0yONZGRLKRkrPISXrKOR8NXd5jBWBSnQa0q-0ztnJd24T_DA7xgGDR8WtlZ_cOU0xyS_HJeLIfHa7C592f-uH6o3DvGgX5r3knTEhZ40raOsSgZDJrthWXRhedIqMg5PD7wjjjYDzoJDX5p7SQ&amp;o=A21Aw18AAGh8M_ndFCxwy5Bq6A-206AfARxEGstcCjb4lhbqMNDtsSO7djBi3yRVOcl-ZnY66ZUzFTLF64R1e3KezqXttlUGI88h4mgKG7izssRult4pNpUc6Tn_JGNb78B1qX1arLNItEBPsNHaukktbhI8Yjqu0Q6V_AZ-SIZizfHcNw2zEG2JNa_7NX5FsZ0b7l_q29RNNgIiYmj6QNPqGyskfWFcSZ2G90iAOn--KF8tW5Agq_RH0MqkDD_yptf3dDf6lC6FUbcX81rVSvNsZrjxwm0zyn_C2IHX1zDPBdGtv6wtI7IaImPTiQ" data-i-linktarget="_top"><div data-i-elm="iicon" style="display:inline;position:absolute;background:transparent;border:none;float:none;width:auto;height:auto;margin:0;opacity:1;padding:0;line-height:1;font-size:inherit;font-weight:inherit;color:inherit;top:0;bottom:auto;left:auto;right:0;visibility:inherit;text-align:left;z-index:auto;">
+<a href="https://feedback.promotionalads.yahoo.co.jp/fdbk2?m=A21Aw18AAAQy6r-ln7ocGXxhBHkEPYT6tSG5xPDpM2YPhM5Mhm5Rh_YhjFgwIvg3PD0NAY68CVadXx6wZP8bwd-rxjIOfYmWidQW0dU0Q3bEI7TK6lle6PSFZ56vjcOSVJvNljJMcMx7Ay5tWNe2EFwcLumz_05LkWdWduCbCKks18PD0yONZGRLKRkrPISXrKOR8NXd5jBWBSnQa0q-0ztnJd24T_DA7xgGDR8WtlZ_cOU0xyS_HJeLIfHa7C592f-uH6o3DvGgX5r3knTEhZ40raOsSgZDJrthWXRhedIqMg5PD7wjjjYDzoJDX5p7SQ&amp;o=A21Aw18AAGh8M_ndFCxwy5Bq6A-206AfARxEGstcCjb4lhbqMNDtsSO7djBi3yRVOcl-ZnY66ZUzFTLF64R1e3KezqXttlUGI88h4mgKG7izssRult4pNpUc6Tn_JGNb78B1qX1arLNItEBPsNHaukktbhI8Yjqu0Q6V_AZ-SIZizfHcNw2zEG2JNa_7NX5FsZ0b7l_q29RNNgIiYmj6QNPqGyskfWFcSZ2G90iAOn--KF8tW5Agq_RH0MqkDD_yptf3dDf6lC6FUbcX81rVSvNsZrjxwm0zyn_C2IHX1zDPBdGtv6wtI7IaImPTiQ" target="_top" style="display:block;position:initial;background:none;border:none;float:none;width:auto;height:auto;margin:0;opacity:1;padding:0 0 0px 0px;line-height:inherit;font-size:inherit;font-weight:inherit;color:inherit;top:auto;bottom:auto;left:auto;right:auto;visibility:inherit;" data-i-elm="link">
+    <div data-i-elm="base" style="display:block;position:relative;background:none;border:none;float:none;width:17px;height:15px;margin:0;opacity:1;padding:0;line-height:inherit;font-size:11px;font-weight:inherit;color:inherit;top:auto;bottom:auto;left:auto;right:auto;visibility:inherit;cursor:pointer;text-decoration:none;overflow:hidden;transition:.3s all cubic-bezier(0.19, 1, 0.22, 1);-webkit-transition:.3s all cubic-bezier(0.19, 1, 0.22, 1);">
+        <span style="display: inline; position: absolute; background: rgb(255, 255, 255); border: none; float: none; width: 116.742px; height: 15px; margin: 0px; opacity: 0.8; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; left: auto; right: -99.7417px; visibility: inherit; border-radius: 0px 0px 0px 4px; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0s;" data-i-elm="bg"></span>
+        <span style="display: block; position: absolute; background: none; border: none; float: none; width: 99.7417px; height: 15px; margin: 0px; opacity: 1; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; left: auto; right: 17px; visibility: inherit; overflow: hidden;" data-i-elm="textArea">
+            <svg style="display: block; position: absolute; background: none; border: none; float: none; width: 93.7417px; height: 15px; margin: 0px; opacity: 1; padding: 0px; line-height: inherit; font-size: inherit; font-weight: inherit; color: inherit; top: auto; bottom: auto; left: auto; right: -116.742px; visibility: inherit; overflow: hidden; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0s;" data-i-elm="textWrap">
+                <text y="12px" style="display:block;position:initial;background:none;border:none;float:none;width:auto;height:auto;margin:0;opacity:1;padding:0;line-height:17px;font-size:inherit;font-weight:inherit;color:#000;top:auto;bottom:auto;left:auto;right:auto;visibility:inherit;font-family:sans-serif;text-decoration:none;vertical-align:middle;white-space:nowrap;overflow-wrap:normal;word-wrap:normal;-webkit-text-size-adjust:none;" data-i-elm="textBody">Yahoo! JAPAN広告</text>
+            </svg>
+        </span>
+        <i style="display:inline;position:absolute;background:none;border:none;float:none;width:auto;height:auto;margin:1px 2px 1px 2px;opacity:1;padding:0;line-height:inherit;font-size:inherit;font-weight:inherit;color:inherit;top:auto;bottom:auto;left:auto;right:0;visibility:inherit;" data-i-elm="mark">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="13">
+                <image width="13" height="13" xlink:href="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2016.0.4%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.0%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FTR%2F2001%2FREC-SVG-20010904%2FDTD%2Fsvg10.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.0%22%20id%3D%22layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%0D%0A%09%20y%3D%220px%22%20width%3D%2213px%22%20height%3D%2213px%22%20viewBox%3D%220%200%2013%2013%22%20enable-background%3D%22new%200%200%2013%2013%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cpath%20fill%3D%22%23696969%22%20d%3D%22M6.5%2C13c0.685%2C0%2C1.328-0.267%2C1.811-0.75l3.94-3.938c0.999-0.999%2C0.999-2.624%2C0-3.622L8.311%2C0.75%0D%0A%09%09C7.828%2C0.267%2C7.185%2C0%2C6.5%2C0S5.172%2C0.267%2C4.688%2C0.75L0.749%2C4.689c-0.999%2C0.998-0.999%2C2.623%2C0%2C3.622l3.939%2C3.938%0D%0A%09%09C5.172%2C12.733%2C5.815%2C13%2C6.5%2C13z%20M6.498%2C6.135c-0.42%2C0-0.792%2C0.34-0.792%2C0.758v3.904c0%2C0.096-0.039%2C0.186-0.103%2C0.248%0D%0A%09%09c-0.064%2C0.064-0.153%2C0.104-0.25%2C0.104c-0.098%2C0-0.187-0.039-0.251-0.104L1.54%2C7.521c-0.562-0.563-0.562-1.478%2C0-2.04l3.94-3.939%0D%0A%09%09C5.752%2C1.27%2C6.115%2C1.119%2C6.5%2C1.119s0.747%2C0.15%2C1.02%2C0.422l3.94%2C3.939c0.562%2C0.562%2C0.562%2C1.477%2C0%2C2.04l-3.562%2C3.524%0D%0A%09%09c-0.064%2C0.064-0.153%2C0.104-0.251%2C0.104c-0.097%2C0-0.186-0.039-0.25-0.104c-0.063-0.062-0.104-0.152-0.104-0.248V6.893%0D%0A%09%09c0-0.418-0.371-0.758-0.79-0.758H6.498z%22%2F%3E%0D%0A%09%3Ccircle%20fill%3D%22%23696969%22%20cx%3D%226.5%22%20cy%3D%223.922%22%20r%3D%221.146%22%2F%3E%0D%0A%3C%2Fg%3E%0D%0A%3C%2Fsvg%3E" style="display:inline;position:initial;background:none;border:none;float:none;width:13px;height:13px;margin:0;opacity:1;padding:0;line-height:inherit;font-size:inherit;font-weight:inherit;color:inherit;top:auto;bottom:auto;left:auto;right:auto;visibility:inherit;"></image>
+            </svg>
+        </i>
+    </div>
+</a>
+</div>
+</div>
+  
+</div>
+</div><script id="yads_preloaded_js_539111683" type="text/javascript" src="./MR.js.download"></script><iframe src="./async_usersync.html" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" style="position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0;"></iframe><img src="./it" width="1" height="1" style="position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0;">
+
+</div>
+
+
+</body></html>

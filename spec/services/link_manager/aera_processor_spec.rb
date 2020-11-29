@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "Links" do
 
   before(:all) { 
-  	create(:source)
 
       # Stub the Aera feed, includes one duplicate entry
       aera_feed = File.read(Rails.root + "spec/services/link_manager/samples/aera-rss.rss")

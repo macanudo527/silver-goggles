@@ -59,9 +59,9 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-=begin
+
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation, {except: %w[entries]})
+    DatabaseCleaner.clean_with(:truncation, {except: %w[entries sources]})
   end
  
   config.before(:each) do
@@ -69,7 +69,7 @@ RSpec.configure do |config|
   end
  
   config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, {except: %w[entries sources]}
   end
  
   config.before(:each) do
@@ -79,7 +79,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-=end
+
 
 
 

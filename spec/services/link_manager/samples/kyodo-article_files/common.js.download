@@ -1,0 +1,64 @@
+jQuery(function ($) {
+  $.initGdprDialog();
+});
+
+(function ($) {
+  'use strict';
+
+  const GDPR_COOKIE_NAME = 'policy_accepted';
+  const GDPR_DIALOG_SELECTOR = '.js-page__gdpr';
+  const GDPR_AGREE_BUTTON_SELECTOR = '.js-page__gdprAgreeButton';
+  const GDPR_DISAGREE_BUTTON_SELECTOR = '.js-page__gdprDisagreeButton';
+  $.initGdprDialog = function () {
+    var $gdprDialog = $(GDPR_DIALOG_SELECTOR);
+    if (getGdprValue() == 'true') {
+      $.callGa();
+      $gdprDialog.hide();
+    } else if (getGdprValue() == 'false') {
+      $gdprDialog.hide();
+    } else {
+      $gdprDialog.show();
+    }
+
+    $(GDPR_AGREE_BUTTON_SELECTOR).on('click', function () {
+      setGdprAccepted();
+      $.callGa();
+      $gdprDialog.hide();
+    });
+
+    $(GDPR_DISAGREE_BUTTON_SELECTOR).on('click', function () {
+      setGdprUnaccepted();
+      $gdprDialog.hide();
+    });
+  };
+
+  var getGdprValue = function () {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var elem = cookies[i].split('=');
+      if (elem[0].trim() == GDPR_COOKIE_NAME) {
+        return elem[1];
+      }
+    }
+    return '';
+  };
+
+  var setGdprAccepted = function () {
+    document.cookie =
+      GDPR_COOKIE_NAME + '=true;path=/;max-age=3153600000;SameSite=None;Secure';
+  };
+
+  var setGdprUnaccepted = function () {
+    document.cookie =
+      GDPR_COOKIE_NAME +
+      '=false;path=/;max-age=3153600000;SameSite=None;Secure';
+  };
+
+  //true after user choose "disagree", false after user choose "agree" or hasn't chosen yet.
+  $.isUnaccepted = function () {
+    if (getGdprValue() == 'false') {
+      return true;
+    }
+    return false;
+  };
+})(jQuery);

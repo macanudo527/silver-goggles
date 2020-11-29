@@ -1,0 +1,220 @@
+'use strict'
+
+const CuratedBy = function (options) {
+
+  this.options = {}
+
+  $.extend(this.options, options)
+
+  const self = this
+
+  const selectors = {
+    OVERLAY: '.js-curatedBy__overlay',
+    FOOTER: '.js-curatedBy__footer',
+    FOOTER_INNER: '.js-curatedBy__footerInner',
+    FOOTER_TEXT_WRAPPER: '.js-curatedBy__footerTextWrapper',
+    MORE_BUTTON: '.js-curatedBy__moreButton',
+    DETAIL: '.js-curatedBy__detail',
+    CLOSE_BUTTON: '.js-curatedBy__closeButton',
+    ALSO_SECTION: '.js-curatedBy__alsoSection',
+    TAG_NAV: '.js-curationTagNav',
+    TAG_NAV_ITEM_WRAPPER: '.js-curationTagNav__itemWrapper',
+    TAG_NAV_ITEM: '.js-curationTagNav__item',
+    TAG_NAV_ITEM_DEFAULT: '#js-curationTagNav__item-0',
+    TABBED_CURATION_LIST: '.js-tabbedCurationList',
+    TABBED_CURATION_LIST_DEFAULT: '#js-tabbedCurationList-0',
+    TABBED_CURATION_LIST_WITH_ID: '#js-tabbedCurationList-',
+    TAG_NAV_FLIP_LEFT: '.js-curationTagNav__flipLeft',
+    TAG_NAV_FLIP_RIGHT: '.js-curationTagNav__flipRight'
+  }
+
+  this.init = function () {
+
+    if (this.overlay == null) {
+      this.overlay = new Overlay()
+    }
+
+    if (this.footerModule == null) {
+      this.footerModule = new FooterModule
+    }
+
+    if (this.toggleDetail == null) {
+      this.toggleDetail = new ToggleDetail
+    }
+
+    self.footerModule.calcFooterPosition(0)
+
+    this.events()
+
+  }
+
+  this.initAfterLoading = function() {
+    $(selectors.TAG_NAV_ITEM).removeClass('active')
+    $(selectors.TAG_NAV_ITEM_DEFAULT).addClass("active")
+    $(selectors.TABBED_CURATION_LIST).hide()
+    if (typeof tabbedCurationListDefaultTab !== 'undefined') {
+      tabbedCurationListDefaultTab.show()
+    } else {
+      $(selectors.TABBED_CURATION_LIST_DEFAULT).show()
+    }
+
+    if ($(selectors.TAG_NAV_ITEM_WRAPPER).length) {
+      if ($(selectors.TAG_NAV_ITEM_WRAPPER).get(0).scrollWidth > $(selectors.TAG_NAV).width() + 1) { // add 1 for resolving rouding error
+        $(selectors.TAG_NAV_FLIP_RIGHT).fadeIn(200)
+      }
+    }
+
+    this.tabbedCurationEvent()
+  }
+
+  this.events = function () {
+
+    $(selectors.OVERLAY).on('click', function () {
+      self.overlay.hide()
+      self.toggleDetail.hide()
+    })
+
+    $(selectors.CLOSE_BUTTON).on('click', function () {
+      self.toggleDetail.hide()
+    })
+
+    $(selectors.MORE_BUTTON).on('click', function () {
+      self.toggleDetail.show()
+    })
+  }
+
+  this.tabbedCurationEvent = function() {
+    let rightEdgeFlag = false
+    let navScrolled = 0
+    $(selectors.TAG_NAV_ITEM_WRAPPER).on('click scroll', function() {
+      const navScrolled = $(this).scrollLeft(),
+            navOuterWidth = $(selectors.TAG_NAV).width(),
+            navInnerWidth = $(this).get(0).scrollWidth
+
+      if (navScrolled > 0) {
+        $(selectors.TAG_NAV_FLIP_LEFT).fadeIn(200)
+        if (!rightEdgeFlag) {
+          $(selectors.TAG_NAV_FLIP_RIGHT).fadeIn(200)
+        }
+      } else {
+        $(selectors.TAG_NAV_FLIP_LEFT).fadeOut(200)
+      }
+
+      if (navScrolled == navInnerWidth - navOuterWidth) {
+        if (!rightEdgeFlag) {
+          rightEdgeFlag = true
+          $(selectors.TAG_NAV_FLIP_RIGHT).fadeOut(200)
+        }
+      } else {
+        rightEdgeFlag = false
+      }
+    })
+
+    $(selectors.TAG_NAV_FLIP_RIGHT).on('click', function () {
+      navScrolled += 200
+      $(selectors.TAG_NAV_ITEM_WRAPPER).stop(true, true).animate({
+        scrollLeft: navScrolled
+      }, 200, 'swing')
+    })
+    $(selectors.TAG_NAV_FLIP_LEFT).on('click', function () {
+      navScrolled -= 200
+      $(selectors.TAG_NAV_ITEM_WRAPPER).stop(true, true).animate({
+        scrollLeft: navScrolled
+      }, 200, 'swing')
+    })
+
+    $(selectors.TAG_NAV_ITEM_WRAPPER).on('click', selectors.TAG_NAV_ITEM, function () {
+      navScrolled = $(selectors.TAG_NAV_ITEM_WRAPPER ).scrollLeft()
+      const scrollPos = $(this).position().left - ($(selectors.TAG_NAV_ITEM_WRAPPER).width() / 2) + ($(this).outerWidth() / 2)
+
+      $(selectors.TAG_NAV_ITEM_WRAPPER).stop().animate({
+        scrollLeft: navScrolled + scrollPos
+      }, 300, 'swing')
+
+      $(selectors.TAG_NAV_ITEM).removeClass('active')
+      $(this).addClass('active')
+      $(selectors.TABBED_CURATION_LIST).hide()
+      $(selectors.TABBED_CURATION_LIST_WITH_ID+$(this).data('tag-id')).show()
+    })
+  }
+
+  const Overlay = function () {
+    this.show = function () {
+      $(selectors.OVERLAY).fadeIn(100)
+    }
+    this.hide = function () {
+      $(selectors.OVERLAY).fadeOut(800)
+    }
+  }
+
+  const FooterModule = function () {
+    const $footer = $(selectors.FOOTER),
+          $footerInner = $(selectors.FOOTER_INNER)
+
+    this.up = function () {
+      $footer.css({
+        bottom: 0,
+      })
+    }
+    this.down = function () {
+      $footer.css({
+        bottom: -60,
+      })
+    }
+    this.shrink = function () {
+      $footerInner.css({
+        maxWidth: 58,
+        overflow: 'hidden',
+        transition: 'max-width 0.2s',
+      })
+    }
+    this.expand = function () {
+      $footerInner.css({
+        maxWidth: 688,
+        overflow: 'visible',
+        transition: 'max-width 0.2s',
+      })
+    }
+    this.hideBg = function () {
+      self.footerModule.down()
+      self.footerModule.calcFooterPosition(-60)
+    }
+    this.showBg = function () {
+      self.footerModule.up()
+      self.footerModule.calcFooterPosition(0)
+    }
+
+    this.calcFooterPosition = (posY) => {
+      $footerInner.css({
+        transform: `translateY(${posY}px)`
+      })
+    }
+  }
+
+  const ToggleDetail = function () {
+    this.show = function () {
+      $('html').addClass('js-noScroll')
+      self.overlay.show()
+      self.footerModule.down()
+      $(selectors.DETAIL).css({
+        top: 'calc(50% + 20px)',
+        transform: 'translate(-50%, -50%)'
+      })
+      $(selectors.CLOSE_BUTTON).fadeIn(100)
+    }
+    this.hide = function () {
+      $('html').removeClass('js-noScroll')
+      $(selectors.DETAIL).css({
+        top: 'calc(100vh + 200px)',
+        transform: 'translate(-50%, 0)'
+      })
+      self.overlay.hide()
+      $(selectors.CLOSE_BUTTON).fadeOut(100)
+      self.footerModule.up()
+    }
+  }
+
+  this.init()
+}
+
+const curatedBy = new CuratedBy()

@@ -1,0 +1,515 @@
+(function ($) {
+  'use strict';
+
+  function isScrolledIntoElement($elem) {
+    var $window = $(window);
+    var docViewTop = $window.scrollTop();
+    var docViewBottom = docViewTop + $window.height();
+    var elemTop = $elem.offset().top;
+    var elemBottom = elemTop + $elem.height();
+
+    return (elemBottom <= docViewBottom);
+  }
+
+  function throttle(fn, threshhold) {
+    var ms = threshhold || 150;
+    var last = 0;
+    var timeout;
+
+    return function () {
+      var now = (new Date()).getTime();
+      var self = this;
+      var args = arguments;
+
+      clearTimeout(timeout);
+
+      if (now - last > ms) {
+        last = now;
+        fn.apply(this, arguments);
+      } else {
+        timeout = setTimeout(function () {
+          fn.apply(self, args);
+        }, ms);
+      }
+    };
+  }
+
+  function followScrollToBottomOfDetailBody(params) {
+    const followedItem = params.followedItem;
+    const leftOffset = params.leftOffset || 0;
+
+    const selectors = {
+      HEADER: '.page__header',
+      DETAIL_BODY: '#js-detailBody',
+    };
+
+    const fixOffset           = 16,
+          headerHeight        = $(selectors.HEADER).height(),
+          followedItemHeight  = followedItem.height(),
+          detailBodyHeight    = $(selectors.DETAIL_BODY).height(),
+          detailBodyTop       = $(selectors.DETAIL_BODY).offset().top,
+          fixStart            = detailBodyTop - headerHeight - fixOffset,
+          fixEnd              = fixStart + detailBodyHeight - followedItemHeight;
+
+    return followedItem.each(function () {
+      $(window).on('scroll resize', function () {
+        if (detailBodyHeight < followedItemHeight) {
+          return;
+        }
+        let scrollTop = $(this).scrollTop();
+        if (scrollTop > fixEnd) {
+          // after following
+          followedItem.css({
+            'position': 'absolute',
+            'top': 'auto',
+            'bottom': 0,
+            'left': leftOffset,
+          });
+        } else if (scrollTop > fixStart) {
+          // in the middle of following
+          followedItem.css({
+            'position': 'fixed',
+            'top': headerHeight + fixOffset,
+            'bottom': 'auto',
+            'left': $(selectors.DETAIL_BODY).offset().left + leftOffset,
+          });
+        } else {
+          // before following
+          followedItem.css({
+            'position': 'absolute',
+            'top': 0,
+            'bottom': 'auto',
+            'left': leftOffset,
+          });
+        }
+      });
+    });
+  }
+
+  /**
+   * @method  loadSubModule
+   * get posts in series and topic
+   */
+  $.fn.loadSubModule = function () { // eslint-disable-line no-param-reassign
+    function getSeries($subModuleContainer) {
+      var postID = $subModuleContainer.data('post-id');
+      $.ajax({
+        url: '/posts/' + postID + '/subModule',
+        success: function (data) {
+          if (!data.ok) {
+            return;
+          }
+          $subModuleContainer.append(data.html);
+        },
+      });
+    }
+
+    return this.each(function () {
+      var $seriesContainer = $(this);
+      var loaded = false;
+      var checkScroll = function () {
+        if (!loaded && isScrolledIntoElement($seriesContainer)) {
+          getSeries($seriesContainer);
+          loaded = true;
+        }
+      };
+
+      checkScroll();
+      $(window).scroll(throttle(checkScroll));
+    });
+  };
+
+  /**
+   * @method  loadAlsoCurates
+   * get curated posts and tab settings
+   */
+  $.fn.loadAlsoCurates = function () { // eslint-disable-line no-param-reassign
+    function getAlsoCurates($container) {
+      var postID = $container.data('post-id');
+      var curID = $container.data('curation-id');
+      var cuID = $container.data('cu-id');
+
+      $.ajax({
+        url: '/posts/' + postID + '/curatedby/' + cuID + '/' + curID,
+        success: function (data) {
+          if (!data.ok) {
+            return;
+          }
+          $container.append(data.html);
+          curatedBy.initAfterLoading();
+          if (data.has_navigation) {
+            $(".js-alsoCurates-articleList").addClass("alsoCurates-articleList--hasAlsoNav")
+          }
+        },
+      });
+    }
+
+    return this.each(function () {
+      getAlsoCurates($(this));
+    });
+  };
+
+  /**
+   * @method  paidPosts
+   * get paid posts of unit
+   */
+  $.fn.paidPosts = function () { // eslint-disable-line no-param-reassign
+    function getPaidPosts($paidPostContainer) {
+      var $template = $('#paid-post-template');
+
+      $.ajax({
+        url: '/posts/paidPosts.list',
+        type: 'POST',
+        data: { unit_id: $paidPostContainer.data('unit-id') },
+        success: function (data) {
+          if (!data.ok || data.paidPosts.length < 1) {
+            return;
+          }
+
+          $('#js-paidPostTitle').text(data.paidPosts[0].channel.title);
+          $paidPostContainer.append($template.clone().show());
+          $('.chPromotionList', $paidPostContainer).empty();
+
+          var $li = $('li.js-chPromotionFirstItemTemplate', $template).clone();
+          $('.chPromotionList', $paidPostContainer).append($li);
+
+          $.each(data.paidPosts, function () {
+            var $paidPostItem = $('li.js-template', $template).clone();
+            $('a', $paidPostItem).attr('href', this.url);
+            $('h2', $paidPostItem).text(this.title);
+            $('time', $paidPostItem).text(this.published_at);
+            $('.chPromotionList', $paidPostContainer).append($paidPostItem);
+          });
+        },
+      });
+    }
+
+    return this.each(function () {
+      var $paidPostContainer = $(this);
+      var loaded = false;
+      var checkScroll = function () {
+        if (!loaded && isScrolledIntoElement($paidPostContainer)) {
+          getPaidPosts($paidPostContainer);
+          loaded = true;
+        }
+      };
+
+      checkScroll();
+      $(window).scroll(throttle(checkScroll));
+    });
+  };
+
+  /**
+   * @method replaceURL
+   * Replace the URL of address bar with only necessary parameters
+   */
+  $.replaceURL = function () { // eslint-disable-line no-param-reassign
+    var keepParams = ['c', 'obdraft'];
+
+    function deserialize(search) {
+      var s = search;
+      if (search.indexOf('?', 0) > -1) {
+        s = search.split('?')[1];
+      }
+
+      return s.split('&').reduce(function (params, pairStr) {
+        var pair = pairStr.split('=');
+        if (pair.length === 2) {
+          // eslint-disable-next-line no-param-reassign
+          params[pair[0]] = decodeURIComponent(pair[1].replace(/\+/g, ' '));
+        }
+        return params;
+      }, {});
+    }
+
+    if (location.search && window.history.replaceState) {
+      var params = deserialize(location.search);
+
+      var queryString = Object.keys(params).reduce(function (qsParams, key) {
+        if (keepParams.indexOf(key) !== -1) {
+          var value = params[key];
+          qsParams.push(key + '=' + encodeURIComponent(value));
+        }
+        return qsParams;
+      }, []).join('&');
+
+      if (queryString !== '') {
+        queryString = '?' + queryString;
+      }
+
+      history.replaceState('', '', location.pathname + queryString);
+    }
+  };
+
+  /**
+   * @method  followFooter
+   * Set/Update footer position
+   */
+  // eslint-disable-next-line no-param-reassign
+  $.fn.followFooter = function () {
+    return this.each(function () {
+      var $footer = $(this);
+      var fixPos = 0;
+      var fixFooter = function () {
+        if (!fixPos) {
+          return;
+        }
+        var offsetTop = $('.js-page__sidebar').offset().top;
+        var scrollTop = $(window).scrollTop();
+        var scrollBottom = scrollTop + $(window).height();
+        var marginBottom = 12;
+        var footerOuterHeight = $footer.outerHeight();
+
+        if (scrollBottom < fixPos + offsetTop + marginBottom) {
+          $footer.css({
+            position: 'absolute',
+            width: 300,
+            bottom: 'auto',
+            top: fixPos - footerOuterHeight,
+            left: 0,
+          });
+        } else {
+          $footer.css({ position: 'fixed', width: 300, bottom: marginBottom, top: 'auto', left: 'auto' });
+        }
+      };
+
+      // Outbrain
+      if (window.OBR) {
+        window.OBR.extern.onOdbReturn('AR_1', function () {
+          fixPos = 1350;
+          fixFooter();
+          $footer.show();
+        });
+      } else {
+        fixPos = 1350;
+        fixFooter();
+        $footer.show();
+      }
+
+      $(window).scroll(function () {
+        fixFooter();
+      }).resize(throttle(function () {
+        fixFooter();
+      }));
+    });
+  };
+
+  $.fn.authorModule = function(isSingle) {
+    var $profileIcon = $(".js-author__author"),
+        $nameWrapper = $(".js-author__nameWrapper"),
+        $detailWrapper = $(".js-author__detailWrapper"),
+        $detail = $(".js-author__detail"),
+        $close = $(".js-author__closeDetail");
+
+    return this.each(function() {
+      $(this).on("click", function() {
+        $close.show();
+
+        var index = 0;
+        if (! isSingle) {
+          index = $(this).index();
+        }
+
+        $detailWrapper.addClass("on");
+        $detail.removeClass("on");
+        $nameWrapper.addClass("hide");
+
+        if ($profileIcon.eq(index).hasClass("active")) {
+          // pulldown close
+          $(this).removeClass("active");
+          $detailWrapper.removeClass("on");
+          $nameWrapper.removeClass("hide");
+          $detail.eq(index).removeClass("on");
+          $close.hide();
+        } else {
+          // pulldown open
+          $profileIcon.removeClass("active");
+          $profileIcon.eq(index).addClass("active");
+          $detail.eq(index).addClass("on");
+
+          if (! isSingle) {
+            const detailPos = $(this).position().left + 12;
+            if (detailPos > 300) {
+              $detailWrapper.css({
+                "left": detailPos - 340 + 48,
+              });
+            } else {
+              $detailWrapper.css({
+                "left": detailPos,
+              });
+            }
+          }
+        }
+      });
+
+      $close.on("click", function() {
+        $profileIcon.removeClass("active");
+        $detailWrapper.removeClass("on");
+        $nameWrapper.removeClass("hide");
+        $(this).hide();
+      });
+    });
+  };
+
+  $.fn.openCuratorMenu = function () {
+    const selectors = {
+      HEADER_TOGGLE_BUTTON: '.js-headerAccount',
+      EXPAND_MENU: '.js-headerAccount__expandMenu',
+    }
+    return this.each(function () {
+      $(selectors.HEADER_TOGGLE_BUTTON).on('click', function () {
+        $(selectors.EXPAND_MENU).toggleClass('on');
+      });
+      $(document).on('click', function (event) {
+        if (!$(event.target).closest(selectors.HEADER_TOGGLE_BUTTON).length) {
+          $(selectors.EXPAND_MENU).removeClass('on');
+        }
+      });
+    });
+  };
+
+  $.fn.followActionButtons = function () {
+    followScrollToBottomOfDetailBody({
+      followedItem: this,
+      leftOffset: 8,
+    })
+  }
+
+  $.fn.followTableContents = function () {
+    followScrollToBottomOfDetailBody({
+      followedItem: this,
+      leftOffset: 720,
+    })
+  }
+
+  $.fn.onScrollThrottle = function (func) {
+    return this.each(function() {
+      $(this).on('scroll', throttle(func));
+    });
+  }
+
+  /**
+   * @method  highlight
+   * highlight source code in post content
+   */
+  $.fn.highlight = function () {
+    function codeHighlight(elm) {
+      var highlight = ace.require("ace/ext/static_highlight");
+      highlight(elm, {
+        mode: 'ace/mode/' + $(elm).data("ace-mode"),
+        theme: 'ace/theme/solarized_dark',
+        minLines: 2,
+        maxLines: 5000,
+        startLineNumber: 1,
+        showGutter: false,
+      });
+    }
+
+    return this.each(function () {
+      codeHighlight(this);
+    });
+  }
+
+  //<over_bottom event>
+  function getElementTopPosition(elm) {
+    return elm.getBoundingClientRect().top;
+  }
+
+  function getElementBottomPosition(elm) {
+    return elm.getBoundingClientRect().bottom;
+  }
+  
+  function isElementBottomOver(elm) {
+    const elmBottom = getElementBottomPosition(elm);
+    if (elmBottom - window.innerHeight <= 0) {
+      return true;
+    }
+    return false;
+  }
+
+  let maxReadHeight = 0;
+  function checkBottomBodyOnScroll() {
+    let elmMainBody = getElmMainBody();
+    let topPosition = getElementTopPosition(elmMainBody);
+    let bottomPosition = getElementBottomPosition(elmMainBody);
+    let bodyHeight = bottomPosition - topPosition;
+    let unreadHeight = bottomPosition - window.innerHeight;
+    let readHeight = bodyHeight - unreadHeight;
+    if (maxReadHeight < readHeight) {
+      maxReadHeight = readHeight;
+    }
+
+    if (isElementBottomOver(getElmMainBody())) {
+      event({ eventid: 'over_bottom', eventdata: {bbfirstview: isBottomBodyInFirstView}});
+      document.removeEventListener('scroll', checkBottomBodyOnScroll);
+    }
+  }
+
+  function getElmMainBody() {
+    const elmMainBodies = document.getElementsByClassName('js-nordot_beacon-main_article');
+    if (elmMainBodies.length >= 1) {
+      return elmMainBodies[0];
+    }
+    return null;
+  }
+
+  let isBottomBodyInFirstView = 0;
+  let event = null;
+  $.fn.startWatchReaded = function (eventFn) {
+    event = eventFn;
+    let elmMainBody = getElmMainBody();
+    if (elmMainBody) {
+      isBottomBodyInFirstView = isElementBottomOver(elmMainBody) ? 1 : 0;
+      document.addEventListener('scroll', checkBottomBodyOnScroll);
+      // This must be after addEventListener because the function removes the listener if needed
+      checkBottomBodyOnScroll();
+    }
+  };
+
+  let watchDurationCountCall = 1;
+  let watchDurationIntervalHandle = null;
+  let visibilitychangeHandle = null;
+  $.fn.startWatchDuration = function (eventFn) {
+    let watchDurationFn = function(){
+      let elmMainBody = getElmMainBody();
+      let topPosition = getElementTopPosition(elmMainBody);
+      let bottomPosition = getElementBottomPosition(elmMainBody);
+      let bodyHeight = bottomPosition - topPosition;
+      let unreadHeight = bottomPosition - window.innerHeight;
+      let readHeight = bodyHeight - unreadHeight;
+      if (maxReadHeight < readHeight) {
+        maxReadHeight = readHeight;
+      }
+
+      eventFn({
+        eventid: 'on_every_5s',
+        eventdata: {
+          count_call: watchDurationCountCall,
+          body_height: bodyHeight,
+          read_position: readHeight / bodyHeight,
+          max_read_position: maxReadHeight / bodyHeight
+        }
+      });
+      watchDurationCountCall++;
+
+      if (readHeight >= bodyHeight || watchDurationCountCall > 120) { //120=10min
+        window.clearInterval(watchDurationIntervalHandle);
+      }
+    };
+
+    visibilitychangeHandle = function(){
+      if (document.hidden) {
+        window.clearInterval(watchDurationIntervalHandle);
+        eventFn({
+          eventid: 'into_hidden',
+        });
+        document.removeEventListener("visibilitychange", visibilitychangeHandle);
+      }
+    };
+    document.addEventListener("visibilitychange", visibilitychangeHandle, false);
+
+    watchDurationIntervalHandle = window.setInterval(watchDurationFn, 5000);
+    watchDurationFn(); //first call on 0 second
+  };
+  //</over_bottom event>
+}(jQuery));

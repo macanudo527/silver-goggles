@@ -1,0 +1,168 @@
+function getMediaLayout() {
+  const regEx = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/i;
+  const width = window.innerWidth;
+  if (width < 768) {
+    return "mobile";
+  } else if (width < 993) {
+    return "tablet";
+  } else {
+    let devc = navigator.userAgent.match(regEx);
+    if (devc == null) {
+      return "desktop";
+    } else {
+      return "mobile";
+    }
+  }
+}
+if(typeof diDNA_Keyword !== "undefined") {
+  //window.location.hash = '#'+diDNA_Keyword.replace(" ", "-").toLowerCase();
+}
+var bidPageUrl = window.location.href.replace(/\/$/, "");
+var ibvSelector = (Math.floor(Math.random() * 5 + 1) == 1) ? true : false;
+var DIDNA_CONFIG = {
+  'manualMode': true,
+  'enableRulesEngine': false,
+  'didnaTrackers': false,
+  'logging': false,
+  'activeTab': true,
+  'lazyload': 1,
+  'lazyloadConfig': {
+    'desktop': {
+      'rootMargin': '120% 0px'
+    },
+    'mobile': {
+      'rootMargin': '40% 0px'
+    }
+  },
+  'prebidConfig': {
+    'inject': false,
+    'options': {
+      'publisherDomain': 'https://this.kiji.is',
+      'pageUrl': bidPageUrl,
+      'bidderTimeout': 2000,
+      'priceGranularity': 'high',
+      'userSync': {
+        'syncDelay': 2000
+      }
+    }
+  },
+  'startUpConfig': {
+    'desktopTimeout': 0,
+    'mobileTimeout': 0
+  },
+  'factoryConfig': {
+    'all': {
+      'inViewRefresh': 20000,
+      'refresh': 900000,
+      'timelaps': 7500,
+      'delay': 7500
+    }
+  },
+  'ibv': false,
+  'debug': false,
+  'ibvConfig': {
+    'url': 'https://pubads.g.doubleclick.net/gampad/ads?iu=/170737076/streann/hindsight-didna/this.kiji.is&description_url=https%3A%2F%2F'+window.location.hostname+'&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=xml_vast4&sz=300x250|640x480&max_ad_duration=30000&unviewed_position_start=1'
+  },
+  'rules': {
+  		'4959275255': {'refresh': 0}
+  	},
+  'scanners': {
+    'confiant': {
+      'prebid': 1
+    },
+    'devcon': {
+      'page': 0
+    }
+  },
+  'setupConfig': {
+    'outOfViewRefresh': false
+  }
+};
+var DIDNA_PLACEMENTS = {
+  'sizeless':{
+  	'appnexus': {'placementId': 17864640},
+    'ix': {'siteId': 438637},
+    'rubicon': {'accountId': '20100', 'siteId': '324304', 'zoneId': '1681684'},
+    'pubmatic': {'publisherId': '158734'}
+  },
+  '300x250': {
+    //'appnexus': {'placementId': 17864640},
+    //'ix': {'siteId': 438637, 'size': [300, 250]},
+    'openx': {'unit': 541068684},
+    //'rubicon': {'accountId': '20100', 'siteId': '324304', 'zoneId': '1681684'},
+    'sovrn': {'tagid': 673715},
+    //'pubmatic': {'publisherId': '158734'}
+  },
+  '320x50': {
+    //'appnexus': {'placementId': 17864640},
+    //'ix': {'siteId': 438637, 'size': [320, 50]},
+    'openx': {'unit': 541068684},
+    //'rubicon': {'accountId': '20100', 'siteId': '324304', 'zoneId': '1681684'},
+    'sovrn': {'tagid': 685448},
+    //'pubmatic': {'publisherId': '158734'}
+  }
+};
+(function(){
+  function injectScript(src){
+    const deSrc = window.atob(src);
+    const b = new Blob([deSrc], {'type': 'text/javascript'});
+    const url = URL.createObjectURL(b);
+
+    let srcTag = document.createElement("script");
+    srcTag.type = "text/javascript";
+    srcTag.async = true;
+    srcTag.src = url;
+    let head = document.getElementsByTagName("head")[0];
+    head.appendChild(srcTag);
+    URL.revokeObjectURL(url);
+  }
+
+  let loadScripts = {
+    "util": "https://storage.googleapis.com/didna-prod/didna_util_v31016.min.js.gz",
+    "prebid": "https://storage.googleapis.com/didna-prod/international_didna_prebid3.22.0.js.gz"
+  };
+
+  const storedUtil = localStorage.getItem("diDNA_util");
+  const storedPrebid = localStorage.getItem("diDNA_prebid");
+
+  if(storedUtil){
+    injectScript(storedUtil);
+    delete loadScripts['util'];
+  }
+
+  if(storedPrebid){
+    injectScript(storedPrebid);
+    delete loadScripts['prebid'];
+  }
+  if(Object.keys(loadScripts).length !== 0 && loadScripts.constructor === Object){
+    if(window.Worker){
+      const wf = new Blob(['function getLibrary(url){return new Promise((resolve, reject) => {let xhr = new XMLHttpRequest();xhr.open("GET", url, true);xhr.onload = () => {resolve(xhr.responseText)};xhr.onerror = reject;xhr.send();});}onmessage = function(e){let msg = e.data.split("?");const url = msg[0];const name = msg.pop();getLibrary(url).then(library => {postMessage({"name": name, "lib": self.btoa(library)});});};'], {"type": "text/javascript"});
+      const worker_url = URL.createObjectURL(wf);
+      const worker = new Worker(worker_url);
+      URL.revokeObjectURL(worker_url);
+      worker.onmessage = function(e){
+        try{
+          localStorage.setItem(`diDNA_${e.data.name}`, e.data.lib);
+        }catch(e){
+          console.log(e);
+        }
+        injectScript(e.data.lib);
+      };
+      for(let name in loadScripts){
+        worker.postMessage(`${loadScripts[name]}?${name}`);
+      }
+      setTimeout(function(){
+        worker.terminate();
+      }, 3000);
+    }else{
+      DIDNA_CONFIG.prebidConfig.inject = true;
+      var duEL = document.createElement("script");
+      duEL.type = "text/javascript";
+      duEL.async = true;
+      //duEL.src = "https://storage.googleapis.com/didna-files/utility/didna_util.min.js.gz";
+      duEL.src = 'https://storage.googleapis.com/didna-files/utility/didna_util_v31016.min.js.gz';
+      var duTargetEl = document.getElementsByTagName("head")[0];
+      duTargetEl.appendChild(duEL);
+    }
+  }
+})();

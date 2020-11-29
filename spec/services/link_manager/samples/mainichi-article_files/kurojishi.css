@@ -1,0 +1,1111 @@
+@charset "utf-8";
+/*----------------------------------------
+kurojishi.css
+2017.06.06
+----------------------------------------*/
+
+/* ヘッダー非表示 要素
+----------------------------------------*/
+/*#top .header-main .container .photo,
+#top .header-main .container .video,
+#top .header-main .container .premier { visibility:hidden;}*/
+
+/*ナビゲーション
+----------------------------------------*/
+header nav ul {
+  margin: 0 auto;
+}
+header nav ul.kurojishi-globalnavi {
+  float: left;
+  width: 940px;
+}
+header nav ul.inline-list {
+  float: right;
+  width: 140px;
+}
+header nav ul li.gaiyo{
+  float: right;
+  font-size: 87.5%;
+  height: 42px;
+  line-height: 42px;
+  /*padding: 3px 0 9px;*/
+}
+header nav ul li.gaiyo:last-child a{
+  border-left: solid 1px #2C90D4;
+}
+nav.main-navi .kurojishi-globalnavi li.active,
+nav.main-navi .kurojishi-globalnavi li:hover {
+  background: rgba(0, 0, 0, 0) url("/vol1/images/pc/sports/kurojishi/common/Nav_GlobalMain_Selected.png") no-repeat scroll 50% 100%;
+}
+nav.main-navi .container .kurojishi-globalnavi li.active a,
+nav.main-navi .container .kurojishi-globalnavi li:hover a {
+  background: none;
+}
+nav.main-navi .kurojishi-navi-sns li.active,
+nav.main-navi .kurojishi-navi-sns li:hover {
+  background-image: none;
+}
+.kurojishi-navi-sns li{
+  float: right !important;
+  padding: 3px 0px 0px 24px;
+}
+.kurojishi-navi-sns li a{
+display:block;
+width:36px;
+height:32px;
+text-indent:-9999em;
+background-position: 0 50% !important;
+background-repeat: no-repeat;
+opacity: 0.7;
+}
+.kurojishi-navi-sns li.fb a{
+background-image:url(/vol1/images/pc/icon-tool-fb.svg) !important;
+}
+.kurojishi-navi-sns li.tw a{
+background-image:url(/vol1/images/pc/icon-tool-tw.svg) !important;
+}
+.kurojishi-navi-sns li.fb a:hover,
+.kurojishi-navi-sns li.tw a:hover{
+opacity: 1;
+}
+nav.kurojishi-navi {
+  background-color:#F4F4F4;
+}
+nav.kurojishi-navi ul {
+  padding: 6px 0px 6px 10px;
+}
+nav.kurojishi-navi ul:after {
+  display:block;
+  clear:both;
+  content:'';
+}
+header nav.kurojishi-navi ul li {
+  height: auto;
+}
+header nav.kurojishi-navi ul li a {
+  color: #303030;
+  font-weight: normal;
+  font-size: 85.7%;
+  line-height: 18px;
+  padding: 38px 8px 0px;
+  background-repeat: no-repeat;
+  background-position:center 2px;
+  background-size: auto 32px;
+}
+header nav.kurojishi-navi ul li a:hover{
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  -ms-filter: "alpha(opacity=60)";
+}
+.kurojishi-navi li.kurojishi-navi-news a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_News.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_News.svg);
+}
+.kurojishi-navi li.kurojishi-navi-live a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Movie.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Movie.svg);
+}
+.kurojishi-navi li.kurojishi-navi-photo a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Photonews.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Photonews.svg);
+}
+.kurojishi-navi li.kurojishi-navi-movie a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_MovieList.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_MovieList.svg);
+}
+.kurojishi-navi li.kurojishi-navi-column a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Column.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Column.svg);
+}
+.kurojishi-navi li.kurojishi-navi-schedule a{
+  border-left: solid 1px #CECECE;
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Schedule.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Schedule.svg);
+}
+.kurojishi-navi li.kurojishi-navi-tournament a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Number.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Number.svg);
+}
+.kurojishi-navi li.kurojishi-navi-team a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Team.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Team.svg);
+}
+.kurojishi-navi li.kurojishi-navi-ticket a{
+  background-image:url(/vol1/images/pc/sports/kurojishi/common/Icon_Ticket.png);
+  background-image:none,url(/vol1/images/pc/sports/kurojishi/common/Icon_Ticket.svg);
+  background-size: 36px;
+  background-position: center 8px;
+}
+.kurojishi-navi-now {
+  width:300px;
+}
+.kurojishi-navi-now a.game-now{
+  display: none;
+  font-size: 114.28%;
+  width: 100%;
+  background-color:#009CBF;
+  color:#FFFFFF;
+  padding: 6px;
+  margin-left: 12px;
+  border-radius:3px;
+}
+.kurojishi-navi-now a.game-now div{
+  display: inline-block;
+  margin: 0 12px;
+}
+.kurojishi-navi-now a.game-now div span{
+  display: block;
+  font-size: 75%;
+  line-height: 16px;
+  padding-top: 4px;
+}
+.kurojishi-navi-now .game-now .game-number{
+  font-size: 100%;
+  line-height: 20px;
+}
+.kurojishi-navi-now .game-now .fa-play-circle{
+  float: left;
+}
+.kurojishi-navi-now .game-now .fa-angle-right{
+  float: right;
+}
+.kurojishi-navi .logo {
+  width:170px;
+  float:left;
+  margin:1px 24px 0;
+}
+.kurojishi-navi .logo img {
+  width:100%;
+}
+.kurojishi-navi .hold a {
+  display:none;
+}
+.kurojishi-navi .bnr_quiz {
+	position:absolute;
+	top:12px;
+	right:0;
+	display:block;
+}
+
+/* channel-top
+----------------------------------------*/
+/*#kurojishi #main .section{
+  margin:0;
+  padding:0px;
+  margin-bottom: 48px;
+  background:url(/vol1/images/pc/sports/kurojishi/2016/line-title-kurojishi2.png) no-repeat 63px 100%;
+}
+#kurojishi .channel-top .header-box{
+  display:table-cell;
+  width:756px;
+  margin:0;
+  padding:12px 6px 6px 2px;
+  background:url(/vol1/images/pc/sports/kurojishi/2016/line-title-kurojishi.png) no-repeat 63px 0;
+  color:#292929;
+  vertical-align:bottom;
+}
+#kurojishi .channel-top .header-box h1{
+  float:left;
+  margin:0;
+  padding-top: 6px;
+  max-width:504px;
+  -moz-text--photoshadow:none;
+  -webkit-text-shadow:none;
+  -ms-text-shadow:none;
+  text-shadow:none;
+}*/
+
+/*センバツページ共通
+----------------------------------------*/
+.kurojishi-contents{
+  padding-left: 63px;
+  margin-bottom: 24px;
+}
+#kurojishi #main .sub-box .section {
+    position: relative;
+    margin: 0 0 12px;
+    padding: 0;
+    background-image: none;
+}
+
+/*センバツトップ
+----------------------------------------*/
+#main .kurojishi-top .sub-box{
+  width: 235px;
+}
+#main .kurojishi-top .main-box{
+  width: 490px;
+}
+.kurojishi-top-box {
+  width: 490px;
+  margin-bottom: 24px;
+  background-color: #2A2A2A;
+  color: #FFF;
+  border-radius: 4px;
+}
+.kurojishi-top-lead{
+  background-color: #F7F7F7;
+  border: solid 1px #ECECEC;
+  padding: 12px;
+  margin-bottom: 24px;
+  color: #545454;
+}
+.kurojishi-top-lead h1{
+  font-size: 130%;
+  font-weight: normal;
+}
+.kurojishi-top-lead p{
+  font-size: 87.5%;
+  line-height: 160%;
+}
+#main .kurojishi-top .list-typeA{
+  width:490px;
+}
+#main .kurojishi-top .sub-box .section{
+  margin-bottom: 12px;
+  background:none;
+}
+#main .kurojishi-top .sub-box .section h2,
+#main .kurojishi-top .main-box h2{
+  font-weight: normal;
+}
+.pickup-video p,
+.kurojishi-graph p{
+  font-size: 87.5%;
+  padding: 3px;
+  margin-bottom: 6px;
+}
+.pickup-video a {
+  padding:6px 0;
+  display:inline-block;
+}
+.pickup-video a img {
+  display:block;
+  width:235px;
+  height:140px;
+  margin-bottom:3px;
+}
+.pickup-video a .midashi {
+  font-weight:bold;
+  display:block;
+}
+.pickup-video a .text {
+  font-size:87.5%;
+}
+.pickup-video .list-typeC li {
+  padding:6px 0;
+}
+.pickup-video .list-typeC a {
+  font-weight:normal;
+}
+/* list-typeC typeC-line */
+#main .kurojishi-top .sub-box .typeC-line{
+  margin-bottom: 0;
+}
+#main .kurojishi-top .sub-box .typeC-line li{
+  background:#FFF;
+  border:none;
+  border-top:1px solid #dbdbdb;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.score-head1 { border-bottom:1px solid #4A4A4A; padding-bottom:5px; margin-bottom:5px;}
+/* box-score */
+.kurojishi-top-box .box-score {
+  width: 490px;
+  padding: 12px 6px;
+}
+.kurojishi-top-box .box-score .left{
+  float: left;
+}
+.kurojishi-top-box .box-score .right{
+  margin-left: 270px;
+}
+.kurojishi-top-box .hold .left{
+  float:none;
+  text-align:center;
+}
+.kurojishi-top-box .hold .right{
+  display:none;
+}
+.kurojishi-top-box .box-score p{
+  font-size: 93.75%;
+}
+.kurojishi-top-box .box-score .left a:hover,
+.kurojishi-top-box .box-score .right a:hover{
+  text-decoration: none;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  -ms-filter: "alpha(opacity=60)";
+}
+.kurojishi-top-box .box-score p.box-score-date{
+  font-size: 87.5%;
+  display: block;
+}
+.kurojishi-top-box .box-score p.box-score-score{
+  font-size: 75%;
+  color: #C01D1D;
+  background-color: #FFF;
+  border-radius: 2px;
+  padding: 2px 4px;
+  margin: 0px;
+}
+.kurojishi-top-box .box-score p span.pref{
+  display: block;
+  font-size: 75%;
+  text-align: center;
+}
+.box-score .right a.game-now{
+  font-size: 100%;
+  display: block;
+  width: 205px;
+  background-color:#009CBD;
+  border: solid 1px #3ACAE8;
+  color:#FFFFFF;
+  padding: 0px;
+  border-radius:3px;
+}
+.box-score .right a.game-now div{
+  height: 54px;
+}
+.box-score .right a.game-now div span{
+  display: block;
+  padding-left: 12px;
+}
+.box-score .right .game-now .game-number{
+  font-size: 100%;
+}
+.box-score .right .game-now div span:before {
+  content: "\f144";
+  font-family: FontAwesome;
+  font-size: 2.5em;
+  margin-right: 0.25em;
+  position: relative;
+  top: 6px
+}
+/*link-live*/
+a.link-live {
+  background-color: #1976AA;
+  text-align:center;
+  color:#FFF;
+  padding:12px;
+  display:block;
+  margin-bottom:20px;
+  border-radius: 4px;
+  background-image: url(/vol1/images/pc/icon-arrow_gr-ie.png);
+  background-image: none,url(/vol1/images/pc/icon-arrow_gr.svg);
+  background-position: right 5px top -85px;
+  background-repeat: no-repeat;
+  background-size: 16px auto;
+}
+a.link-live:hover {
+  text-decoration:none;
+  opacity:0.9;
+}
+a.link-live2 {
+  background-image: url(/vol1/images/pc/sports/kurojishi/2019/bnr_live_pc.png);
+  background-size:235px auto;
+  width:235px;
+  height:132px;
+  display: block;
+  text-indent:-999995px;
+  margin-bottom:20px;
+}
+a.link-live2:hover {
+  opacity:0.9;
+}
+.top-news-list .list-typeD {
+  margin-bottom: 24px;
+}
+.top-news-list .list-typeD a {
+  display: block;
+}
+.top-news-list .list-typeD div.img {
+  height: 80px;
+  width: 80px;
+  line-height: 1;
+  margin-bottom: 0;
+}
+.kurojishi-top .main-box .table-typeA {
+  margin-bottom: 24px;
+}
+/*ワンプレー速報・動画
+----------------------------------------*/
+.oneplay{
+  margin-bottom: 24px;
+  padding-bottom: 4px;
+  position: relative;
+}
+.oneplay:after {
+  display:block;
+  clear:both;
+  content:'';
+}
+.oneplay iframe{
+  position: relative;
+}
+.game-archive{
+  background-color: #2A2A2A;
+  color: #FFF;
+}
+.top-current{
+  background-color: #2A2A2A;
+  color: #FFF;
+}
+.box-score{
+  padding: 12px;
+}
+.box-score p{
+  display: inline-block;
+  margin: 0 6px;
+  font-size: 130%;
+  vertical-align: middle;
+}
+.box-score p.box-score-label{
+  font-size: 175%;
+  font-family: "Helvetica Neue",Arial;
+  font-style: italic;
+}
+.game-archive .box-score p.box-score-label{
+  font-size: 75%;
+  font-family: "Helvetica Neue",Arial;
+  font-style: normal;
+  letter-spacing: 0.5em;
+  color: #000;
+  padding: 2px 0px 2px 0.5em;
+  background-color: #FFF;
+  border-radius: 2px;
+  margin: 10px 0px;
+}
+.box-score p.box-score-date{
+  font-size: 75%;
+  margin-right: 8px;
+}
+.box-score .box-score-share{
+  text-align: right;
+  float: right;
+  margin: 0;
+}
+.box-score a{
+  color: #FFF;
+  display:block;
+}
+/* box-score sns */
+.box-score-share ul.tool{
+  float:right;
+  margin:0;
+}
+.box-score-share ul.tool li{
+  display:block;
+  float:left;
+  width:40px;
+  margin:0 3px 0 0;
+}
+.box-score-share ul.tool li:last-child{
+  margin-right:0px;
+}
+.box-score-share ul.tool li a{
+  display:block;
+  width:32px;
+  height:32px;
+  background-color:#838e93;
+  background-repeat:no-repeat;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  -ms-border-radius:50%;
+  -o-border-radius:50%;
+  border-radius:50%;
+  text-indent:-9999em;
+}
+.box-score-share ul.tool li.btn-sns a.count,
+.box-score-share ul.tool li.btn-sns span.count{
+  display:block;
+  width:32px;
+  height:auto;
+  background:transparent;
+  font-size:50%;
+  line-height:1.5;
+  text-indent:0;
+  text-align:center;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  -ms-border-radius:0;
+  -o-border-radius:0;
+  border-radius:0;
+  color:#838e93;
+}
+.box-score-share ul.tool li.btn-sns a.count:hover{
+  background:transparent;
+}
+.box-score-share ul.tool li.btn-sns a.count{
+  -moz-text--photoshadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  -webkit-text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  -ms-text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.box-score-share ul.tool li.btn-sns span.count{
+  -moz-text--photoshadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  -webkit-text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  -ms-text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);
+  color:#cce3ef;
+}
+.box-score-share ul.tool li.gp a{
+  background-image:url(/vol1/images/pc/icon-tool.png);
+  background-position:0 -200px;
+}
+.box-score-share ul.tool li.gp a:hover{
+  background-color:#dc4e41;
+}
+.box-score-share ul.tool li.fb a{
+  background-image:url(/vol1/images/pc/icon-tool.png);
+  background-position:0 -250px;
+}
+.box-score-share ul.tool li.fb a:hover{
+  background-color:#3c5998;
+}
+.box-score-share ul.tool li.tw a{
+  background-image:url(/vol1/images/pc/icon-tool.png);
+  background-position:0 -300px;
+}
+.box-score-share ul.tool li.tw a:hover{
+  background-color:#55acee;
+}
+.box-score-share ul.tool li.tw a.count,
+.box-score-share ul.tool li.tw span.count{
+  width:auto;
+  margin:0 0 0 -4px;
+}
+.box-score-share ul.tool li.hb a{
+  background-image:url(/vol1/images/pc/icon-tool.png);
+  background-position:0 -350px;
+}
+.box-score-share ul.tool li.hb a:hover{
+  background-color:#00a4de;
+}
+.info-powerdby {
+  font-size:12px;
+  color:#ccc;
+  padding:2px 12px 0px 0;
+  margin:0;
+  background:#2a2a2a;
+  text-align:right;
+}
+.info-powerdby a {
+  color:#ccc;
+}
+
+/* スコアボード */
+.scoreboard > div{
+  background: #383838;
+  width: 732px;
+  padding: 2px;
+  border-radius: 3px;
+  margin: 0px auto 12px auto;;
+}
+.scoreboard table{
+  width: 732px; background: #383838; border-radius: 3px; margin: 0 auto 12px; padding: 2px;
+}
+.scoreboard th,
+.scoreboard td{
+  text-align: center;
+  vertical-align: middle;
+  border-left: solid 2px #4c4c4c;
+  padding: 6px;
+}
+.scoreboard th:first-child{
+  border-left:none;
+}
+.scoreboard th{
+  font-size: 90%;
+  white-space: nowrap;
+  color: #d6d6d6;
+  font-weight:normal;
+}
+.scoreboard td{
+  font-family: number, sans-serif;
+  font-size: 120%;
+  color: #fff;
+  min-width: 2.25em;
+}
+.scoreboard th.school{
+  text-align: left;
+}
+.scoreboard th.total,
+.scoreboard td.total{
+  font-size: 120%;
+}
+.scoreboard #board2 {display:none;} /* 延長戦用スコアボード：jsで表示制御 */
+
+.scoreboard-ad {text-align:center; margin-bottom:12px; }
+.scoreboard-ad > * { margin:auto; }
+
+/* reloadボタン */
+.reload-switch { float:right;}
+.reload-switch a{ border-radius:20px; height:38px; background:#FFF; font-size:90%; display:inline-block; font-size:70%;}
+.reload-txt { border-radius:20px; height:38px; padding:8px 15px 0 38px; display:inline-block;background:url(/vol1/images/pc/sports/kurojishi/common/Icon_Reload.png) 8px 50% no-repeat #666;background-size:24px;}
+.reload-switch .on .reload-txt {background-color:#0074C9;}
+.reload-switch .off .reload-txt {background-color:#999;}
+.reload-on, .reload-off { color:#333; width:3em; display:none;}
+.reload-switch .on .reload-on{display:inline-block; padding:8px 5px 0 10px;}
+.reload-switch .off .reload-off{display:inline-block; padding:8px 10px 0 5px;}
+
+/*
+----------------------------------------*/
+.game-info {margin:12px; padding:12px; border-radius: 3px; background-color: #F7F7F7; color: #545454; }
+.game-info table {width:100%;}
+.game-info table td {padding-left:12px; vertical-align:top; width:50%;}
+.game-info table td:first-child {border-right:1px solid #CCC; padding-left:0px; padding-right:12px}
+
+
+/* 応援団　写真特集リンク
+----------------------------------------*/
+.links-oen-photos li {width:49%; float:left; margin:0; padding:6px; border: 1px solid #DEDEDE; border-radius: 4px;}
+.links-oen-photos li:last-child {float:right;}
+.links-oen-photos li .thumb {float:left; margin:0 12px 0 0;}
+.links-oen-photos li .midashi { vertical-align: text-top;}
+.links-oen-photos li:hover {background:#F0F0F0;}
+.links-oen-photos li a:hover {text-decoration:none;}
+
+
+/*テキスト速報
+----------------------------------------*/
+.game-text-box {position:relative;margin-bottom:24px;}
+.game-archive .game-text-box {height: 390px; }
+.game-text-box h1,
+.game-photo-box h1{font-size: 120%; font-weight: normal; margin-bottom: 12px; }
+.game-text-box h2 {font-size:123.07%; padding:0 0 12px; color:#333;}
+.game-text-box p{font-size: 95%; line-height: 150%; margin-bottom: 0.5em; padding-left:5em; padding-right:1em; color:#666;}
+.game-text-box p.inning{text-indent: -0.5em; margin-top: 12px; }
+.game-text-box hr {border: 1px solid #0078c6;margin:24px 0;}
+
+/*for ie8*/
+html>/**/body .oneplay-innner .game-text-box {
+  width /*\**/: 732px \9;
+}
+html>/**/body .tweet-box {
+  display /*\**/: none \9;
+}
+
+/*スコアブック
+----------------------------------------*/
+.game-data{
+  margin-bottom: 24px;
+  width:756px;
+}
+.game-data .score-book{
+  background-color: #F8F8F8;
+  border: solid 1px #ECECEC;
+  color: #292929;
+  padding: 12px;
+  margin-bottom: 24px;
+}
+.game-data .score-book >h1{
+  font-size: 20px;
+  font-weight: normal;
+}
+.game-data .score-book dt{
+  font-size: 75%;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.game-data .score-book dt span{
+  margin-left: 2em;
+  font-weight: normal;
+}
+.game-data .score-book dd{
+  margin-bottom: 24px;
+}
+.game-data .score-book dd span{
+  font-size: 75%;
+}
+.game-data .score-book dd:last-child{
+  margin-bottom: 0px;
+}
+.game-data .score-book table{
+  width: 100%;
+  background-color: #FFF;
+  border: solid 1px #E6E6E6;
+}
+.game-data .score-book th,
+.game-data .score-book td{
+  text-align: center;
+  font-size: 81.25%;
+  padding: 4px;
+}
+.game-data .score-book th{
+  border-top: solid 2px #0078C6;
+  border-bottom: solid 1px #0078C6;
+  background-color: #F1F1F1;
+  color: #0078C6;
+  font-weight: bold;
+}
+.game-data .score-book td{
+  border-bottom: solid 1px #0078C6;
+}
+.game-data .score-book td.hit{
+  background-color: #FFF536;
+}
+.credit-jsports { text-align:center; margin:1em 0 0; clear:both;}
+.credit-jsports a {font-size:11px;}
+
+/*日程結果・今日の試合
+----------------------------------------*/
+/* 色指定 中止（デフォルト） */
+.schedule li{background-color: #3B6E80; color: #FFF; white-space: nowrap;}
+.schedule li a {color:#FFF;}
+/* 色指定 試合前 */
+.schedule .pre{background-color: #687F94; color: #FFF; }
+/* 色指定 ライブ */
+.schedule .live{background-color: #0078C6;}
+/* 色指定 試合後 */
+.schedule .end{background-color: #0088B5;}
+
+.schedule {font-size: 93.75%; line-height: 150%; }
+.schedule dt{float: left; width: 200px; padding: 12px 0; font-weight: bold; border-top: solid 1px #E8E8E8; }
+.schedule dd{float:left; width:556px; border-top: solid 1px #E8E8E8; padding: 12px 0;}
+.schedule li{border-radius: 4px;}
+.schedule li:hover {opacity:0.9;}
+.schedule .nolink{margin-bottom: 6px; padding:8px 8px 12px;}
+.schedule .nolink:hover {opacity:1;}
+.schedule li a {display:block; padding:8px 8px 12px; margin-bottom: 6px;}
+.schedule li a:hover{text-decoration:none;}
+.schedule li span{display: inline-block; text-align:center; vertical-align: middle; white-space: normal;}
+.schedule li .n{width:100%; font-size:80%; text-align: center; opacity: 0.8; display:block; letter-spacing:1px;}
+.schedule li .l{width:35%;}
+.schedule li .status{width:28%;}
+.schedule li .status .vs {text-indent: -9999px; width: 0.8em; border: 1px solid #FFF; height: 1px; margin: 0 8px;}
+.schedule li .status b{font-family: number, sans-serif; font-size: 180%; font-weight:normal; line-height: 1em; vertical-align:middle; }
+.schedule li .status em{font-size: 16px; color: #FFF; font-style: normal; line-height:200%;}
+.schedule li .r{width:35%;}
+.schedule li .pref{opacity:0.8; letter-spacing:2px; font-size: 80%; margin-bottom: 0px; display:block; }
+#sub .schedule li.nolink, #sub .schedule li a{padding:8px;}
+#sub .schedule li .l, #sub .schedule li .r{width:96px;}
+
+/* for Top */
+.kurojishi-top .sub-box .schedule{font-size: 84.375%; }
+
+/* for 学校別 */
+.sub-box .itm .schedule{ font-size: 95%;}
+
+/*出場校一覧
+----------------------------------------*/
+.school-list .school-table{
+  width: 100%;
+}
+.kurojishi-top-school .school-table{
+  width: 427px;
+  margin-left: 63px;
+}
+.school-table{
+  color: #2A2A2A;
+}
+.school-table td,
+.school-table th{
+  font-size: 87.5%;
+  text-align: left;
+  vertical-align: top;
+  padding: 2px;
+}
+.school-table .Area{
+  border-top: solid 1px #E8E8E8;
+}
+.school-table .Area td,
+.school-table .Area th{
+  padding-top: 8px;
+}
+.school-table tr:last-child {
+  border-bottom: solid 1px #E8E8E8;
+}
+.school-table .school-name a{
+  font-weight: bold;
+  color: #2A2A2A;
+}
+#sub .school-table td,
+#sub .school-table th{
+  font-size: 80%;
+  line-height: 120%;
+}
+
+/*学校別ページ
+----------------------------------------*/
+.school-video {
+  margin-left: 63px;
+  margin-bottom: 24px;
+}
+
+.cover-img img {width:100%;}
+
+.team-box {
+  background-color: #F7F7F7;
+  border: solid 1px #ECECEC;
+  padding: 12px 0px;
+  margin-bottom: 6px;
+}
+.team-box h2{
+  color:#2A2A2A;
+  font-size: 75%;
+}
+.team-box .itm{
+  border-bottom: solid 1px #0078C6;
+  margin-bottom: 12px;
+  padding: 0px 12px 12px 12px;
+  color: #404040;
+}
+.team-box .player{
+  border-bottom: none;
+  margin-bottom: 0px;
+  padding: 0px 12px;
+}
+.team-box .player h2{
+  position: relative;
+}
+.team-box .player .captain{
+  font-weight: normal;
+  position: absolute;
+  top:0;
+  right: 6px;
+}
+.team-box .team-info,
+.team-box .member{
+  width: 100%;
+}
+.team-box .team-info th,
+.team-box .team-info td{
+  text-align: left;
+  padding: 2px;
+  font-weight: bold;
+}
+.team-box .team-info th{
+  font-size: 75%;
+}
+.team-box .list-typeC {
+    padding:0 12px;
+}
+#main .team-box .list-typeC li {
+    margin:0;
+}
+.team-data dl{
+  font-size: 87.5%;
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+}
+.team-data dt{
+  float: left;
+  margin-bottom: 3px;
+}
+.team-data dd{
+  margin-left: 12em;
+  margin-bottom: 3px;
+}
+.team-box p.note{
+  font-size: 80%;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.team-box .team-info{
+  width: 100%;
+  color: #404040;
+}
+.team-box .member{
+  margin-bottom: 6px;
+}
+.team-box .player .member th{
+  border-bottom: solid 1px #0078C6;
+  color: #0078C6;
+  font-size: 80%;
+}
+.team-box .player .member td{
+  font-size: 80%;
+  padding: 3px;
+  text-align: center;
+  border-bottom: solid 1px #0078C6;
+}
+.team-box .list-typeD {margin-right:12px;}
+.team-box .list-typeD li {
+  margin-bottom:0px;
+  /*padding:0;*/
+  padding-left: 12px;
+  background: none;
+}
+.team-box .list-typeD li .date {display:none;}
+
+
+.top-photo-list li {
+  border-bottom:1px solid #CCC;
+}
+.top-photo-list li a {
+  padding:6px 0 12px;
+  display:block;
+  font-size:87.5%;
+}
+
+.top-photo-list li a .thumb {
+  width:100%;
+}
+
+.top-photo-list li a img {
+  display:block;
+  margin:auto;
+}
+
+.top-photo-list li a .thumb .horizontal-photo {
+    width: 100%;
+    height:auto;
+}
+
+.top-photo-list li a .thumb .vertical-photo {
+    width: auto;
+    max-height:132px;
+}
+
+.top-photo-list .sml {
+  clear:both;
+}
+
+.top-photo-list .sml a .thumb {
+    width: 100px;
+    float:right;
+    margin-left:12px;
+}
+
+.top-photo-list .sml a .thumb .horizontal-photo {
+    max-width: 100%;
+    height:auto;
+}
+
+.top-photo-list .sml a .thumb .vertical-photo {
+    width: auto;
+    max-height:67px;
+}
+
+
+.game-photo-list li a {
+  padding:6px 0 18px;
+  display:block;
+  font-size:87.5%;
+  color:#EEE;
+}
+
+.game-photo-list li a .thumb {
+  width:100%;
+}
+
+.game-photo-list li a img {
+  display:block;
+  margin:auto;
+}
+
+.game-photo-list li a .thumb .horizontal-photo {
+    width: 100%;
+    height:auto;
+}
+
+.game-photo-list li a .thumb .vertical-photo {
+    width: auto;
+    max-height:132px;
+}
+.game-photo-nav li a {
+    background: #000 url("/vol1/images/pc/icon-arrow_gr.png") no-repeat scroll 0 -44px;
+    border: 1px solid #737373;
+    color: #fff;
+    width:100%;
+    border-radius: 3px;
+    display: block;
+    margin: 0 0 6px;
+    padding: 6px 6px 6px 18px;
+    font-size:87.5%;
+}
+
+.game-photo-nav li a:hover {
+    background: #2b2b2b url("/vol1/images/pc/icon-arrow_gr.png") no-repeat scroll 0 6px;
+}
+
+/* 試合詳細　動画リスト
+----------------------------------------*/
+#menu-video { margin:0 0 10px 10px;}
+#menu-video li {float:left; width:148px; font-size:12px; opacity: 0.7; margin-bottom:12px;}
+#menu-video li:nth-child(5n+1) {clear:both;}
+#menu-video li:hover { cursor:pointer; opacity: 1;}
+#menu-video li img {float:left; width:100%; border:1px solid #2a2a2a; }
+#menu-video li .midashi {display:block; text-align:center;}
+#menu-video li .text { display:inline-block; padding:6px;}
+#menu-video .on {opacity: 1;}
+#menu-video .on img {border:1px solid #EEE;}
+
+
+/* 関連リンク（バナー）
+----------------------------------------*/
+.bnr-link li img {width:100%; margin-bottom:6px;}
+
+
+/* 動画・写真
+----------------------------------------*/
+.visual-box{margin:0 0 24px; padding:6px 8px; background:#000;}
+.visual-box h2{color:#fff; margin:0 0 3px; padding:3px 0 0 36px;}
+.visual-box a{color:#fff;}
+.visual-box h2.photo{background:url(/vol1/images/pc/icon-photo-wh.png) no-repeat 0 2px;}
+.visual-box h2.movie{background:url(/vol1/images/pc/icon-movie-wh.png) no-repeat 0 2px;}
+.visual-box .col2 .inner{text-align:center;}
+
+/* video */
+.visual-box #videoTitle{font-size:14px;}
+
+/* slide-list */
+#slide #slide-list{position:relative; width:366px; height:230px; margin:0 0 0 4px; overflow:hidden;}
+#slide #slide-list li{position:absolute; top:0; left:0;}
+#slide #slide-list a:hover img{opacity:0.8;}
+.slide-img{width:366px; height:208px;}
+.thum-img{width:366px; height:208px; overflow:hidden;}
+.thum-img img.horizontal-photo,
+.thum-img img.vertical-photo{width:100%; height:auto; max-height:none;}
+#slide .midashi{clear:both; padding:2px 0 0; font-size:12px; color:#fff; text-align:left; overflow:hidden; -o-text-overflow:ellipsis; -webkit-text-overflow:ellipsis; -moz-text-overflow:ellipsis; text-overflow:ellipsis; white-space:nowrap;}
+
+/* slide-navi */
+#slide #slide-navi{margin:0 auto; display:inline-block; *display:inline; width:auto; zoom:1;}
+#slide #slide-navi li{display:inline-block; margin:0 6px; text-align:center;}
+#slide #slide-navi li a{background:#454545; display: inline-block; height:12px; width:12px; border-radius:50%;}
+#slide #slide-navi li a.current{background:#fff;}
+
+/* live-movie */
+.live-movie{background:#000; margin-bottom: 10px; width:756px; margin:auto;}
+.live-movie h2{font-size:18px;font-weight:bold;color:#FFF;text-align:center;}
+.live-movie .scoreboard > div {width:100%;margin-bottom:1px;}
+.live-movie .scoreboard table {width:100%;}
+.bnr-live-brightcove {font-size:12px;margin-bottom:5px;text-align:right;}
+.bnr-live-brightcove img{height:24px}
+.live-movie .video-wrap {display: block; position: relative; max-width: 1080px;}
+.live-movie .video-cont {padding-top: 56.25%;}
+.live-movie .video-close {
+width: 100%;
+margin:auto;
+height: 0;
+padding-top: 56.25%;
+background:url(/vol1/images/pc/sports/kurojishi/common/live-img-close.jpg) no-repeat 0 0;
+background-size:100% auto;
+text-indent:100%;
+overflow: hidden;
+white-space: nowrap;
+}
+.live-movie .video-note {display: none;}
+
+.iframe-block {
+   background-color: #FFF;
+   overflow-x: hidden;
+   overflow-y: hidden;
+}
+
+.btn1 a {
+  display: block;
+  width: 300px;
+  padding: 1em;
+  text-align: center;
+  margin: 0.5em auto 2em;
+  background: #0088B5;
+  color: #FFF;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+/* END */
