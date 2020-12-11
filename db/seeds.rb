@@ -9,6 +9,27 @@
 # The edict file with the first lines of symbols removed.  The last few newlines have also been removed.
 # Edict file should be converted to UTF8 for maximum compatiblity
 
-require_relative('seeds/entry_seeds')
-require_relative('seeds/source_seeds')
-require_relative('seeds/setting_seeds')
+namespace :db do
+  namespace :seed do
+
+    Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].each do |filename|
+      task_name = File.basename(filename, '.rb').intern
+
+      task task_name => :environment do
+        load('seeds/' + filename)
+      end
+    end
+
+    task :all => :environment do
+      Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |filename|
+        load('seeds/' + filename)
+      end
+    end
+
+  end
+end
+
+
+# require_relative('seeds/entry_seeds')
+# require_relative('seeds/source_seeds')
+# require_relative('seeds/setting_seeds')
